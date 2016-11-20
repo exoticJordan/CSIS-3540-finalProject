@@ -81,6 +81,7 @@
             this.btnPrevResult.TabIndex = 34;
             this.btnPrevResult.Text = "Previous";
             this.btnPrevResult.UseVisualStyleBackColor = true;
+            this.btnPrevResult.Click += new System.EventHandler(this.btnPrevResult_Click);
             // 
             // lblPrice
             // 

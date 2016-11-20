@@ -23,6 +23,10 @@ namespace ClientServerProject
             plansearch = ps;
             cruises = c;
             index = i;
+            if (index == 0)
+                btnPrevResult.Enabled = false;
+            else if (index == cruises.Count() - 1)
+                btnNextResult.Enabled = false;
         }
 
         private void PlanSearchResult_Load(object sender, EventArgs e)
@@ -65,6 +69,17 @@ namespace ClientServerProject
                 plan.Controls.Remove(this);
             }
             else btnNextResult.Enabled = false;
+        }
+
+        private void btnPrevResult_Click(object sender, EventArgs e)
+        {
+            if (index > 0)
+            {
+                PlanSearchResult psr = new PlanSearchResult(plan, plansearch, cruises, index - 1);
+                plan.Controls.Add(psr);
+                plan.Controls.Remove(this);
+            }
+            else btnPrevResult.Enabled = false;
         }
     }
 }
