@@ -8,6 +8,7 @@ namespace ClientServerProject
 {
     public class Cruise
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public List<string> Itinary;
         public string Ship { get; set; }

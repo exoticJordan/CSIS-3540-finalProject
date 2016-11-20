@@ -14,6 +14,7 @@ namespace ClientServerProject
     public partial class PlanSearch : UserControl
     {
         Plan plan;
+        DBConnect conn;
         MySqlConnection connection;
         MySqlCommand cmd;
         string criteria, order;
@@ -58,20 +59,22 @@ namespace ClientServerProject
 
         public void executeSearch(string criteria,string order)
         {
-            string query = "select Cruise_Name as 'Name',";
+            string query = "select Cruise_id as 'ID',";
+            query += "Cruise_Name as 'Name',";
             query += "Ship_Name as 'Ship',";
             query+="Cruise_Price as 'Price'";
             query+=" from Cruises c inner join Ships s on c.Ship_id=s.Ship_id";
-            fillCMD(query, connection);
+            conn.fillCMD(query, connection);
             MySqlDataReader reader = cmd.ExecuteReader();
             cruises = new List<Cruise>();
             while (reader.Read())
             {
                 cruises.Add(
                     new Cruise {
-                        Name = reader.GetString(0),
-                        Ship = reader.GetString(1),
-                        Price = Double.Parse(reader.GetString(2))
+                        ID = int.Parse(reader.GetString(0)),
+                        Name = reader.GetString(1),
+                        Ship = reader.GetString(2),
+                        Price = Double.Parse(reader.GetString(3))
                     }
                 );
             }
@@ -81,7 +84,7 @@ namespace ClientServerProject
         public void executeQuery(string query)
         {
             MySqlDataAdapter mcmd = new MySqlDataAdapter();
-            fillCMD(query, connection);
+            conn.fillCMD(query, connection);
 
             mcmd.SelectCommand = cmd;
 
@@ -138,12 +141,6 @@ namespace ClientServerProject
             dGV1.DataSource = null;
             executeQuery(query); 
             */
-        }
-        
-        public void fillCMD(string s, MySqlConnection c)
-        {
-            cmd.CommandText = s;
-            cmd.Connection = c;
         }
 
         private void dGV1_CellContentClick(object sender, DataGridViewCellEventArgs e)

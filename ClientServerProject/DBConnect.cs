@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,12 @@ namespace ClientServerProject
             DB + ";" + "UID=" + UID + ";" + "PASSWORD=" + PASSWD + ";";
 
             return connectionString;
+        }
+
+        public void fillCMD(string s, MySqlConnection c)
+        {
+            cmd.CommandText = s;
+            cmd.Connection = c;
         }
     }
 }

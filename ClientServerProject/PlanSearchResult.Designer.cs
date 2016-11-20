@@ -41,6 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBook
@@ -103,32 +104,38 @@
             // 
             // lblDuration
             // 
+            this.lblDuration.AutoSize = true;
             this.lblDuration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDuration.Location = new System.Drawing.Point(279, 216);
+            this.lblDuration.Location = new System.Drawing.Point(279, 209);
             this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(221, 23);
+            this.lblDuration.Size = new System.Drawing.Size(15, 15);
             this.lblDuration.TabIndex = 31;
+            this.lblDuration.Text = "4";
             // 
             // lblShip
             // 
+            this.lblShip.AutoSize = true;
             this.lblShip.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblShip.Location = new System.Drawing.Point(279, 181);
+            this.lblShip.Location = new System.Drawing.Point(279, 174);
             this.lblShip.Name = "lblShip";
-            this.lblShip.Size = new System.Drawing.Size(221, 23);
+            this.lblShip.Size = new System.Drawing.Size(28, 15);
             this.lblShip.TabIndex = 30;
+            this.lblShip.Text = "ship";
             // 
             // lblItinary
             // 
+            this.lblItinary.AutoSize = true;
             this.lblItinary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblItinary.Location = new System.Drawing.Point(279, 150);
+            this.lblItinary.Location = new System.Drawing.Point(279, 143);
             this.lblItinary.Name = "lblItinary";
-            this.lblItinary.Size = new System.Drawing.Size(221, 23);
+            this.lblItinary.Size = new System.Drawing.Size(71, 15);
             this.lblItinary.TabIndex = 29;
+            this.lblItinary.Text = "this, this, that";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(188, 217);
+            this.label3.Location = new System.Drawing.Point(188, 210);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 28;
@@ -137,7 +144,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(188, 182);
+            this.label2.Location = new System.Drawing.Point(188, 175);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 13);
             this.label2.TabIndex = 27;
@@ -146,7 +153,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(188, 150);
+            this.label1.Location = new System.Drawing.Point(188, 143);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 26;
@@ -154,16 +161,27 @@
             // 
             // lblName
             // 
-            this.lblName.Location = new System.Drawing.Point(306, 64);
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(306, 74);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(67, 25);
+            this.lblName.Size = new System.Drawing.Size(67, 13);
             this.lblName.TabIndex = 25;
             this.lblName.Text = "Cruise Name";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(352, 287);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(21, 13);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "PP";
             // 
             // PlanSearchResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnBook);
             this.Controls.Add(this.btnNextResult);
             this.Controls.Add(this.btnBackToSearch);
@@ -200,5 +218,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label label4;
     }
 }

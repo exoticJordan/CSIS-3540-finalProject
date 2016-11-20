@@ -50,7 +50,7 @@ namespace ClientServerProject
 
         public void openBook()
         {
-            PlanRoomNumber prn = new PlanRoomNumber(plan,this);
+            PlanRoomNumber prn = new PlanRoomNumber(plan,this, cruises[index].ID,cruises[index].Price);
             plan.Controls.Add(prn);
             this.Visible = false;
         }
