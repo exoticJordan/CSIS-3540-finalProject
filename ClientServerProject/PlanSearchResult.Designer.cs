@@ -45,9 +45,9 @@
             // 
             // btnBook
             // 
-            this.btnBook.Location = new System.Drawing.Point(295, 309);
+            this.btnBook.Location = new System.Drawing.Point(295, 335);
             this.btnBook.Name = "btnBook";
-            this.btnBook.Size = new System.Drawing.Size(93, 21);
+            this.btnBook.Size = new System.Drawing.Size(93, 23);
             this.btnBook.TabIndex = 37;
             this.btnBook.Text = "Book";
             this.btnBook.UseVisualStyleBackColor = true;
@@ -55,18 +55,18 @@
             // 
             // btnNextResult
             // 
-            this.btnNextResult.Location = new System.Drawing.Point(492, 387);
+            this.btnNextResult.Location = new System.Drawing.Point(492, 419);
             this.btnNextResult.Name = "btnNextResult";
-            this.btnNextResult.Size = new System.Drawing.Size(93, 21);
+            this.btnNextResult.Size = new System.Drawing.Size(93, 23);
             this.btnNextResult.TabIndex = 36;
             this.btnNextResult.Text = "Next";
             this.btnNextResult.UseVisualStyleBackColor = true;
             // 
             // btnBackToSearch
             // 
-            this.btnBackToSearch.Location = new System.Drawing.Point(295, 387);
+            this.btnBackToSearch.Location = new System.Drawing.Point(295, 419);
             this.btnBackToSearch.Name = "btnBackToSearch";
-            this.btnBackToSearch.Size = new System.Drawing.Size(93, 21);
+            this.btnBackToSearch.Size = new System.Drawing.Size(93, 23);
             this.btnBackToSearch.TabIndex = 35;
             this.btnBackToSearch.Text = "Back to Search";
             this.btnBackToSearch.UseVisualStyleBackColor = true;
@@ -74,9 +74,9 @@
             // 
             // btnPrevResult
             // 
-            this.btnPrevResult.Location = new System.Drawing.Point(113, 387);
+            this.btnPrevResult.Location = new System.Drawing.Point(113, 419);
             this.btnPrevResult.Name = "btnPrevResult";
-            this.btnPrevResult.Size = new System.Drawing.Size(93, 21);
+            this.btnPrevResult.Size = new System.Drawing.Size(93, 23);
             this.btnPrevResult.TabIndex = 34;
             this.btnPrevResult.Text = "Previous";
             this.btnPrevResult.UseVisualStyleBackColor = true;
@@ -84,83 +84,83 @@
             // lblCost
             // 
             this.lblCost.AutoSize = true;
-            this.lblCost.Location = new System.Drawing.Point(336, 253);
+            this.lblCost.Location = new System.Drawing.Point(345, 274);
             this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(29, 12);
+            this.lblCost.Size = new System.Drawing.Size(28, 13);
             this.lblCost.TabIndex = 33;
             this.lblCost.Text = "1.00";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(292, 253);
+            this.label7.Location = new System.Drawing.Point(301, 274);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 12);
+            this.label7.Size = new System.Drawing.Size(38, 13);
             this.label7.TabIndex = 32;
             this.label7.Text = "CAD $";
             // 
             // label6
             // 
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Location = new System.Drawing.Point(279, 199);
+            this.label6.Location = new System.Drawing.Point(279, 216);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(221, 21);
+            this.label6.Size = new System.Drawing.Size(221, 23);
             this.label6.TabIndex = 31;
             // 
             // label5
             // 
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(279, 167);
+            this.label5.Location = new System.Drawing.Point(279, 181);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(221, 21);
+            this.label5.Size = new System.Drawing.Size(221, 23);
             this.label5.TabIndex = 30;
             // 
             // label4
             // 
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Location = new System.Drawing.Point(279, 138);
+            this.label4.Location = new System.Drawing.Point(279, 150);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(221, 21);
+            this.label4.Size = new System.Drawing.Size(221, 23);
             this.label4.TabIndex = 29;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(188, 200);
+            this.label3.Location = new System.Drawing.Point(188, 217);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 28;
             this.label3.Text = "Duration";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(188, 168);
+            this.label2.Location = new System.Drawing.Point(188, 182);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.Size = new System.Drawing.Size(28, 13);
             this.label2.TabIndex = 27;
             this.label2.Text = "Ship";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(188, 138);
+            this.label1.Location = new System.Drawing.Point(188, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 12);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 26;
             this.label1.Text = "Itinary";
             // 
             // lblCruiseName
             // 
-            this.lblCruiseName.Location = new System.Drawing.Point(252, 67);
+            this.lblCruiseName.Location = new System.Drawing.Point(306, 64);
             this.lblCruiseName.Name = "lblCruiseName";
-            this.lblCruiseName.Size = new System.Drawing.Size(188, 44);
+            this.lblCruiseName.Size = new System.Drawing.Size(67, 25);
             this.lblCruiseName.TabIndex = 25;
             this.lblCruiseName.Text = "Cruise Name";
             // 
             // PlanSearchResult
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnBook);
             this.Controls.Add(this.btnNextResult);
@@ -176,7 +176,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCruiseName);
             this.Name = "PlanSearchResult";
-            this.Size = new System.Drawing.Size(699, 475);
+            this.Size = new System.Drawing.Size(699, 515);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -38,16 +37,10 @@
             this.btnDate = new System.Windows.Forms.Button();
             this.btnDuration = new System.Windows.Forms.Button();
             this.btnOnBoard = new System.Windows.Forms.Button();
+            this.dGV1 = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(69, 165);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(560, 193);
-            this.listView1.TabIndex = 17;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // groupBox1
             // 
@@ -90,6 +83,7 @@
             this.btnDept.TabIndex = 13;
             this.btnDept.Text = "Departure";
             this.btnDept.UseVisualStyleBackColor = true;
+            this.btnDept.Click += new System.EventHandler(this.btnDept_Click);
             // 
             // btnSearch
             // 
@@ -109,6 +103,7 @@
             this.btnDest.TabIndex = 14;
             this.btnDest.Text = "Destination";
             this.btnDest.UseVisualStyleBackColor = true;
+            this.btnDest.Click += new System.EventHandler(this.btnDest_Click);
             // 
             // btnDate
             // 
@@ -118,6 +113,7 @@
             this.btnDate.TabIndex = 15;
             this.btnDate.Text = "Date";
             this.btnDate.UseVisualStyleBackColor = true;
+            this.btnDate.Click += new System.EventHandler(this.btnDate_Click);
             // 
             // btnDuration
             // 
@@ -127,6 +123,7 @@
             this.btnDuration.TabIndex = 16;
             this.btnDuration.Text = "Duration";
             this.btnDuration.UseVisualStyleBackColor = true;
+            this.btnDuration.Click += new System.EventHandler(this.btnDuration_Click);
             // 
             // btnOnBoard
             // 
@@ -138,12 +135,20 @@
             this.btnOnBoard.UseVisualStyleBackColor = true;
             this.btnOnBoard.Click += new System.EventHandler(this.btnOnBoard_Click);
             // 
+            // dGV1
+            // 
+            this.dGV1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGV1.Location = new System.Drawing.Point(110, 169);
+            this.dGV1.Name = "dGV1";
+            this.dGV1.Size = new System.Drawing.Size(471, 155);
+            this.dGV1.TabIndex = 21;
+            // 
             // PlanSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dGV1);
             this.Controls.Add(this.btnOnBoard);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDept);
             this.Controls.Add(this.btnSearch);
@@ -152,15 +157,15 @@
             this.Controls.Add(this.btnDuration);
             this.Name = "PlanSearch";
             this.Size = new System.Drawing.Size(699, 515);
+            this.Load += new System.EventHandler(this.PlanSearch_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -170,5 +175,6 @@
         private System.Windows.Forms.Button btnDate;
         private System.Windows.Forms.Button btnDuration;
         private System.Windows.Forms.Button btnOnBoard;
+        private System.Windows.Forms.DataGridView dGV1;
     }
 }

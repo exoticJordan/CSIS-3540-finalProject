@@ -9,7 +9,7 @@ namespace ClientServerProject
     class DBConnect
     {
         string HOST = "ec2-54-226-9-216.compute-1.amazonaws.com";
-        string DB = "sampdb";
+        string DB = "f2016_s1_user20";
         string UID = "f2016_s1_user20";
         string PASSWD = "f2016_s1_user20";
 

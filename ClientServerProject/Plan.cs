@@ -13,21 +13,20 @@ namespace ClientServerProject
 {
     public partial class Plan : Form
     {
+        const string Title = "Registration";
         // variables
         MySqlConnection connection = null;
         DBConnect dbInfo;
-        const string Title = "Create, Upate, Delete, Insert, Select";
         MySqlCommand cmd;
 
         public Plan()
         {
             InitializeComponent();
-            openSearch();
         }
 
         public void openSearch()
         {
-            PlanSearch ps = new PlanSearch(this);
+            PlanSearch ps = new PlanSearch(this,connection);
             this.Controls.Add(ps);
         }
 
@@ -43,7 +42,10 @@ namespace ClientServerProject
             connection = new MySqlConnection(dbInfo.ToString());
             connection.Open();
             if (connection != null)
+            {
                 Text = Title + " [Connected]";
+                openSearch();
+            }
             else
                 MessageBox.Show("Problem");
         }
