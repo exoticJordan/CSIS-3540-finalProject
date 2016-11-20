@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,12 @@ namespace ClientServerProject
 {
     public partial class Plan : Form
     {
+        // variables
+        MySqlConnection connection = null;
+        DBConnect dbInfo;
+        const string Title = "Create, Upate, Delete, Insert, Select";
+        MySqlCommand cmd;
+
         public Plan()
         {
             InitializeComponent();
@@ -22,6 +29,23 @@ namespace ClientServerProject
         {
             PlanSearch ps = new PlanSearch(this);
             this.Controls.Add(ps);
+        }
+
+        private void Plan_Load(object sender, EventArgs e)
+        {
+            dbInfo = new DBConnect();
+            cmd = new MySqlCommand();
+            connect();
+        }
+
+        private void connect()
+        {
+            connection = new MySqlConnection(dbInfo.ToString());
+            connection.Open();
+            if (connection != null)
+                Text = Title + " [Connected]";
+            else
+                MessageBox.Show("Problem");
         }
     }
 }
