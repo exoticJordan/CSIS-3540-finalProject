@@ -76,6 +76,7 @@
             this.btnEmLog.TabIndex = 4;
             this.btnEmLog.Text = "Login";
             this.btnEmLog.UseVisualStyleBackColor = true;
+            this.btnEmLog.Click += new System.EventHandler(this.btnEmLog_Click);
             // 
             // btnEmBack
             // 
