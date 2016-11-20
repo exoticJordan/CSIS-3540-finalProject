@@ -70,6 +70,8 @@
     <Compile Include="Chef.Designer.cs">
       <DependentUpon>Chef.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cruise.cs" />
+    <Compile Include="DBConnect.cs" />
     <Compile Include="OnBoard.cs">
       <SubType>UserControl</SubType>
     </Compile>
