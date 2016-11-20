@@ -13,7 +13,7 @@ namespace ClientServerProject
 {
     public partial class Plan : Form
     {
-        const string Title = "Registration";
+        const string Title = "Reservation";
         // variables
         MySqlConnection connection = null;
         DBConnect dbInfo;
@@ -23,20 +23,12 @@ namespace ClientServerProject
         {
             InitializeComponent();
         }
-
-        public void openSearch()
-        {
-            PlanSearch ps = new PlanSearch(this,connection);
-            this.Controls.Add(ps);
-        }
-
         private void Plan_Load(object sender, EventArgs e)
         {
             dbInfo = new DBConnect();
             cmd = new MySqlCommand();
             connect();
         }
-
         private void connect()
         {
             connection = new MySqlConnection(dbInfo.ToString());
@@ -48,6 +40,12 @@ namespace ClientServerProject
             }
             else
                 MessageBox.Show("Problem");
+        }
+        //pass this page and the established connection to the usercontrol
+        public void openSearch()
+        {
+            PlanSearch ps = new PlanSearch(this,connection);
+            this.Controls.Add(ps);
         }
     }
 }

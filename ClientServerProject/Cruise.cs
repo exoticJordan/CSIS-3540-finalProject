@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ClientServerProject
 {
-    class Cruise
+    public class Cruise
     {
-        string Name { get; set; }
-        List<string> Itinary;
-        string Ship { get; set; }
-        int Duration { get; set; }
-        double Price { get; set; }
+        public string Name { get; set; }
+        public List<string> Itinary;
+        public string Ship { get; set; }
+        public int Duration { get; set; }
+        public double Price { get; set; }
     }
 }

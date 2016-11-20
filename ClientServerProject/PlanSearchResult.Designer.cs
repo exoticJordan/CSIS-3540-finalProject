@@ -32,15 +32,15 @@
             this.btnNextResult = new System.Windows.Forms.Button();
             this.btnBackToSearch = new System.Windows.Forms.Button();
             this.btnPrevResult = new System.Windows.Forms.Button();
-            this.lblCost = new System.Windows.Forms.Label();
+            this.lblPrice = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblDuration = new System.Windows.Forms.Label();
+            this.lblShip = new System.Windows.Forms.Label();
+            this.lblItinary = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblCruiseName = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBook
@@ -61,6 +61,7 @@
             this.btnNextResult.TabIndex = 36;
             this.btnNextResult.Text = "Next";
             this.btnNextResult.UseVisualStyleBackColor = true;
+            this.btnNextResult.Click += new System.EventHandler(this.btnNextResult_Click);
             // 
             // btnBackToSearch
             // 
@@ -81,14 +82,14 @@
             this.btnPrevResult.Text = "Previous";
             this.btnPrevResult.UseVisualStyleBackColor = true;
             // 
-            // lblCost
+            // lblPrice
             // 
-            this.lblCost.AutoSize = true;
-            this.lblCost.Location = new System.Drawing.Point(345, 274);
-            this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(28, 13);
-            this.lblCost.TabIndex = 33;
-            this.lblCost.Text = "1.00";
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.Location = new System.Drawing.Point(345, 274);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(28, 13);
+            this.lblPrice.TabIndex = 33;
+            this.lblPrice.Text = "1.00";
             // 
             // label7
             // 
@@ -99,29 +100,29 @@
             this.label7.TabIndex = 32;
             this.label7.Text = "CAD $";
             // 
-            // label6
+            // lblDuration
             // 
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Location = new System.Drawing.Point(279, 216);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(221, 23);
-            this.label6.TabIndex = 31;
+            this.lblDuration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblDuration.Location = new System.Drawing.Point(279, 216);
+            this.lblDuration.Name = "lblDuration";
+            this.lblDuration.Size = new System.Drawing.Size(221, 23);
+            this.lblDuration.TabIndex = 31;
             // 
-            // label5
+            // lblShip
             // 
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(279, 181);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(221, 23);
-            this.label5.TabIndex = 30;
+            this.lblShip.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblShip.Location = new System.Drawing.Point(279, 181);
+            this.lblShip.Name = "lblShip";
+            this.lblShip.Size = new System.Drawing.Size(221, 23);
+            this.lblShip.TabIndex = 30;
             // 
-            // label4
+            // lblItinary
             // 
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Location = new System.Drawing.Point(279, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(221, 23);
-            this.label4.TabIndex = 29;
+            this.lblItinary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblItinary.Location = new System.Drawing.Point(279, 150);
+            this.lblItinary.Name = "lblItinary";
+            this.lblItinary.Size = new System.Drawing.Size(221, 23);
+            this.lblItinary.TabIndex = 29;
             // 
             // label3
             // 
@@ -150,13 +151,13 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "Itinary";
             // 
-            // lblCruiseName
+            // lblName
             // 
-            this.lblCruiseName.Location = new System.Drawing.Point(306, 64);
-            this.lblCruiseName.Name = "lblCruiseName";
-            this.lblCruiseName.Size = new System.Drawing.Size(67, 25);
-            this.lblCruiseName.TabIndex = 25;
-            this.lblCruiseName.Text = "Cruise Name";
+            this.lblName.Location = new System.Drawing.Point(306, 64);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(67, 25);
+            this.lblName.TabIndex = 25;
+            this.lblName.Text = "Cruise Name";
             // 
             // PlanSearchResult
             // 
@@ -166,17 +167,18 @@
             this.Controls.Add(this.btnNextResult);
             this.Controls.Add(this.btnBackToSearch);
             this.Controls.Add(this.btnPrevResult);
-            this.Controls.Add(this.lblCost);
+            this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblDuration);
+            this.Controls.Add(this.lblShip);
+            this.Controls.Add(this.lblItinary);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblCruiseName);
+            this.Controls.Add(this.lblName);
             this.Name = "PlanSearchResult";
             this.Size = new System.Drawing.Size(699, 515);
+            this.Load += new System.EventHandler(this.PlanSearchResult_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,14 +190,14 @@
         private System.Windows.Forms.Button btnNextResult;
         private System.Windows.Forms.Button btnBackToSearch;
         private System.Windows.Forms.Button btnPrevResult;
-        private System.Windows.Forms.Label lblCost;
+        private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblDuration;
+        private System.Windows.Forms.Label lblShip;
+        private System.Windows.Forms.Label lblItinary;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblCruiseName;
+        private System.Windows.Forms.Label lblName;
     }
 }

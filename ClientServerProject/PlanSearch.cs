@@ -16,7 +16,8 @@ namespace ClientServerProject
         Plan plan;
         MySqlConnection connection;
         MySqlCommand cmd;
-        MySqlDataAdapter mcmd = new MySqlDataAdapter();
+        string criteria, order;
+        List<Cruise> cruises;
 
         public PlanSearch(Plan p, MySqlConnection c)
         {
@@ -25,6 +26,13 @@ namespace ClientServerProject
             connection = c;
         }
 
+        private void PlanSearch_Load(object sender, EventArgs e)
+        {
+            cmd = new MySqlCommand();
+        }
+
+        //the constructor below prevents error when running the program
+        //will be deleted later
         public PlanSearch(Plan p)
         {
             InitializeComponent();
@@ -32,94 +40,48 @@ namespace ClientServerProject
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
-        {
-            int col, row;
-            col = dGV1.CurrentCell.ColumnIndex;
-            row = dGV1.CurrentCell.RowIndex;
-            //set the search criteria
-            string criteria = dGV1.Rows[row].Cells[col].Value.ToString();
+        {            
             //set the search order by
-            string order;
             if (radioButton1.Checked)
                 order = radioButton1.Text;
             else order = radioButton2.Text;
-            //executeSearch(criteria,order);
+            if (criteria != null)
+            {
+                executeSearch(criteria,order);
+            }
+            else
+            {
+                executeSearch("none",order);
+            }
             openResult();
         }
 
-        public void openResult()
+        public void executeSearch(string criteria,string order)
         {
-            PlanSearchResult psr = new PlanSearchResult(plan,this);
-            plan.Controls.Add(psr);
-            this.Visible = false;
+            string query = "select Cruise_Name as 'Name',";
+            query += "Ship_Name as 'Ship',";
+            query+="Cruise_Price as 'Price'";
+            query+=" from Cruises c inner join Ships s on c.Ship_id=s.Ship_id";
+            fillCMD(query, connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            cruises = new List<Cruise>();
+            while (reader.Read())
+            {
+                cruises.Add(
+                    new Cruise {
+                        Name = reader.GetString(0),
+                        Ship = reader.GetString(1),
+                        Price = Double.Parse(reader.GetString(2))
+                    }
+                );
+            }
+            reader.Close();
         }
 
-        private void btnOnBoard_Click(object sender, EventArgs e)
+        public void executeQuery(string query)
         {
-            OnBoard onboard = new OnBoard(plan);
-            plan.Controls.Add(onboard);
-            plan.Controls.Remove(this);
-        }
-
-        private void btnDept_Click(object sender, EventArgs e)
-        {
-            /*string query = "select * from Routes";
-            //executeQuery method should return a list of results
-            var result = executeQuery(query);
-
-            //clear gridview
-            DGv1.DataSource = null;
-            
-            //place results inside gridview
-            DGv1.DataSource = result.ToList();
-            */
-        }
-
-        private void PlanSearch_Load(object sender, EventArgs e)
-        {
-            cmd = new MySqlCommand();
-        }
-
-        private void btnDest_Click(object sender, EventArgs e)
-        {
-            /*string query = "select * from Routes";
-            //executeQuery method should return a list of results
-            var result = executeQuery(query);
-
-            //clear gridview
-            DGv1.DataSource = null;
-            
-            //place results inside gridview
-            DGv1.DataSource = result.ToList();
-            */
-        }
-
-        private void btnDate_Click(object sender, EventArgs e)
-        {
-            string query = "select Cruise_Start_Date from Cruises";
-            //clear gridview
-            dGV1.DataSource = null;
-            executeQuery(query);           
-        }
-
-        private void btnDuration_Click(object sender, EventArgs e)
-        {
-            /*string query = "select duration from Routes";
-            //executeQuery method should return a list of results
-            var result = executeQuery(query);
-
-            //clear gridview
-            DGv1.DataSource = null;
-            
-            //place results inside gridview
-            DGv1.DataSource = result.ToList();
-            */
-        }
-
-        public void executeQuery(string s)
-        {
-            cmd.CommandText = s;
-            cmd.Connection = connection;
+            MySqlDataAdapter mcmd = new MySqlDataAdapter();
+            fillCMD(query, connection);
 
             mcmd.SelectCommand = cmd;
 
@@ -141,6 +103,68 @@ namespace ClientServerProject
             {
                 MessageBox.Show("Try to connect");
             }
+        }
+
+        private void btnDept_Click(object sender, EventArgs e)
+        {
+            /*string query = "select * from Routes";
+            //clear gridview
+            dGV1.DataSource = null;
+            executeQuery(query); 
+            */
+        }
+
+        private void btnDest_Click(object sender, EventArgs e)
+        {
+            /*string query = "select * from Routes";
+            //clear gridview
+            dGV1.DataSource = null;
+            executeQuery(query); 
+            */
+        }
+
+        private void btnDate_Click(object sender, EventArgs e)
+        {
+            string query = "select Cruise_Start_Date from Cruises";
+            //clear gridview
+            dGV1.DataSource = null;
+            executeQuery(query);
+        }
+
+        private void btnDuration_Click(object sender, EventArgs e)
+        {
+            /*string query = "select duration from Routes";
+            //clear gridview
+            dGV1.DataSource = null;
+            executeQuery(query); 
+            */
+        }
+        
+        public void fillCMD(string s, MySqlConnection c)
+        {
+            cmd.CommandText = s;
+            cmd.Connection = c;
+        }
+
+        private void dGV1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //set the search criteria
+            if (e.RowIndex != -1 && e.ColumnIndex != -1)
+                criteria = dGV1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+        }
+        //pass a list of cruises
+        public void openResult()
+        {
+            PlanSearchResult psr = new PlanSearchResult(plan, this, cruises);
+            plan.Controls.Add(psr);
+            this.Visible = false;
+        }
+
+        private void btnOnBoard_Click(object sender, EventArgs e)
+        {
+            OnBoard onboard = new OnBoard(plan);
+            plan.Controls.Add(onboard);
+            this.Visible = false;
         }
     }
 }

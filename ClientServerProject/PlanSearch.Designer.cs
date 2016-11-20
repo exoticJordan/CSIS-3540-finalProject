@@ -46,7 +46,7 @@
             // 
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(190, 375);
+            this.groupBox1.Location = new System.Drawing.Point(195, 340);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(157, 54);
             this.groupBox1.TabIndex = 19;
@@ -77,7 +77,7 @@
             // 
             // btnDept
             // 
-            this.btnDept.Location = new System.Drawing.Point(110, 85);
+            this.btnDept.Location = new System.Drawing.Point(113, 59);
             this.btnDept.Name = "btnDept";
             this.btnDept.Size = new System.Drawing.Size(75, 23);
             this.btnDept.TabIndex = 13;
@@ -87,7 +87,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(402, 392);
+            this.btnSearch.Location = new System.Drawing.Point(407, 357);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 18;
@@ -97,7 +97,7 @@
             // 
             // btnDest
             // 
-            this.btnDest.Location = new System.Drawing.Point(239, 85);
+            this.btnDest.Location = new System.Drawing.Point(242, 59);
             this.btnDest.Name = "btnDest";
             this.btnDest.Size = new System.Drawing.Size(75, 23);
             this.btnDest.TabIndex = 14;
@@ -107,7 +107,7 @@
             // 
             // btnDate
             // 
-            this.btnDate.Location = new System.Drawing.Point(374, 85);
+            this.btnDate.Location = new System.Drawing.Point(377, 59);
             this.btnDate.Name = "btnDate";
             this.btnDate.Size = new System.Drawing.Size(75, 23);
             this.btnDate.TabIndex = 15;
@@ -117,7 +117,7 @@
             // 
             // btnDuration
             // 
-            this.btnDuration.Location = new System.Drawing.Point(506, 85);
+            this.btnDuration.Location = new System.Drawing.Point(509, 59);
             this.btnDuration.Name = "btnDuration";
             this.btnDuration.Size = new System.Drawing.Size(75, 23);
             this.btnDuration.TabIndex = 16;
@@ -137,11 +137,16 @@
             // 
             // dGV1
             // 
+            this.dGV1.AllowUserToAddRows = false;
+            this.dGV1.AllowUserToDeleteRows = false;
             this.dGV1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGV1.Location = new System.Drawing.Point(110, 169);
+            this.dGV1.Location = new System.Drawing.Point(113, 135);
+            this.dGV1.MultiSelect = false;
             this.dGV1.Name = "dGV1";
+            this.dGV1.ReadOnly = true;
             this.dGV1.Size = new System.Drawing.Size(471, 155);
             this.dGV1.TabIndex = 21;
+            this.dGV1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV1_CellContentClick);
             // 
             // PlanSearch
             // 

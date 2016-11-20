@@ -14,11 +14,23 @@ namespace ClientServerProject
     {
         Plan plan;
         PlanSearch plansearch;
-        public PlanSearchResult(Plan p,PlanSearch ps)
+        List<Cruise> cruises;
+        int index;
+        public PlanSearchResult(Plan p,PlanSearch ps,List<Cruise> c,int i=0)
         {
             InitializeComponent();
             plan = p;
             plansearch = ps;
+            cruises = c;
+            index = i;
+        }
+
+        private void PlanSearchResult_Load(object sender, EventArgs e)
+        {
+            lblName.Text = cruises[index].Name;
+            lblShip.Text = cruises[index].Ship;
+            lblPrice.Text = (cruises[index].Price).ToString();
+
         }
 
         private void btnBackToSearch_Click(object sender, EventArgs e)
@@ -42,6 +54,17 @@ namespace ClientServerProject
         private void btnBook_Click_1(object sender, EventArgs e)
         {
             openBook();
+        }
+
+        private void btnNextResult_Click(object sender, EventArgs e)
+        {
+            if (index < cruises.Count() - 1)
+            {
+                PlanSearchResult psr = new PlanSearchResult(plan, plansearch, cruises, index + 1);
+                plan.Controls.Add(psr);
+                plan.Controls.Remove(this);
+            }
+            else btnNextResult.Enabled = false;
         }
     }
 }
