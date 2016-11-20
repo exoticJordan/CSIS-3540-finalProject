@@ -10,6 +10,6 @@ namespace ClientServerProject
     {
         public string Password { get; set; }
         public string EmID { get; set; }
-        public string PositionID { get;  set;}
+        public string PositionID { get; set; }
     }
 }

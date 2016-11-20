@@ -12,8 +12,10 @@ namespace ClientServerProject
 {
     public partial class Chef : UserControl
     {
-        public Chef()
+        Plan plan;
+        public Chef(Plan p)
         {
+            plan = p;
             InitializeComponent();
         }
     }
