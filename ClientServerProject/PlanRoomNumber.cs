@@ -150,7 +150,7 @@ namespace ClientServerProject
             }
         }
 
-        private void PlanRoomNumber_Load(object sender, EventArgs e)
+        private void PlanRoomNumber_Load_1(object sender, EventArgs e)
         {
             cmd = new MySqlCommand();
         }

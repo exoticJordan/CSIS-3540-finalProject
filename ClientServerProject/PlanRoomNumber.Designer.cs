@@ -67,7 +67,7 @@
             // 
             this.cbRoomType.FormattingEnabled = true;
             this.cbRoomType.Items.AddRange(new object[] {
-            "Interior",
+            "Inside",
             "Ocean View",
             "Balcony"});
             this.cbRoomType.Location = new System.Drawing.Point(170, 42);
@@ -79,11 +79,6 @@
             // cbGuest
             // 
             this.cbGuest.FormattingEnabled = true;
-            this.cbGuest.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
             this.cbGuest.Location = new System.Drawing.Point(170, 315);
             this.cbGuest.Name = "cbGuest";
             this.cbGuest.Size = new System.Drawing.Size(121, 21);
@@ -199,6 +194,7 @@
             this.Controls.Add(this.label8);
             this.Name = "PlanRoomNumber";
             this.Size = new System.Drawing.Size(699, 515);
+            this.Load += new System.EventHandler(this.PlanRoomNumber_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
