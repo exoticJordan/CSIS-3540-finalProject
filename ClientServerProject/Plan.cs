@@ -16,7 +16,7 @@ namespace ClientServerProject
         const string Title = "Reservation";
         // variables
         MySqlConnection connection = null;
-        DBConnect dbInfo;
+        DBConnect db;
         MySqlCommand cmd;
 
         public Plan()
@@ -25,13 +25,13 @@ namespace ClientServerProject
         }
         private void Plan_Load(object sender, EventArgs e)
         {
-            dbInfo = new DBConnect();
+            db = new DBConnect();
             cmd = new MySqlCommand();
             connect();
         }
         private void connect()
         {
-            connection = new MySqlConnection(dbInfo.ToString());
+            connection = new MySqlConnection(db.ToString());
             connection.Open();
             if (connection != null)
             {
@@ -44,7 +44,7 @@ namespace ClientServerProject
         //pass this page and the established connection to the usercontrol
         public void openSearch()
         {
-            PlanSearch ps = new PlanSearch(this,connection);
+            PlanSearch ps = new PlanSearch(this, connection);
             this.Controls.Add(ps);
         }
     }

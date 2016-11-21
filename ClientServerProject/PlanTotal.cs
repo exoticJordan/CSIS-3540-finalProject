@@ -14,7 +14,7 @@ namespace ClientServerProject
     {
         Plan plan;
         PlanRoomNumber planroomchoice;
-        public PlanTotal(Plan p,PlanRoomNumber prc)
+        public PlanTotal(Plan p, PlanRoomNumber prc)
         {
             InitializeComponent();
             plan = p;

@@ -14,12 +14,12 @@ namespace ClientServerProject
     {
         Plan plan;
         PlanRoomNumber planguestnumber;
-        public PlanGuestInformation(Plan p,PlanRoomNumber pgn)
+        public PlanGuestInformation(Plan p, PlanRoomNumber pgn)
         {
             InitializeComponent();
             plan = p;
             planguestnumber = pgn;
-            
+
         }
 
         private void btnGuestCont_Click(object sender, EventArgs e)
@@ -27,7 +27,7 @@ namespace ClientServerProject
             /*
              if statement to decide whether to move to next userControl or refresh same
             */
-            
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)

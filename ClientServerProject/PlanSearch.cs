@@ -14,7 +14,6 @@ namespace ClientServerProject
     public partial class PlanSearch : UserControl
     {
         Plan plan;
-        DBConnect conn;
         MySqlConnection connection;
         MySqlCommand cmd;
         string criteria, order;
@@ -41,36 +40,42 @@ namespace ClientServerProject
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
-        {            
+        {
             //set the search order by
             if (radioButton1.Checked)
-                order = radioButton1.Text;
-            else order = radioButton2.Text;
+                order = " order by Cruise_Price";
+            else order = " order by Ship_Name";
             if (criteria != null)
             {
-                executeSearch(criteria,order);
+                executeSearch(criteria, order);
             }
             else
             {
-                executeSearch("none",order);
+                executeSearch("none", order);
             }
             openResult();
         }
 
-        public void executeSearch(string criteria,string order)
+        public void executeSearch(string criteria, string order)
         {
             string query = "select Cruise_id as 'ID',";
             query += "Cruise_Name as 'Name',";
             query += "Ship_Name as 'Ship',";
-            query+="Cruise_Price as 'Price'";
-            query+=" from Cruises c inner join Ships s on c.Ship_id=s.Ship_id";
-            conn.fillCMD(query, connection);
+            query += "Cruise_Price as 'Price'";
+            query += " from Cruises c inner join Ships s on c.Ship_id=s.Ship_id";
+            if (criteria != "none")
+            {
+                query += criteria + order;
+            }
+            else query += order;
+            fillCMD(query, connection);
             MySqlDataReader reader = cmd.ExecuteReader();
             cruises = new List<Cruise>();
             while (reader.Read())
             {
                 cruises.Add(
-                    new Cruise {
+                    new Cruise
+                    {
                         ID = int.Parse(reader.GetString(0)),
                         Name = reader.GetString(1),
                         Ship = reader.GetString(2),
@@ -84,7 +89,7 @@ namespace ClientServerProject
         public void executeQuery(string query)
         {
             MySqlDataAdapter mcmd = new MySqlDataAdapter();
-            conn.fillCMD(query, connection);
+            fillCMD(query, connection);
 
             mcmd.SelectCommand = cmd;
 
@@ -106,6 +111,12 @@ namespace ClientServerProject
             {
                 MessageBox.Show("Try to connect");
             }
+        }
+
+        public void fillCMD(string s, MySqlConnection c)
+        {
+            cmd.CommandText = s;
+            cmd.Connection = c;
         }
 
         private void btnDept_Click(object sender, EventArgs e)
@@ -147,12 +158,21 @@ namespace ClientServerProject
         {
             //set the search criteria
             if (e.RowIndex != -1 && e.ColumnIndex != -1)
-                criteria = dGV1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            {
+                int colIndex = dGV1.CurrentCell.ColumnIndex;
+                string colName = dGV1.Columns[colIndex].Name;
+                string filter = dGV1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                if (colName == "Cruise_Start_Date")
+                {
+                    criteria = " where " + colName + " >= '" + filter + "'";
+                }
+                else criteria = " where " + colName + " = '" + filter + "'";
+            }
         }
         //pass a list of cruises
         public void openResult()
         {
-            PlanSearchResult psr = new PlanSearchResult(plan, this, cruises);
+            PlanSearchResult psr = new PlanSearchResult(plan, this, cruises, connection);
             plan.Controls.Add(psr);
             this.Visible = false;
         }

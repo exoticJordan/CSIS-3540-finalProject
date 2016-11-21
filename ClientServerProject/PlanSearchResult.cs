@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace ClientServerProject
 {
     public partial class PlanSearchResult : UserControl
     {
         Plan plan;
+        MySqlConnection connection;
         PlanSearch plansearch;
         List<Cruise> cruises;
         int index;
-        public PlanSearchResult(Plan p,PlanSearch ps,List<Cruise> c,int i=0)
+        public PlanSearchResult(Plan p, PlanSearch ps, List<Cruise> c, MySqlConnection conn, int i = 0)
         {
             InitializeComponent();
             plan = p;
@@ -27,6 +29,7 @@ namespace ClientServerProject
                 btnPrevResult.Enabled = false;
             else if (index == cruises.Count() - 1)
                 btnNextResult.Enabled = false;
+            connection = conn;
         }
 
         private void PlanSearchResult_Load(object sender, EventArgs e)
@@ -50,7 +53,7 @@ namespace ClientServerProject
 
         public void openBook()
         {
-            PlanRoomNumber prn = new PlanRoomNumber(plan,this, cruises[index].ID,cruises[index].Price);
+            PlanRoomNumber prn = new PlanRoomNumber(plan, this, cruises[index].ID, cruises[index].Price, connection);
             plan.Controls.Add(prn);
             this.Visible = false;
         }
@@ -64,7 +67,7 @@ namespace ClientServerProject
         {
             if (index < cruises.Count() - 1)
             {
-                PlanSearchResult psr = new PlanSearchResult(plan, plansearch, cruises, index + 1);
+                PlanSearchResult psr = new PlanSearchResult(plan, plansearch, cruises, connection, index + 1);
                 plan.Controls.Add(psr);
                 plan.Controls.Remove(this);
             }
@@ -75,7 +78,7 @@ namespace ClientServerProject
         {
             if (index > 0)
             {
-                PlanSearchResult psr = new PlanSearchResult(plan, plansearch, cruises, index - 1);
+                PlanSearchResult psr = new PlanSearchResult(plan, plansearch, cruises, connection, index - 1);
                 plan.Controls.Add(psr);
                 plan.Controls.Remove(this);
             }

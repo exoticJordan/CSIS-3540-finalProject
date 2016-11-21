@@ -27,11 +27,5 @@ namespace ClientServerProject
 
             return connectionString;
         }
-
-        public void fillCMD(string s, MySqlConnection c)
-        {
-          //  cmd.CommandText = s;
-           // cmd.Connection = c;
-        }
     }
 }

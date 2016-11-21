@@ -19,9 +19,10 @@ namespace ClientServerProject
         PlanSearchResult plansearchresult;
         int cruiseid;
         double roomprice;
-        public PlanRoomNumber(Plan p,PlanSearchResult psr,int i,double d)
+        public PlanRoomNumber(Plan p, PlanSearchResult psr, int i, double d, MySqlConnection c)
         {
             InitializeComponent();
+            connection = c;
             plan = p;
             plansearchresult = psr;
             cruiseid = i;
@@ -35,18 +36,15 @@ namespace ClientServerProject
 
         public void openGuestNumber()
         {
-            PlanGuestInformation pgn = new PlanGuestInformation(plan,this);
+            PlanGuestInformation pgn = new PlanGuestInformation(plan, this);
             plan.Controls.Add(pgn);
             this.Visible = false;
         }
 
         private void cbRoomType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //clear other comboboxes
-            cbPosition.SelectedIndex = -1;
-            cbDeck.SelectedIndex = -1;
-            cbRoomNum.SelectedIndex = -1;
-            cbGuest.SelectedIndex = -1;
+            //clear room number combobox
+            cbRoomNum.Items.Clear();
 
             int Selected = cbRoomType.SelectedIndex;
             switch (Selected)
@@ -61,86 +59,100 @@ namespace ClientServerProject
                     labelGuestNum.Text = roomprice + 400 + " per person";
                     break;
             }
+
+            if (cbRoomType.SelectedIndex != -1 && cbPosition.SelectedIndex != -1 && cbDeck.SelectedIndex != -1)
+            {
+                loadRooms();
+            }
+        }
+
+        public void loadRooms()
+        {
+            //-----given cruise id, room type, room pos, and room deck,
+            //-----query for available room nums
+            string query = "SELECT Room_Number FROM Rooms r ";
+            query += "INNER JOIN Cruises c ON c.Ship_ID = r.Ship_ID ";
+            query += "WHERE c.Cruise_ID =  '" + cruiseid + "' ";
+            query += "AND Room_Type =  '" + cbRoomType.Text.Split(' ').First() + "' ";
+            query += "AND Room_Location =  '" + cbPosition.Text + "' ";
+            query += "AND Room_Deck =  '" + cbDeck.Text + "' ";
+            query += "AND Room_Availability =  'Yes'";
+
+            fillCMD(query, connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                cbRoomNum.Items.Add(reader.GetString(0));
+            }
+            reader.Close();
+
+            if (cbRoomNum.Items.Count == 0)
+            {
+                MessageBox.Show("No available rooms, please adjust your selections");
+            }
+        }
+
+        public void fillCMD(string s, MySqlConnection c)
+        {
+            cmd.CommandText = s;
+            cmd.Connection = c;
         }
 
         private void cbDeck_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //-----given cruise id, room type, room pos, and room deck,
-            //-----query for available room nums
+            //clear room number combobox
+            cbRoomNum.Items.Clear();
             if (cbRoomType.SelectedIndex != -1 && cbPosition.SelectedIndex != -1 && cbDeck.SelectedIndex != -1)
             {
-                string query = "SELECT Room_Number FROM Rooms r ";
-                query += "INNER JOIN Cruises c ON c.Ship_ID = r.Ship_ID ";
-                query += "WHERE c.Cruise_ID =  '"+ cruiseid +"' ";
-                query += "AND Room_Type =  '" + cbRoomType.Text.Split(' ').First() + "' ";
-                query += "AND Room_Location =  '" + cbPosition.Text + "' ";
-                query += "AND Room_Deck =  '" + cbDeck.Text + "' ";
-                query += "AND Room_Availability =  'Yes'";
-
-
-            }
-            else MessageBox.Show("Please fill all selections");
-             
-            //add room numbers, will not dispaly 
-            cbRoomNum.Items.Clear();
-            if (cbDeck.SelectedIndex == 0)
-            {
-                for (int i = 1; i <= 60; i++)
-                {
-                    cbRoomNum.Items.Add("1" + i.ToString("00"));
-                }
-
-            }
-            else if (cbDeck.SelectedIndex == 1)
-            {
-                for (int i = 1; i <= 60; i++)
-                {
-                    cbRoomNum.Items.Add("2" + i.ToString("00"));
-                }
-
-            }
-            else if (cbDeck.SelectedIndex == 2)
-            {
-                for (int i = 1; i <= 60; i++)
-                {
-                    cbRoomNum.Items.Add("3" + i.ToString("00"));
-                }
-
-            }
-            else if (cbDeck.SelectedIndex == 3)
-            {
-                for (int i = 1; i <= 60; i++)
-                {
-                    cbRoomNum.Items.Add("4" + i.ToString("00"));
-                }
-
-            }
-            else if (cbDeck.SelectedIndex == 4)
-            {
-                for (int i = 1; i <= 60; i++)
-                {
-                    cbRoomNum.Items.Add("5" + i.ToString("00"));
-                }
-
-            }
-            else if (cbDeck.SelectedIndex == 5)
-            {
-                for (int i = 1; i <= 60; i++)
-                {
-                    cbRoomNum.Items.Add("6" + i.ToString("00"));
-                }
-
+                loadRooms();
             }
         }
 
         private void cbPosition_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //clear room number combobox
+            cbRoomNum.Items.Clear();
+            if (cbRoomType.SelectedIndex != -1 && cbPosition.SelectedIndex != -1 && cbDeck.SelectedIndex != -1)
+            {
+                loadRooms();
+            }
         }
 
         private void cbRoomNum_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //clear guest number combobox
+            cbGuest.Items.Clear();
+            loadGuests();
+        }
 
+        public void loadGuests()
+        {
+            string query = "SELECT COUNT(CASE WHEN Room_Number = '";
+            query += cbRoomNum.Text;
+            query += "' THEN 1 ELSE NULL END ) FROM(SELECT Room_Number FROM Booking WHERE Cruise_ID = '";
+            query += cruiseid;
+            query += "') AS a";
+
+            fillCMD(query, connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            int booked = 0;
+            while (reader.Read())
+            {
+                booked = int.Parse(reader.GetString(0));
+            }
+            reader.Close();
+
+            int available = 4 - booked;
+            for (int x = 1; x <= available; x++)
+            {
+                cbGuest.Items.Add(x);
+            }
+        }
+
+        private void PlanRoomNumber_Load(object sender, EventArgs e)
+        {
+            cmd = new MySqlCommand();
         }
     }
 }
