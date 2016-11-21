@@ -48,13 +48,14 @@
             // 
             // btnOrder
             // 
-            this.btnOrder.Location = new System.Drawing.Point(357, 322);
+            this.btnOrder.Location = new System.Drawing.Point(357, 284);
             this.btnOrder.Margin = new System.Windows.Forms.Padding(4);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(135, 55);
+            this.btnOrder.Size = new System.Drawing.Size(135, 114);
             this.btnOrder.TabIndex = 12;
             this.btnOrder.Text = "Order";
             this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // lbName
             // 
@@ -79,10 +80,10 @@
             // 
             // btnS
             // 
-            this.btnS.Location = new System.Drawing.Point(142, 322);
+            this.btnS.Location = new System.Drawing.Point(142, 284);
             this.btnS.Margin = new System.Windows.Forms.Padding(4);
             this.btnS.Name = "btnS";
-            this.btnS.Size = new System.Drawing.Size(118, 55);
+            this.btnS.Size = new System.Drawing.Size(143, 114);
             this.btnS.TabIndex = 9;
             this.btnS.Text = "Schedule";
             this.btnS.UseVisualStyleBackColor = true;

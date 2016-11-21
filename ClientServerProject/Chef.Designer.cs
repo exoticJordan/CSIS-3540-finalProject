@@ -28,22 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBA = new System.Windows.Forms.Button();
             this.lbName = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
             this.btnS = new System.Windows.Forms.Button();
             this.btnCSBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnBA
-            // 
-            this.btnBA.Location = new System.Drawing.Point(417, 291);
-            this.btnBA.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBA.Name = "btnBA";
-            this.btnBA.Size = new System.Drawing.Size(135, 55);
-            this.btnBA.TabIndex = 7;
-            this.btnBA.Text = "Dinning Room Assigned";
-            this.btnBA.UseVisualStyleBackColor = true;
             // 
             // lbName
             // 
@@ -68,7 +57,7 @@
             // 
             // btnS
             // 
-            this.btnS.Location = new System.Drawing.Point(124, 291);
+            this.btnS.Location = new System.Drawing.Point(230, 291);
             this.btnS.Margin = new System.Windows.Forms.Padding(4);
             this.btnS.Name = "btnS";
             this.btnS.Size = new System.Drawing.Size(118, 55);
@@ -93,7 +82,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnCSBack);
-            this.Controls.Add(this.btnBA);
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.btnS);
@@ -106,8 +94,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnBA;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Button btnS;

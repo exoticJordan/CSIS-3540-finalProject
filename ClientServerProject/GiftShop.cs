@@ -12,9 +12,22 @@ namespace ClientServerProject
 {
     public partial class GiftShop : UserControl
     {
-        public GiftShop()
+        Plan plan;
+        public GiftShop(Plan p)
         {
+            plan = p;
             InitializeComponent();
+        }
+
+        private void btnGSBack_Click(object sender, EventArgs e)
+        {
+            Bartender b = new Bartender(plan);
+            plan.Controls.Remove(this);
+            plan.Controls.Add(b);
+            ((Button)b.Controls["btnOrder"]).Text = "Gift Order";
+            ((Label)b.Controls["lbName"]).Text = lbName.Text;
+            ((Label)b.Controls["lbTitle"]).Text = "Gift Cashier";
+            ((Button)b.Controls["btnS"]).Text = "Gift Cashier Schedule";
         }
     }
 }

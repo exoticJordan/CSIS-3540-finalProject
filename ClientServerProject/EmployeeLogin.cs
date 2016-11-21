@@ -74,7 +74,6 @@ namespace ClientServerProject
                     {
                         if (em.PositionName == "Cleaner")
                         {
-                            ((Button)chef.Controls["btnBA"]).Text = "Room Assigned";
                             ((Button)chef.Controls["btnS"]).Text = "Cleaner Schedule";
                         }
                         if (em.PositionName == "Server")
@@ -96,7 +95,7 @@ namespace ClientServerProject
                         {
                             ((Button)bar.Controls["btnOrder"]).Text = "Gift Order";
                             ((Button)bar.Controls["btnS"]).Text = "Gift Cashier Schedule";
-                             ((Label)bar.Controls["lbTitle"]).Text = "Gift " + em.PositionName;
+                            ((Label)bar.Controls["lbTitle"]).Text = "Gift " + em.PositionName;
 
                         }
                         if (em.PositionName == "Bartender")
@@ -106,6 +105,7 @@ namespace ClientServerProject
                             ((Label)bar.Controls["lbTitle"]).Text = em.PositionName;
                         }
                         ((Label)bar.Controls["lbName"]).Text = em.FName + " " + em.LName;
+                        
                         plan.Controls.Add(bar);
                         plan.Controls.Remove(this);
                     }

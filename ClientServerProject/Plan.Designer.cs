@@ -32,9 +32,10 @@
             // 
             // Plan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 476);
+            this.ClientSize = new System.Drawing.Size(1123, 667);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Plan";
             this.Text = "Plan";
             this.Load += new System.EventHandler(this.Plan_Load);

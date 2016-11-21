@@ -19,14 +19,16 @@ namespace ClientServerProject
             InitializeComponent();
             plan = p;
         }
-        public Bar()
-        {
-            InitializeComponent();
-        }
 
         private void btnBarB_Click(object sender, EventArgs e)
         {
-
+            Bartender b = new Bartender(plan);
+            plan.Controls.Remove(this);
+            plan.Controls.Add(b);
+            ((Button)b.Controls["btnOrder"]).Text = "Bar Order";
+            ((Label)b.Controls["lbName"]).Text = lbName.Text;
+            ((Label)b.Controls["lbTitle"]).Text = "Bartender";
+            ((Button)b.Controls["btnS"]).Text = "Bartender Schedule";
         }
     }
 }

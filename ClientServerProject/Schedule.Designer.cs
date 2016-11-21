@@ -30,6 +30,8 @@
         {
             this.btnBack = new System.Windows.Forms.Button();
             this.lbS = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBack
@@ -46,16 +48,36 @@
             // 
             this.lbS.AutoSize = true;
             this.lbS.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbS.Location = new System.Drawing.Point(315, 18);
+            this.lbS.Location = new System.Drawing.Point(15, 18);
             this.lbS.Name = "lbS";
             this.lbS.Size = new System.Drawing.Size(244, 37);
             this.lbS.TabIndex = 1;
             this.lbS.Text = "Schedule Name";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(599, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 18);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Name:";
+            // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Location = new System.Drawing.Point(687, 32);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(62, 18);
+            this.lbName.TabIndex = 3;
+            this.lbName.Text = "label2";
+            // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbName);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbS);
             this.Controls.Add(this.btnBack);
             this.Name = "Schedule";
@@ -69,5 +91,7 @@
 
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lbS;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbName;
     }
 }

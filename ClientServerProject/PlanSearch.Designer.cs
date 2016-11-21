@@ -46,9 +46,11 @@
             // 
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(195, 340);
+            this.groupBox1.Location = new System.Drawing.Point(292, 471);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(157, 54);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(236, 75);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order By";
@@ -56,9 +58,10 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(82, 20);
+            this.radioButton2.Location = new System.Drawing.Point(123, 28);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(46, 17);
+            this.radioButton2.Size = new System.Drawing.Size(69, 22);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.Text = "Ship";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -67,9 +70,10 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(22, 20);
+            this.radioButton1.Location = new System.Drawing.Point(33, 28);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(49, 17);
+            this.radioButton1.Size = new System.Drawing.Size(78, 22);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Price";
@@ -77,9 +81,10 @@
             // 
             // btnDept
             // 
-            this.btnDept.Location = new System.Drawing.Point(113, 59);
+            this.btnDept.Location = new System.Drawing.Point(170, 82);
+            this.btnDept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDept.Name = "btnDept";
-            this.btnDept.Size = new System.Drawing.Size(75, 23);
+            this.btnDept.Size = new System.Drawing.Size(112, 32);
             this.btnDept.TabIndex = 13;
             this.btnDept.Text = "Departure";
             this.btnDept.UseVisualStyleBackColor = true;
@@ -87,9 +92,10 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(407, 357);
+            this.btnSearch.Location = new System.Drawing.Point(610, 494);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(112, 32);
             this.btnSearch.TabIndex = 18;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -97,9 +103,10 @@
             // 
             // btnDest
             // 
-            this.btnDest.Location = new System.Drawing.Point(242, 59);
+            this.btnDest.Location = new System.Drawing.Point(363, 82);
+            this.btnDest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDest.Name = "btnDest";
-            this.btnDest.Size = new System.Drawing.Size(75, 23);
+            this.btnDest.Size = new System.Drawing.Size(112, 32);
             this.btnDest.TabIndex = 14;
             this.btnDest.Text = "Destination";
             this.btnDest.UseVisualStyleBackColor = true;
@@ -107,9 +114,10 @@
             // 
             // btnDate
             // 
-            this.btnDate.Location = new System.Drawing.Point(377, 59);
+            this.btnDate.Location = new System.Drawing.Point(566, 82);
+            this.btnDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDate.Name = "btnDate";
-            this.btnDate.Size = new System.Drawing.Size(75, 23);
+            this.btnDate.Size = new System.Drawing.Size(112, 32);
             this.btnDate.TabIndex = 15;
             this.btnDate.Text = "Date";
             this.btnDate.UseVisualStyleBackColor = true;
@@ -117,9 +125,10 @@
             // 
             // btnDuration
             // 
-            this.btnDuration.Location = new System.Drawing.Point(509, 59);
+            this.btnDuration.Location = new System.Drawing.Point(764, 82);
+            this.btnDuration.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDuration.Name = "btnDuration";
-            this.btnDuration.Size = new System.Drawing.Size(75, 23);
+            this.btnDuration.Size = new System.Drawing.Size(112, 32);
             this.btnDuration.TabIndex = 16;
             this.btnDuration.Text = "Duration";
             this.btnDuration.UseVisualStyleBackColor = true;
@@ -127,9 +136,10 @@
             // 
             // btnOnBoard
             // 
-            this.btnOnBoard.Location = new System.Drawing.Point(260, 435);
+            this.btnOnBoard.Location = new System.Drawing.Point(390, 602);
+            this.btnOnBoard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOnBoard.Name = "btnOnBoard";
-            this.btnOnBoard.Size = new System.Drawing.Size(177, 29);
+            this.btnOnBoard.Size = new System.Drawing.Size(266, 40);
             this.btnOnBoard.TabIndex = 20;
             this.btnOnBoard.Text = "OnBoard Information";
             this.btnOnBoard.UseVisualStyleBackColor = true;
@@ -140,17 +150,18 @@
             this.dGV1.AllowUserToAddRows = false;
             this.dGV1.AllowUserToDeleteRows = false;
             this.dGV1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGV1.Location = new System.Drawing.Point(113, 135);
+            this.dGV1.Location = new System.Drawing.Point(170, 187);
+            this.dGV1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dGV1.MultiSelect = false;
             this.dGV1.Name = "dGV1";
             this.dGV1.ReadOnly = true;
-            this.dGV1.Size = new System.Drawing.Size(471, 155);
+            this.dGV1.Size = new System.Drawing.Size(706, 215);
             this.dGV1.TabIndex = 21;
             this.dGV1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV1_CellContentClick);
             // 
             // PlanSearch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dGV1);
             this.Controls.Add(this.btnOnBoard);
@@ -160,8 +171,9 @@
             this.Controls.Add(this.btnDest);
             this.Controls.Add(this.btnDate);
             this.Controls.Add(this.btnDuration);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PlanSearch";
-            this.Size = new System.Drawing.Size(699, 515);
+            this.Size = new System.Drawing.Size(1101, 770);
             this.Load += new System.EventHandler(this.PlanSearch_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

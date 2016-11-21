@@ -31,7 +31,8 @@ namespace ClientServerProject
         private void btnS_Click(object sender, EventArgs e)
         {
             Schedule s = new Schedule(plan);
-            ((Label)s.Controls["lbS"]).Text = "Gift " + btnS.Text;
+            ((Label)s.Controls["lbS"]).Text = btnS.Text;
+            ((Label)s.Controls["lbName"]).Text = lbName.Text;
             plan.Controls.Remove(this);
             plan.Controls.Add(s);
         }
