@@ -66,8 +66,13 @@ namespace ClientServerProject
             if (criteria != "none")
             {
                 query += criteria + order;
+                System.Console.WriteLine(query);
             }
-            else query += order;
+            else
+            {
+                query += order;
+                System.Console.WriteLine(query);
+            }
             fillCMD(query, connection);
             MySqlDataReader reader = cmd.ExecuteReader();
             cruises = new List<Cruise>();
@@ -160,8 +165,9 @@ namespace ClientServerProject
             if (e.RowIndex != -1 && e.ColumnIndex != -1)
             {
                 int colIndex = dGV1.CurrentCell.ColumnIndex;
+                string longfilter = dGV1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                 string colName = dGV1.Columns[colIndex].Name;
-                string filter = dGV1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                string filter = longfilter.Split(' ').First();
                 if (colName == "Cruise_Start_Date")
                 {
                     criteria = " where " + colName + " >= '" + filter + "'";
