@@ -29,69 +29,77 @@
         private void InitializeComponent()
         {
             this.btnBA = new System.Windows.Forms.Button();
-            this.txtChef = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnChefS = new System.Windows.Forms.Button();
+            this.lbName = new System.Windows.Forms.Label();
+            this.lbTitle = new System.Windows.Forms.Label();
+            this.btnS = new System.Windows.Forms.Button();
             this.btnCSBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBA
             // 
-            this.btnBA.Location = new System.Drawing.Point(160, 153);
+            this.btnBA.Location = new System.Drawing.Point(417, 291);
+            this.btnBA.Margin = new System.Windows.Forms.Padding(4);
             this.btnBA.Name = "btnBA";
-            this.btnBA.Size = new System.Drawing.Size(90, 40);
+            this.btnBA.Size = new System.Drawing.Size(135, 55);
             this.btnBA.TabIndex = 7;
             this.btnBA.Text = "Dinning Room Assigned";
             this.btnBA.UseVisualStyleBackColor = true;
             // 
-            // txtChef
+            // lbName
             // 
-            this.txtChef.AutoSize = true;
-            this.txtChef.Location = new System.Drawing.Point(120, 106);
-            this.txtChef.Name = "txtChef";
-            this.txtChef.Size = new System.Drawing.Size(35, 13);
-            this.txtChef.TabIndex = 6;
-            this.txtChef.Text = "Name";
+            this.lbName.AutoSize = true;
+            this.lbName.Location = new System.Drawing.Point(263, 165);
+            this.lbName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(44, 18);
+            this.lbName.TabIndex = 6;
+            this.lbName.Text = "Name";
             // 
-            // label1
+            // lbTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(98, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 37);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Chef";
+            this.lbTitle.AutoSize = true;
+            this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(177, 91);
+            this.lbTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(130, 55);
+            this.lbTitle.TabIndex = 5;
+            this.lbTitle.Text = "Chef";
             // 
-            // btnChefS
+            // btnS
             // 
-            this.btnChefS.Location = new System.Drawing.Point(18, 153);
-            this.btnChefS.Name = "btnChefS";
-            this.btnChefS.Size = new System.Drawing.Size(79, 40);
-            this.btnChefS.TabIndex = 4;
-            this.btnChefS.Text = "Schedule";
-            this.btnChefS.UseVisualStyleBackColor = true;
+            this.btnS.Location = new System.Drawing.Point(124, 291);
+            this.btnS.Margin = new System.Windows.Forms.Padding(4);
+            this.btnS.Name = "btnS";
+            this.btnS.Size = new System.Drawing.Size(118, 55);
+            this.btnS.TabIndex = 4;
+            this.btnS.Text = "Schedule";
+            this.btnS.UseVisualStyleBackColor = true;
+            this.btnS.Click += new System.EventHandler(this.btnS_Click);
             // 
             // btnCSBack
             // 
-            this.btnCSBack.Location = new System.Drawing.Point(252, 9);
+            this.btnCSBack.Location = new System.Drawing.Point(510, 21);
+            this.btnCSBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnCSBack.Name = "btnCSBack";
-            this.btnCSBack.Size = new System.Drawing.Size(75, 23);
+            this.btnCSBack.Size = new System.Drawing.Size(112, 32);
             this.btnCSBack.TabIndex = 8;
             this.btnCSBack.Text = "Logout";
             this.btnCSBack.UseVisualStyleBackColor = true;
+            this.btnCSBack.Click += new System.EventHandler(this.btnCSBack_Click);
             // 
             // Chef
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnCSBack);
             this.Controls.Add(this.btnBA);
-            this.Controls.Add(this.txtChef);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnChefS);
+            this.Controls.Add(this.lbName);
+            this.Controls.Add(this.lbTitle);
+            this.Controls.Add(this.btnS);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Chef";
-            this.Size = new System.Drawing.Size(341, 210);
+            this.Size = new System.Drawing.Size(714, 454);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,9 +108,9 @@
         #endregion
 
         private System.Windows.Forms.Button btnBA;
-        private System.Windows.Forms.Label txtChef;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnChefS;
+        private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.Label lbTitle;
+        private System.Windows.Forms.Button btnS;
         private System.Windows.Forms.Button btnCSBack;
     }
 }

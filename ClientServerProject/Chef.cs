@@ -15,8 +15,25 @@ namespace ClientServerProject
         Plan plan;
         public Chef(Plan p)
         {
+
             plan = p;
-            InitializeComponent();
+            InitializeComponent(); 
+        }
+
+        private void btnCSBack_Click(object sender, EventArgs e)
+        {
+            OnBoard board = new OnBoard(plan);
+            plan.Controls.Remove(this);
+            plan.Controls.Add(board);
+
+        }
+
+        private void btnS_Click(object sender, EventArgs e)
+        {
+            Schedule s = new Schedule(plan);
+            ((Label)s.Controls["lbS"]).Text = "Gift " + btnS.Text;
+            plan.Controls.Remove(this);
+            plan.Controls.Add(s);
         }
     }
 }

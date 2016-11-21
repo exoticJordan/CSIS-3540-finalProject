@@ -30,8 +30,8 @@ namespace ClientServerProject
 
         public void fillCMD(string s, MySqlConnection c)
         {
-            cmd.CommandText = s;
-            cmd.Connection = c;
+          //  cmd.CommandText = s;
+           // cmd.Connection = c;
         }
     }
 }
