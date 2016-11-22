@@ -163,7 +163,7 @@
             this.GVClothes.RowTemplate.Height = 30;
             this.GVClothes.Size = new System.Drawing.Size(368, 262);
             this.GVClothes.TabIndex = 0;
-            this.GVClothes.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVClothes_CellMouseDoubleClick);
+            this.GVClothes.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVClothes_CellMouseClick);
             // 
             // tabCups
             // 
@@ -185,7 +185,7 @@
             this.GVCups.RowTemplate.Height = 30;
             this.GVCups.Size = new System.Drawing.Size(368, 262);
             this.GVCups.TabIndex = 1;
-            this.GVCups.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVCups_CellMouseDoubleClick);
+            this.GVCups.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVCups_CellMouseClick);
             // 
             // tabJewelry
             // 
@@ -207,7 +207,7 @@
             this.GVJewelry.RowTemplate.Height = 30;
             this.GVJewelry.Size = new System.Drawing.Size(368, 262);
             this.GVJewelry.TabIndex = 1;
-            this.GVJewelry.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVJewelry_CellMouseDoubleClick);
+            this.GVJewelry.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVJewelry_CellMouseClick);
             // 
             // tabBooks
             // 
@@ -229,7 +229,7 @@
             this.GVBooks.RowTemplate.Height = 30;
             this.GVBooks.Size = new System.Drawing.Size(368, 262);
             this.GVBooks.TabIndex = 1;
-            this.GVBooks.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVBooks_CellMouseDoubleClick);
+            this.GVBooks.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVBooks_CellMouseClick);
             // 
             // listViewCheck
             // 

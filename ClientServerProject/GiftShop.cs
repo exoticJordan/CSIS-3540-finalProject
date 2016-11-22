@@ -44,22 +44,22 @@ namespace ClientServerProject
             connection.Close();
         }
 
-        private void GVClothes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void GVClothes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             gridViewDoubleClick(GVClothes, e, clothes);
         }
 
-        private void GVCups_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void GVCups_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             gridViewDoubleClick(GVCups, e, cups);
         }
 
-        private void GVJewelry_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void GVJewelry_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             gridViewDoubleClick(GVJewelry, e, jewelry);
         }
 
-        private void GVBooks_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void GVBooks_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             gridViewDoubleClick(GVBooks, e, books);
         }
