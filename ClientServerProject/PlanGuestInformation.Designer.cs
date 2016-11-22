@@ -39,18 +39,18 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.lbGuest = new System.Windows.Forms.ListBox();
+            this.btnDel = new System.Windows.Forms.Button();
             this.tbBirthDate = new System.Windows.Forms.TextBox();
             this.tbBirthMonth = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tbPhoneNum = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGuestCont
             // 
-            this.btnGuestCont.Location = new System.Drawing.Point(603, 431);
+            this.btnGuestCont.Location = new System.Drawing.Point(565, 404);
             this.btnGuestCont.Name = "btnGuestCont";
             this.btnGuestCont.Size = new System.Drawing.Size(75, 21);
             this.btnGuestCont.TabIndex = 33;
@@ -62,7 +62,7 @@
             // 
             this.groupBox2.Controls.Add(this.radMale);
             this.groupBox2.Controls.Add(this.radFemale);
-            this.groupBox2.Location = new System.Drawing.Point(32, 174);
+            this.groupBox2.Location = new System.Drawing.Point(31, 207);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 70);
             this.groupBox2.TabIndex = 31;
@@ -142,7 +142,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(147, 302);
+            this.btnSave.Location = new System.Drawing.Point(157, 283);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 34;
@@ -150,23 +150,24 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // listBox1
+            // lbGuest
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(430, 96);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(127, 148);
-            this.listBox1.TabIndex = 35;
+            this.lbGuest.FormattingEnabled = true;
+            this.lbGuest.ItemHeight = 12;
+            this.lbGuest.Location = new System.Drawing.Point(430, 96);
+            this.lbGuest.Name = "lbGuest";
+            this.lbGuest.Size = new System.Drawing.Size(127, 148);
+            this.lbGuest.TabIndex = 35;
             // 
-            // button2
+            // btnDel
             // 
-            this.button2.Location = new System.Drawing.Point(482, 302);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 36;
-            this.button2.Text = "Edit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDel.Location = new System.Drawing.Point(482, 283);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(75, 23);
+            this.btnDel.TabIndex = 36;
+            this.btnDel.Text = "Delete";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // tbBirthDate
             // 
@@ -184,38 +185,32 @@
             this.tbBirthMonth.TabIndex = 38;
             this.tbBirthMonth.Text = "mm";
             // 
-            // label1
+            // tbPhoneNum
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 12);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "Room Type ???";
+            this.tbPhoneNum.Location = new System.Drawing.Point(124, 180);
+            this.tbPhoneNum.Name = "tbPhoneNum";
+            this.tbPhoneNum.Size = new System.Drawing.Size(108, 21);
+            this.tbPhoneNum.TabIndex = 41;
             // 
-            // comboBox1
+            // label2
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Guest1",
-            "Guest2",
-            "Guest3",
-            "Guest4"});
-            this.comboBox1.Location = new System.Drawing.Point(34, 63);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 40;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(29, 183);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 12);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "Phone Number";
             // 
             // PlanGuestInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbPhoneNum);
             this.Controls.Add(this.tbBirthMonth);
             this.Controls.Add(this.tbBirthDate);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.btnDel);
+            this.Controls.Add(this.lbGuest);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnGuestCont);
             this.Controls.Add(this.groupBox2);
@@ -247,11 +242,11 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ListBox lbGuest;
+        private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.TextBox tbBirthDate;
         private System.Windows.Forms.TextBox tbBirthMonth;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox tbPhoneNum;
+        private System.Windows.Forms.Label label2;
     }
 }
