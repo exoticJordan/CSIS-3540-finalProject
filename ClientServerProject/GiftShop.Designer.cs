@@ -234,6 +234,7 @@
             this.listViewCheck.Size = new System.Drawing.Size(486, 553);
             this.listViewCheck.TabIndex = 37;
             this.listViewCheck.UseCompatibleStateImageBehavior = false;
+            this.listViewCheck.View = System.Windows.Forms.View.List;
             // 
             // GiftShop
             // 

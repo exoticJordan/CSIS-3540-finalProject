@@ -83,7 +83,7 @@ namespace ClientServerProject
             {
                 if(pd.ProductName == name)
                 {
-                    listViewCheck.Items.Add(pd.ProductPrice);
+                    listViewCheck.Items.Add(pd.ProductName + "      " + pd.ProductPrice);
                 }
             }  
         }
