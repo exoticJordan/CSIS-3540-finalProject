@@ -19,7 +19,10 @@ namespace ClientServerProject
         private List<Product> cups;
         private List<Product> jewelry;
         private List<Product> books;
+        private double totalSum = 0;
         Plan plan;
+
+
         public GiftShop(Plan p)
         {
             plan = p;
@@ -39,73 +42,50 @@ namespace ClientServerProject
             }
             else { connection.Close(); MessageBox.Show("Try to reconnect database server"); }
             connection.Close();
-
-
-
-
-            /*  string query = "SELECT Prod_Name,Prod_Price FROM Products WHERE Prod_Type='Clothes'";
-              if (products == null)
-                  products = new List<Product>();
-              else
-                  products.Clear();
-
-              if (connection != null)
-              {
-                  Product pr;
-                  GVClothes.Rows.Clear();
-                  connection.Open();
-                  setupSqlCommand(query);
-                  MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                  while (dataReader.Read())
-                  {
-                      pr = new Product();
-                      pr.ProductName = dataReader["Prod_Name"].ToString();
-                      pr.ProductPrice = dataReader["Prod_Price"].ToString();
-                      products.Add(pr);                        
-                  }
-                  GVClothes.DataSource = products;
-                  dataReader.Close();
-              }
-              else{connection.Close();MessageBox.Show("Try to reconnect database server");}   */
-
-
         }
 
         private void GVClothes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            gridViewDoubleClick(GVClothes, e, clothes);
+        }
 
+        private void GVCups_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            gridViewDoubleClick(GVCups, e, cups);
+        }
+
+        private void GVJewelry_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            gridViewDoubleClick(GVJewelry, e, jewelry);
+        }
+
+        private void GVBooks_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            gridViewDoubleClick(GVBooks, e, books);
+        }
+
+
+        private void gridViewDoubleClick(DataGridView view, DataGridViewCellMouseEventArgs e, List<Product> list)
+        {
             int row = e.RowIndex;
+            double singlePrice;
             string name;
-            name = GVClothes.Rows[row].Cells[0].Value.ToString();
-
-            foreach (Product pd in clothes)
+            name = view.Rows[row].Cells[0].Value.ToString();
+            foreach (Product pd in list)
             {
-                if(pd.ProductName == name)
-                {
+                if (pd.ProductName == name)
+                {                   
                     listViewCheck.Items.Add(pd.ProductName + "      " + pd.ProductPrice);
+                    Double.TryParse(pd.ProductPrice.Substring(1), out singlePrice);
+                    totalSum += singlePrice;
+                    result.Text = "$" + totalSum.ToString();
                 }
-            }  
+            }
         }
 
         private void showProduct(String tabName)
-        {
-            /*  if (products == null)
-                  products = new List<Product>();
-              else
-                  products.Clear();  */
+        {  
             Product pr;
-            //  GVClothes.Rows.Clear();
-            // string query = "SELECT Prod_Name,Prod_Price FROM Products WHERE Prod_Type='" + tabName + "'";
-            /*   setupSqlCommand(query);
-               MySqlDataReader dataReader = cmd.ExecuteReader();            
-               while (dataReader.Read())
-               {
-                   pr = new Product();
-                   pr.ProductName = dataReader["Prod_Name"].ToString();
-                   pr.ProductPrice = dataReader["Prod_Price"].ToString();
-                   products.Add(pr);
-               } */
             if (tabName == "Clothes")
             {
                 clothes = new List<Product>();
@@ -168,11 +148,8 @@ namespace ClientServerProject
                     books.Add(pr);
                 }
                 GVBooks.DataSource = books;
-
                 dataReader.Close();
             }
-
-
         }
 
         private void setupSqlCommand(String query)
@@ -192,6 +169,28 @@ namespace ClientServerProject
             ((Button)b.Controls["btnS"]).Text = "Gift Cashier Schedule";
         }
 
-
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            
+              for (int i=0; i < listViewCheck.Items.Count; i++)
+                {
+                    if (listViewCheck.Items[i].Selected)
+                    {
+                     string txt = listViewCheck.Items[i].Text;
+                     listViewCheck.Items[i].Remove();
+                     double delPrice = 0;
+                     Double.TryParse(txt.Substring(txt.LastIndexOf("$") + 1), out delPrice);
+                    if (listViewCheck.Items.Count == 0) {
+                        totalSum = 0;
+                        result.Text = "$" + totalSum.ToString();
+                    }
+                    else
+                    {
+                        totalSum = totalSum - delPrice;
+                        result.Text = "$" + Math.Round(totalSum, 2).ToString(); 
+                    }                   
+                 }
+            }    
+        }
     }
 }

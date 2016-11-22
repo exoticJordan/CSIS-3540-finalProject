@@ -45,6 +45,7 @@
             this.tabBooks = new System.Windows.Forms.TabPage();
             this.GVBooks = new System.Windows.Forms.DataGridView();
             this.listViewCheck = new System.Windows.Forms.ListView();
+            this.btnDel = new System.Windows.Forms.Button();
             this.tabGiftshopMenu.SuspendLayout();
             this.tabClothes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVClothes)).BeginInit();
@@ -61,12 +62,12 @@
             this.result.AutoSize = true;
             this.result.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.result.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.result.Location = new System.Drawing.Point(1095, 579);
+            this.result.Location = new System.Drawing.Point(1050, 579);
             this.result.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.result.Name = "result";
-            this.result.Size = new System.Drawing.Size(64, 20);
+            this.result.Size = new System.Drawing.Size(28, 20);
             this.result.TabIndex = 31;
-            this.result.Text = "Result";
+            this.result.Text = "$0";
             // 
             // label2
             // 
@@ -74,13 +75,13 @@
             this.label2.Location = new System.Drawing.Point(984, 579);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 18);
+            this.label2.Size = new System.Drawing.Size(71, 18);
             this.label2.TabIndex = 30;
-            this.label2.Text = "Total： $";
+            this.label2.Text = "Total：";
             // 
             // btnGSBack
             // 
-            this.btnGSBack.Location = new System.Drawing.Point(1003, 617);
+            this.btnGSBack.Location = new System.Drawing.Point(540, 279);
             this.btnGSBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnGSBack.Name = "btnGSBack";
             this.btnGSBack.Size = new System.Drawing.Size(165, 53);
@@ -91,7 +92,7 @@
             // 
             // btnGSCheck
             // 
-            this.btnGSCheck.Location = new System.Drawing.Point(736, 617);
+            this.btnGSCheck.Location = new System.Drawing.Point(540, 376);
             this.btnGSCheck.Margin = new System.Windows.Forms.Padding(4);
             this.btnGSCheck.Name = "btnGSCheck";
             this.btnGSCheck.Size = new System.Drawing.Size(165, 53);
@@ -139,7 +140,7 @@
             this.tabGiftshopMenu.Margin = new System.Windows.Forms.Padding(4);
             this.tabGiftshopMenu.Name = "tabGiftshopMenu";
             this.tabGiftshopMenu.SelectedIndex = 0;
-            this.tabGiftshopMenu.Size = new System.Drawing.Size(705, 593);
+            this.tabGiftshopMenu.Size = new System.Drawing.Size(385, 322);
             this.tabGiftshopMenu.TabIndex = 36;
             // 
             // tabClothes
@@ -149,7 +150,7 @@
             this.tabClothes.Margin = new System.Windows.Forms.Padding(4);
             this.tabClothes.Name = "tabClothes";
             this.tabClothes.Padding = new System.Windows.Forms.Padding(4);
-            this.tabClothes.Size = new System.Drawing.Size(697, 545);
+            this.tabClothes.Size = new System.Drawing.Size(377, 274);
             this.tabClothes.TabIndex = 0;
             this.tabClothes.Text = "Clothes";
             this.tabClothes.UseVisualStyleBackColor = true;
@@ -171,7 +172,7 @@
             this.tabCups.Margin = new System.Windows.Forms.Padding(4);
             this.tabCups.Name = "tabCups";
             this.tabCups.Padding = new System.Windows.Forms.Padding(4);
-            this.tabCups.Size = new System.Drawing.Size(697, 545);
+            this.tabCups.Size = new System.Drawing.Size(377, 274);
             this.tabCups.TabIndex = 1;
             this.tabCups.Text = "Cups";
             this.tabCups.UseVisualStyleBackColor = true;
@@ -184,6 +185,7 @@
             this.GVCups.RowTemplate.Height = 30;
             this.GVCups.Size = new System.Drawing.Size(368, 262);
             this.GVCups.TabIndex = 1;
+            this.GVCups.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVCups_CellMouseDoubleClick);
             // 
             // tabJewelry
             // 
@@ -192,7 +194,7 @@
             this.tabJewelry.Margin = new System.Windows.Forms.Padding(4);
             this.tabJewelry.Name = "tabJewelry";
             this.tabJewelry.Padding = new System.Windows.Forms.Padding(4);
-            this.tabJewelry.Size = new System.Drawing.Size(697, 545);
+            this.tabJewelry.Size = new System.Drawing.Size(377, 274);
             this.tabJewelry.TabIndex = 2;
             this.tabJewelry.Text = "Jewelry";
             this.tabJewelry.UseVisualStyleBackColor = true;
@@ -205,6 +207,7 @@
             this.GVJewelry.RowTemplate.Height = 30;
             this.GVJewelry.Size = new System.Drawing.Size(368, 262);
             this.GVJewelry.TabIndex = 1;
+            this.GVJewelry.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVJewelry_CellMouseDoubleClick);
             // 
             // tabBooks
             // 
@@ -213,7 +216,7 @@
             this.tabBooks.Margin = new System.Windows.Forms.Padding(4);
             this.tabBooks.Name = "tabBooks";
             this.tabBooks.Padding = new System.Windows.Forms.Padding(4);
-            this.tabBooks.Size = new System.Drawing.Size(697, 545);
+            this.tabBooks.Size = new System.Drawing.Size(377, 274);
             this.tabBooks.TabIndex = 3;
             this.tabBooks.Text = "Books";
             this.tabBooks.UseVisualStyleBackColor = true;
@@ -226,9 +229,14 @@
             this.GVBooks.RowTemplate.Height = 30;
             this.GVBooks.Size = new System.Drawing.Size(368, 262);
             this.GVBooks.TabIndex = 1;
+            this.GVBooks.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVBooks_CellMouseDoubleClick);
             // 
             // listViewCheck
             // 
+            this.listViewCheck.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.listViewCheck.AllowColumnReorder = true;
+            this.listViewCheck.FullRowSelect = true;
+            this.listViewCheck.GridLines = true;
             this.listViewCheck.Location = new System.Drawing.Point(723, 12);
             this.listViewCheck.Name = "listViewCheck";
             this.listViewCheck.Size = new System.Drawing.Size(486, 553);
@@ -236,10 +244,22 @@
             this.listViewCheck.UseCompatibleStateImageBehavior = false;
             this.listViewCheck.View = System.Windows.Forms.View.List;
             // 
+            // btnDel
+            // 
+            this.btnDel.Location = new System.Drawing.Point(540, 190);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(165, 53);
+            this.btnDel.TabIndex = 38;
+            this.btnDel.Text = "Delete Item";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
             // GiftShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnDel);
             this.Controls.Add(this.listViewCheck);
             this.Controls.Add(this.tabGiftshopMenu);
             this.Controls.Add(this.lbName);
@@ -284,5 +304,6 @@
         private System.Windows.Forms.TabPage tabBooks;
         private System.Windows.Forms.DataGridView GVBooks;
         private System.Windows.Forms.ListView listViewCheck;
+        private System.Windows.Forms.Button btnDel;
     }
 }
