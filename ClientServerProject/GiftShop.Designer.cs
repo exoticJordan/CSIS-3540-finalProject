@@ -62,29 +62,28 @@
             this.result.AutoSize = true;
             this.result.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.result.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.result.Location = new System.Drawing.Point(1050, 579);
-            this.result.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.result.Location = new System.Drawing.Point(648, 432);
+            this.result.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.result.Name = "result";
-            this.result.Size = new System.Drawing.Size(28, 20);
+            this.result.Size = new System.Drawing.Size(21, 15);
             this.result.TabIndex = 31;
             this.result.Text = "$0";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(984, 579);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(604, 432);
+            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 18);
+            this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 30;
             this.label2.Text = "Total：";
             // 
             // btnGSBack
             // 
-            this.btnGSBack.Location = new System.Drawing.Point(540, 279);
-            this.btnGSBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGSBack.Location = new System.Drawing.Point(293, 204);
             this.btnGSBack.Name = "btnGSBack";
-            this.btnGSBack.Size = new System.Drawing.Size(165, 53);
+            this.btnGSBack.Size = new System.Drawing.Size(110, 38);
             this.btnGSBack.TabIndex = 29;
             this.btnGSBack.Text = "Back";
             this.btnGSBack.UseVisualStyleBackColor = true;
@@ -92,10 +91,9 @@
             // 
             // btnGSCheck
             // 
-            this.btnGSCheck.Location = new System.Drawing.Point(540, 376);
-            this.btnGSCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGSCheck.Location = new System.Drawing.Point(293, 275);
             this.btnGSCheck.Name = "btnGSCheck";
-            this.btnGSCheck.Size = new System.Drawing.Size(165, 53);
+            this.btnGSCheck.Size = new System.Drawing.Size(110, 38);
             this.btnGSCheck.TabIndex = 28;
             this.btnGSCheck.Text = "Checkout";
             this.btnGSCheck.UseVisualStyleBackColor = true;
@@ -103,18 +101,20 @@
             // lbName
             // 
             this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(483, 70);
+            this.lbName.Location = new System.Drawing.Point(270, 63);
+            this.lbName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(62, 18);
+            this.lbName.Size = new System.Drawing.Size(35, 13);
             this.lbName.TabIndex = 35;
             this.lbName.Text = "label2";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(483, 32);
+            this.label1.Location = new System.Drawing.Point(270, 35);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 18);
+            this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 34;
             this.label1.Text = "Staff Name:";
             // 
@@ -122,10 +122,9 @@
             // 
             this.labBarTitle.AutoSize = true;
             this.labBarTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labBarTitle.Location = new System.Drawing.Point(4, 32);
-            this.labBarTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labBarTitle.Location = new System.Drawing.Point(3, 23);
             this.labBarTitle.Name = "labBarTitle";
-            this.labBarTitle.Size = new System.Drawing.Size(223, 40);
+            this.labBarTitle.Size = new System.Drawing.Size(151, 29);
             this.labBarTitle.TabIndex = 33;
             this.labBarTitle.Text = "Gift Ordering";
             // 
@@ -136,32 +135,33 @@
             this.tabGiftshopMenu.Controls.Add(this.tabJewelry);
             this.tabGiftshopMenu.Controls.Add(this.tabBooks);
             this.tabGiftshopMenu.ItemSize = new System.Drawing.Size(96, 40);
-            this.tabGiftshopMenu.Location = new System.Drawing.Point(11, 146);
-            this.tabGiftshopMenu.Margin = new System.Windows.Forms.Padding(4);
+            this.tabGiftshopMenu.Location = new System.Drawing.Point(7, 105);
             this.tabGiftshopMenu.Name = "tabGiftshopMenu";
             this.tabGiftshopMenu.SelectedIndex = 0;
-            this.tabGiftshopMenu.Size = new System.Drawing.Size(385, 322);
+            this.tabGiftshopMenu.Size = new System.Drawing.Size(254, 170);
             this.tabGiftshopMenu.TabIndex = 36;
             // 
             // tabClothes
             // 
             this.tabClothes.Controls.Add(this.GVClothes);
             this.tabClothes.Location = new System.Drawing.Point(4, 44);
-            this.tabClothes.Margin = new System.Windows.Forms.Padding(4);
             this.tabClothes.Name = "tabClothes";
-            this.tabClothes.Padding = new System.Windows.Forms.Padding(4);
-            this.tabClothes.Size = new System.Drawing.Size(377, 274);
+            this.tabClothes.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabClothes.Size = new System.Drawing.Size(246, 122);
             this.tabClothes.TabIndex = 0;
             this.tabClothes.Text = "Clothes";
             this.tabClothes.UseVisualStyleBackColor = true;
             // 
             // GVClothes
             // 
+            this.GVClothes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GVClothes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.GVClothes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GVClothes.Location = new System.Drawing.Point(3, 3);
+            this.GVClothes.Location = new System.Drawing.Point(2, 2);
+            this.GVClothes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GVClothes.Name = "GVClothes";
             this.GVClothes.RowTemplate.Height = 30;
-            this.GVClothes.Size = new System.Drawing.Size(368, 262);
+            this.GVClothes.Size = new System.Drawing.Size(269, 212);
             this.GVClothes.TabIndex = 0;
             this.GVClothes.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVClothes_CellMouseClick);
             // 
@@ -169,21 +169,23 @@
             // 
             this.tabCups.Controls.Add(this.GVCups);
             this.tabCups.Location = new System.Drawing.Point(4, 44);
-            this.tabCups.Margin = new System.Windows.Forms.Padding(4);
             this.tabCups.Name = "tabCups";
-            this.tabCups.Padding = new System.Windows.Forms.Padding(4);
-            this.tabCups.Size = new System.Drawing.Size(377, 274);
+            this.tabCups.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabCups.Size = new System.Drawing.Size(246, 148);
             this.tabCups.TabIndex = 1;
             this.tabCups.Text = "Cups";
             this.tabCups.UseVisualStyleBackColor = true;
             // 
             // GVCups
             // 
+            this.GVCups.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GVCups.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.GVCups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GVCups.Location = new System.Drawing.Point(3, 3);
+            this.GVCups.Location = new System.Drawing.Point(2, 2);
+            this.GVCups.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GVCups.Name = "GVCups";
             this.GVCups.RowTemplate.Height = 30;
-            this.GVCups.Size = new System.Drawing.Size(368, 262);
+            this.GVCups.Size = new System.Drawing.Size(245, 189);
             this.GVCups.TabIndex = 1;
             this.GVCups.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVCups_CellMouseClick);
             // 
@@ -191,21 +193,23 @@
             // 
             this.tabJewelry.Controls.Add(this.GVJewelry);
             this.tabJewelry.Location = new System.Drawing.Point(4, 44);
-            this.tabJewelry.Margin = new System.Windows.Forms.Padding(4);
             this.tabJewelry.Name = "tabJewelry";
-            this.tabJewelry.Padding = new System.Windows.Forms.Padding(4);
-            this.tabJewelry.Size = new System.Drawing.Size(377, 274);
+            this.tabJewelry.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabJewelry.Size = new System.Drawing.Size(246, 148);
             this.tabJewelry.TabIndex = 2;
             this.tabJewelry.Text = "Jewelry";
             this.tabJewelry.UseVisualStyleBackColor = true;
             // 
             // GVJewelry
             // 
+            this.GVJewelry.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GVJewelry.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.GVJewelry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GVJewelry.Location = new System.Drawing.Point(3, 3);
+            this.GVJewelry.Location = new System.Drawing.Point(2, 2);
+            this.GVJewelry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GVJewelry.Name = "GVJewelry";
             this.GVJewelry.RowTemplate.Height = 30;
-            this.GVJewelry.Size = new System.Drawing.Size(368, 262);
+            this.GVJewelry.Size = new System.Drawing.Size(245, 189);
             this.GVJewelry.TabIndex = 1;
             this.GVJewelry.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVJewelry_CellMouseClick);
             // 
@@ -213,21 +217,23 @@
             // 
             this.tabBooks.Controls.Add(this.GVBooks);
             this.tabBooks.Location = new System.Drawing.Point(4, 44);
-            this.tabBooks.Margin = new System.Windows.Forms.Padding(4);
             this.tabBooks.Name = "tabBooks";
-            this.tabBooks.Padding = new System.Windows.Forms.Padding(4);
-            this.tabBooks.Size = new System.Drawing.Size(377, 274);
+            this.tabBooks.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabBooks.Size = new System.Drawing.Size(246, 148);
             this.tabBooks.TabIndex = 3;
             this.tabBooks.Text = "Books";
             this.tabBooks.UseVisualStyleBackColor = true;
             // 
             // GVBooks
             // 
+            this.GVBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GVBooks.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.GVBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GVBooks.Location = new System.Drawing.Point(3, 3);
+            this.GVBooks.Location = new System.Drawing.Point(2, 2);
+            this.GVBooks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GVBooks.Name = "GVBooks";
             this.GVBooks.RowTemplate.Height = 30;
-            this.GVBooks.Size = new System.Drawing.Size(368, 262);
+            this.GVBooks.Size = new System.Drawing.Size(271, 212);
             this.GVBooks.TabIndex = 1;
             this.GVBooks.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVBooks_CellMouseClick);
             // 
@@ -237,19 +243,19 @@
             this.listViewCheck.AllowColumnReorder = true;
             this.listViewCheck.FullRowSelect = true;
             this.listViewCheck.GridLines = true;
-            this.listViewCheck.Location = new System.Drawing.Point(723, 12);
+            this.listViewCheck.Location = new System.Drawing.Point(430, 23);
+            this.listViewCheck.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewCheck.Name = "listViewCheck";
-            this.listViewCheck.Size = new System.Drawing.Size(486, 553);
+            this.listViewCheck.Size = new System.Drawing.Size(325, 400);
             this.listViewCheck.TabIndex = 37;
             this.listViewCheck.UseCompatibleStateImageBehavior = false;
             this.listViewCheck.View = System.Windows.Forms.View.List;
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(540, 190);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDel.Location = new System.Drawing.Point(293, 140);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(165, 53);
+            this.btnDel.Size = new System.Drawing.Size(110, 38);
             this.btnDel.TabIndex = 38;
             this.btnDel.Text = "Delete Item";
             this.btnDel.UseVisualStyleBackColor = true;
@@ -257,7 +263,7 @@
             // 
             // GiftShop
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.listViewCheck);
@@ -269,9 +275,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnGSBack);
             this.Controls.Add(this.btnGSCheck);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GiftShop";
-            this.Size = new System.Drawing.Size(1230, 760);
+            this.Size = new System.Drawing.Size(842, 486);
             this.tabGiftshopMenu.ResumeLayout(false);
             this.tabClothes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GVClothes)).EndInit();
