@@ -28,79 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabGiftshopMenu = new System.Windows.Forms.TabControl();
-            this.tabClothes = new System.Windows.Forms.TabPage();
-            this.tabCups = new System.Windows.Forms.TabPage();
-            this.tabJewelry = new System.Windows.Forms.TabPage();
-            this.tabBooks = new System.Windows.Forms.TabPage();
             this.result = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnGSBack = new System.Windows.Forms.Button();
             this.btnGSCheck = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.lbName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labBarTitle = new System.Windows.Forms.Label();
+            this.tabGiftshopMenu = new System.Windows.Forms.TabControl();
+            this.tabClothes = new System.Windows.Forms.TabPage();
+            this.GVClothes = new System.Windows.Forms.DataGridView();
+            this.tabCups = new System.Windows.Forms.TabPage();
+            this.GVCups = new System.Windows.Forms.DataGridView();
+            this.tabJewelry = new System.Windows.Forms.TabPage();
+            this.GVJewelry = new System.Windows.Forms.DataGridView();
+            this.tabBooks = new System.Windows.Forms.TabPage();
+            this.GVBooks = new System.Windows.Forms.DataGridView();
+            this.listViewCheck = new System.Windows.Forms.ListView();
             this.tabGiftshopMenu.SuspendLayout();
+            this.tabClothes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GVClothes)).BeginInit();
+            this.tabCups.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GVCups)).BeginInit();
+            this.tabJewelry.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GVJewelry)).BeginInit();
+            this.tabBooks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GVBooks)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tabGiftshopMenu
-            // 
-            this.tabGiftshopMenu.Controls.Add(this.tabClothes);
-            this.tabGiftshopMenu.Controls.Add(this.tabCups);
-            this.tabGiftshopMenu.Controls.Add(this.tabJewelry);
-            this.tabGiftshopMenu.Controls.Add(this.tabBooks);
-            this.tabGiftshopMenu.ItemSize = new System.Drawing.Size(96, 40);
-            this.tabGiftshopMenu.Location = new System.Drawing.Point(11, 137);
-            this.tabGiftshopMenu.Margin = new System.Windows.Forms.Padding(4);
-            this.tabGiftshopMenu.Name = "tabGiftshopMenu";
-            this.tabGiftshopMenu.SelectedIndex = 0;
-            this.tabGiftshopMenu.Size = new System.Drawing.Size(705, 593);
-            this.tabGiftshopMenu.TabIndex = 32;
-            // 
-            // tabClothes
-            // 
-            this.tabClothes.Location = new System.Drawing.Point(4, 44);
-            this.tabClothes.Margin = new System.Windows.Forms.Padding(4);
-            this.tabClothes.Name = "tabClothes";
-            this.tabClothes.Padding = new System.Windows.Forms.Padding(4);
-            this.tabClothes.Size = new System.Drawing.Size(697, 545);
-            this.tabClothes.TabIndex = 0;
-            this.tabClothes.Text = "Clothes";
-            this.tabClothes.UseVisualStyleBackColor = true;
-            // 
-            // tabCups
-            // 
-            this.tabCups.Location = new System.Drawing.Point(4, 44);
-            this.tabCups.Margin = new System.Windows.Forms.Padding(4);
-            this.tabCups.Name = "tabCups";
-            this.tabCups.Padding = new System.Windows.Forms.Padding(4);
-            this.tabCups.Size = new System.Drawing.Size(697, 545);
-            this.tabCups.TabIndex = 1;
-            this.tabCups.Text = "Cups";
-            this.tabCups.UseVisualStyleBackColor = true;
-            // 
-            // tabJewelry
-            // 
-            this.tabJewelry.Location = new System.Drawing.Point(4, 44);
-            this.tabJewelry.Margin = new System.Windows.Forms.Padding(4);
-            this.tabJewelry.Name = "tabJewelry";
-            this.tabJewelry.Padding = new System.Windows.Forms.Padding(4);
-            this.tabJewelry.Size = new System.Drawing.Size(697, 545);
-            this.tabJewelry.TabIndex = 2;
-            this.tabJewelry.Text = "Jewelry";
-            this.tabJewelry.UseVisualStyleBackColor = true;
-            // 
-            // tabBooks
-            // 
-            this.tabBooks.Location = new System.Drawing.Point(4, 44);
-            this.tabBooks.Margin = new System.Windows.Forms.Padding(4);
-            this.tabBooks.Name = "tabBooks";
-            this.tabBooks.Padding = new System.Windows.Forms.Padding(4);
-            this.tabBooks.Size = new System.Drawing.Size(697, 545);
-            this.tabBooks.TabIndex = 3;
-            this.tabBooks.Text = "Books";
-            this.tabBooks.UseVisualStyleBackColor = true;
             // 
             // result
             // 
@@ -145,15 +99,6 @@
             this.btnGSCheck.Text = "Checkout";
             this.btnGSCheck.UseVisualStyleBackColor = true;
             // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(724, 10);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(444, 565);
-            this.listView1.TabIndex = 27;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // lbName
             // 
             this.lbName.AutoSize = true;
@@ -183,42 +128,160 @@
             this.labBarTitle.TabIndex = 33;
             this.labBarTitle.Text = "Gift Ordering";
             // 
+            // tabGiftshopMenu
+            // 
+            this.tabGiftshopMenu.Controls.Add(this.tabClothes);
+            this.tabGiftshopMenu.Controls.Add(this.tabCups);
+            this.tabGiftshopMenu.Controls.Add(this.tabJewelry);
+            this.tabGiftshopMenu.Controls.Add(this.tabBooks);
+            this.tabGiftshopMenu.ItemSize = new System.Drawing.Size(96, 40);
+            this.tabGiftshopMenu.Location = new System.Drawing.Point(11, 146);
+            this.tabGiftshopMenu.Margin = new System.Windows.Forms.Padding(4);
+            this.tabGiftshopMenu.Name = "tabGiftshopMenu";
+            this.tabGiftshopMenu.SelectedIndex = 0;
+            this.tabGiftshopMenu.Size = new System.Drawing.Size(705, 593);
+            this.tabGiftshopMenu.TabIndex = 36;
+            // 
+            // tabClothes
+            // 
+            this.tabClothes.Controls.Add(this.GVClothes);
+            this.tabClothes.Location = new System.Drawing.Point(4, 44);
+            this.tabClothes.Margin = new System.Windows.Forms.Padding(4);
+            this.tabClothes.Name = "tabClothes";
+            this.tabClothes.Padding = new System.Windows.Forms.Padding(4);
+            this.tabClothes.Size = new System.Drawing.Size(697, 545);
+            this.tabClothes.TabIndex = 0;
+            this.tabClothes.Text = "Clothes";
+            this.tabClothes.UseVisualStyleBackColor = true;
+            // 
+            // GVClothes
+            // 
+            this.GVClothes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GVClothes.Location = new System.Drawing.Point(3, 3);
+            this.GVClothes.Name = "GVClothes";
+            this.GVClothes.RowTemplate.Height = 30;
+            this.GVClothes.Size = new System.Drawing.Size(368, 262);
+            this.GVClothes.TabIndex = 0;
+            this.GVClothes.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVClothes_CellMouseDoubleClick);
+            // 
+            // tabCups
+            // 
+            this.tabCups.Controls.Add(this.GVCups);
+            this.tabCups.Location = new System.Drawing.Point(4, 44);
+            this.tabCups.Margin = new System.Windows.Forms.Padding(4);
+            this.tabCups.Name = "tabCups";
+            this.tabCups.Padding = new System.Windows.Forms.Padding(4);
+            this.tabCups.Size = new System.Drawing.Size(697, 545);
+            this.tabCups.TabIndex = 1;
+            this.tabCups.Text = "Cups";
+            this.tabCups.UseVisualStyleBackColor = true;
+            // 
+            // GVCups
+            // 
+            this.GVCups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GVCups.Location = new System.Drawing.Point(3, 3);
+            this.GVCups.Name = "GVCups";
+            this.GVCups.RowTemplate.Height = 30;
+            this.GVCups.Size = new System.Drawing.Size(368, 262);
+            this.GVCups.TabIndex = 1;
+            // 
+            // tabJewelry
+            // 
+            this.tabJewelry.Controls.Add(this.GVJewelry);
+            this.tabJewelry.Location = new System.Drawing.Point(4, 44);
+            this.tabJewelry.Margin = new System.Windows.Forms.Padding(4);
+            this.tabJewelry.Name = "tabJewelry";
+            this.tabJewelry.Padding = new System.Windows.Forms.Padding(4);
+            this.tabJewelry.Size = new System.Drawing.Size(697, 545);
+            this.tabJewelry.TabIndex = 2;
+            this.tabJewelry.Text = "Jewelry";
+            this.tabJewelry.UseVisualStyleBackColor = true;
+            // 
+            // GVJewelry
+            // 
+            this.GVJewelry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GVJewelry.Location = new System.Drawing.Point(3, 3);
+            this.GVJewelry.Name = "GVJewelry";
+            this.GVJewelry.RowTemplate.Height = 30;
+            this.GVJewelry.Size = new System.Drawing.Size(368, 262);
+            this.GVJewelry.TabIndex = 1;
+            // 
+            // tabBooks
+            // 
+            this.tabBooks.Controls.Add(this.GVBooks);
+            this.tabBooks.Location = new System.Drawing.Point(4, 44);
+            this.tabBooks.Margin = new System.Windows.Forms.Padding(4);
+            this.tabBooks.Name = "tabBooks";
+            this.tabBooks.Padding = new System.Windows.Forms.Padding(4);
+            this.tabBooks.Size = new System.Drawing.Size(697, 545);
+            this.tabBooks.TabIndex = 3;
+            this.tabBooks.Text = "Books";
+            this.tabBooks.UseVisualStyleBackColor = true;
+            // 
+            // GVBooks
+            // 
+            this.GVBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GVBooks.Location = new System.Drawing.Point(3, 3);
+            this.GVBooks.Name = "GVBooks";
+            this.GVBooks.RowTemplate.Height = 30;
+            this.GVBooks.Size = new System.Drawing.Size(368, 262);
+            this.GVBooks.TabIndex = 1;
+            // 
+            // listViewCheck
+            // 
+            this.listViewCheck.Location = new System.Drawing.Point(723, 12);
+            this.listViewCheck.Name = "listViewCheck";
+            this.listViewCheck.Size = new System.Drawing.Size(486, 553);
+            this.listViewCheck.TabIndex = 37;
+            this.listViewCheck.UseCompatibleStateImageBehavior = false;
+            // 
             // GiftShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.listViewCheck);
+            this.Controls.Add(this.tabGiftshopMenu);
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labBarTitle);
-            this.Controls.Add(this.tabGiftshopMenu);
             this.Controls.Add(this.result);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnGSBack);
             this.Controls.Add(this.btnGSCheck);
-            this.Controls.Add(this.listView1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GiftShop";
             this.Size = new System.Drawing.Size(1230, 760);
             this.tabGiftshopMenu.ResumeLayout(false);
+            this.tabClothes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GVClothes)).EndInit();
+            this.tabCups.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GVCups)).EndInit();
+            this.tabJewelry.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GVJewelry)).EndInit();
+            this.tabBooks.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GVBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabGiftshopMenu;
-        private System.Windows.Forms.TabPage tabClothes;
-        private System.Windows.Forms.TabPage tabCups;
-        private System.Windows.Forms.TabPage tabJewelry;
-        private System.Windows.Forms.TabPage tabBooks;
         private System.Windows.Forms.Label result;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnGSBack;
         private System.Windows.Forms.Button btnGSCheck;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labBarTitle;
+        private System.Windows.Forms.TabControl tabGiftshopMenu;
+        private System.Windows.Forms.TabPage tabClothes;
+        private System.Windows.Forms.DataGridView GVClothes;
+        private System.Windows.Forms.TabPage tabCups;
+        private System.Windows.Forms.DataGridView GVCups;
+        private System.Windows.Forms.TabPage tabJewelry;
+        private System.Windows.Forms.DataGridView GVJewelry;
+        private System.Windows.Forms.TabPage tabBooks;
+        private System.Windows.Forms.DataGridView GVBooks;
+        private System.Windows.Forms.ListView listViewCheck;
     }
 }
