@@ -33,6 +33,7 @@ namespace ClientServerProject
             Schedule s = new Schedule(plan);
             ((Label)s.Controls["lbS"]).Text = btnS.Text;
             ((Label)s.Controls["lbName"]).Text = lbName.Text;
+            ((Label)s.Controls["lbID"]).Text = lbID.Text;
             plan.Controls.Remove(this);
             plan.Controls.Add(s);
         }

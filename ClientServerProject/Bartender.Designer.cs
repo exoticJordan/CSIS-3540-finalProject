@@ -33,14 +33,14 @@
             this.lbName = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
             this.btnS = new System.Windows.Forms.Button();
+            this.lbID = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBSBack
             // 
-            this.btnBSBack.Location = new System.Drawing.Point(539, 22);
-            this.btnBSBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBSBack.Location = new System.Drawing.Point(359, 16);
             this.btnBSBack.Name = "btnBSBack";
-            this.btnBSBack.Size = new System.Drawing.Size(112, 32);
+            this.btnBSBack.Size = new System.Drawing.Size(75, 23);
             this.btnBSBack.TabIndex = 13;
             this.btnBSBack.Text = "Logout";
             this.btnBSBack.UseVisualStyleBackColor = true;
@@ -48,10 +48,9 @@
             // 
             // btnOrder
             // 
-            this.btnOrder.Location = new System.Drawing.Point(357, 284);
-            this.btnOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOrder.Location = new System.Drawing.Point(238, 205);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(135, 114);
+            this.btnOrder.Size = new System.Drawing.Size(90, 82);
             this.btnOrder.TabIndex = 12;
             this.btnOrder.Text = "Order";
             this.btnOrder.UseVisualStyleBackColor = true;
@@ -60,10 +59,9 @@
             // lbName
             // 
             this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(274, 204);
-            this.lbName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbName.Location = new System.Drawing.Point(183, 147);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(44, 18);
+            this.lbName.Size = new System.Drawing.Size(35, 13);
             this.lbName.TabIndex = 11;
             this.lbName.Text = "Name";
             // 
@@ -71,36 +69,43 @@
             // 
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(103, 122);
-            this.lbTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTitle.Location = new System.Drawing.Point(69, 88);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(245, 55);
+            this.lbTitle.Size = new System.Drawing.Size(166, 37);
             this.lbTitle.TabIndex = 10;
             this.lbTitle.Text = "Bartender";
             // 
             // btnS
             // 
-            this.btnS.Location = new System.Drawing.Point(142, 284);
-            this.btnS.Margin = new System.Windows.Forms.Padding(4);
+            this.btnS.Location = new System.Drawing.Point(95, 205);
             this.btnS.Name = "btnS";
-            this.btnS.Size = new System.Drawing.Size(143, 114);
+            this.btnS.Size = new System.Drawing.Size(95, 82);
             this.btnS.TabIndex = 9;
             this.btnS.Text = "Schedule";
             this.btnS.UseVisualStyleBackColor = true;
             this.btnS.Click += new System.EventHandler(this.btnS_Click);
             // 
+            // lbID
+            // 
+            this.lbID.AutoSize = true;
+            this.lbID.Location = new System.Drawing.Point(128, 147);
+            this.lbID.Name = "lbID";
+            this.lbID.Size = new System.Drawing.Size(15, 13);
+            this.lbID.TabIndex = 14;
+            this.lbID.Text = "id";
+            // 
             // Bartender
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbID);
             this.Controls.Add(this.btnBSBack);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.btnS);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Bartender";
-            this.Size = new System.Drawing.Size(710, 449);
+            this.Size = new System.Drawing.Size(473, 324);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +118,6 @@
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Button btnS;
+        private System.Windows.Forms.Label lbID;
     }
 }

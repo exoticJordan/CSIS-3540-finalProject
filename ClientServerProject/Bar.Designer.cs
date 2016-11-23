@@ -39,13 +39,14 @@
             this.GVJuice = new System.Windows.Forms.DataGridView();
             this.listView1 = new System.Windows.Forms.ListView();
             this.labBarTitle = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbName = new System.Windows.Forms.Label();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnGSCheck = new System.Windows.Forms.Button();
             this.btnBarB = new System.Windows.Forms.Button();
             this.result = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lbID = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabBarMenu.SuspendLayout();
             this.tabWine.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVWine)).BeginInit();
@@ -177,26 +178,6 @@
             this.labBarTitle.TabIndex = 12;
             this.labBarTitle.Text = "Bar Ordering";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(314, 32);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Staff Name:";
-            // 
-            // lbName
-            // 
-            this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(322, 63);
-            this.lbName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(35, 13);
-            this.lbName.TabIndex = 17;
-            this.lbName.Text = "label2";
-            // 
             // btnDel
             // 
             this.btnDel.Location = new System.Drawing.Point(303, 130);
@@ -215,6 +196,7 @@
             this.btnGSCheck.TabIndex = 39;
             this.btnGSCheck.Text = "Checkout";
             this.btnGSCheck.UseVisualStyleBackColor = true;
+            this.btnGSCheck.Click += new System.EventHandler(this.btnGSCheck_Click);
             // 
             // btnBarB
             // 
@@ -248,16 +230,47 @@
             this.label2.TabIndex = 42;
             this.label2.Text = "Total：";
             // 
+            // lbID
+            // 
+            this.lbID.AutoSize = true;
+            this.lbID.Location = new System.Drawing.Point(272, 56);
+            this.lbID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbID.Name = "lbID";
+            this.lbID.Size = new System.Drawing.Size(15, 13);
+            this.lbID.TabIndex = 46;
+            this.lbID.Text = "id";
+            // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Location = new System.Drawing.Point(272, 85);
+            this.lbName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(33, 13);
+            this.lbName.TabIndex = 45;
+            this.lbName.Text = "name";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(272, 29);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Staff:";
+            // 
             // Bar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbID);
+            this.Controls.Add(this.lbName);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.result);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnGSCheck);
-            this.Controls.Add(this.lbName);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.tabBarMenu);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnBarB);
@@ -287,8 +300,6 @@
         private System.Windows.Forms.TabPage tabJuicePop;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label labBarTitle;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnGSCheck;
         private System.Windows.Forms.Button btnBarB;
@@ -298,5 +309,8 @@
         private System.Windows.Forms.DataGridView GVBeer;
         private System.Windows.Forms.DataGridView GVCocktail;
         private System.Windows.Forms.DataGridView GVJuice;
+        private System.Windows.Forms.Label lbID;
+        private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.Label label1;
     }
 }

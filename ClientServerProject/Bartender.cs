@@ -32,7 +32,7 @@ namespace ClientServerProject
             Schedule s = new Schedule(plan);
             ((Label)s.Controls["lbS"]).Text = btnS.Text;
             ((Label)s.Controls["lbName"]).Text = lbName.Text;
-
+            ((Label)s.Controls["lbID"]).Text = lbID.Text;
             plan.Controls.Remove(this);
             plan.Controls.Add(s);       
         }
@@ -52,6 +52,10 @@ namespace ClientServerProject
             }
             ((Label)b.Controls["lbName"]).Text = lbName.Text;
             ((Label)g.Controls["lbName"]).Text = lbName.Text;
+            ((Label)b.Controls["lbID"]).Text = lbID.Text;
+            ((Label)g.Controls["lbID"]).Text = lbID.Text;
+
+
         }
     }
 }

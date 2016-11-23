@@ -59,6 +59,8 @@ namespace ClientServerProject
             }     
             ((Label)bar.Controls["lbName"]).Text = lbName.Text;
             ((Label)chef.Controls["lbName"]).Text = lbName.Text;
+            ((Label)bar.Controls["lbID"]).Text = lbID.Text;
+            ((Label)chef.Controls["lbID"]).Text = lbID.Text;
         }
     }
 }

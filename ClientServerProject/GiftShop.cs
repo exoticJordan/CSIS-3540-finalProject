@@ -160,13 +160,23 @@ namespace ClientServerProject
 
         private void btnGSBack_Click(object sender, EventArgs e)
         {
-            Bartender b = new Bartender(plan);
-            plan.Controls.Remove(this);
-            plan.Controls.Add(b);
-            ((Button)b.Controls["btnOrder"]).Text = "Gift Order";
-            ((Label)b.Controls["lbName"]).Text = lbName.Text;
-            ((Label)b.Controls["lbTitle"]).Text = "Gift Cashier";
-            ((Button)b.Controls["btnS"]).Text = "Gift Cashier Schedule";
+            DialogResult dialog = MessageBox.Show("You will empty the checkout list \nAre you sure??", "Warning!!!", MessageBoxButtons.YesNo);
+            if(dialog == DialogResult.Yes)
+            {
+                Bartender b = new Bartender(plan);
+                plan.Controls.Remove(this);
+                plan.Controls.Add(b);
+                ((Button)b.Controls["btnOrder"]).Text = "Gift Order";
+                ((Label)b.Controls["lbName"]).Text = lbName.Text;
+                ((Label)b.Controls["lbTitle"]).Text = "Gift Cashier";
+                ((Button)b.Controls["btnS"]).Text = "Gift Cashier Schedule";
+                ((Label)b.Controls["lbID"]).Text = lbID.Text;
+            }
+            else
+            {
+                return;
+            }
+           
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -191,6 +201,19 @@ namespace ClientServerProject
                     }                   
                  }
             }    
+        }
+
+        private void btnGSCheck_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Checkout \nDo you want to continue??", "Message", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

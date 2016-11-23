@@ -86,6 +86,7 @@ namespace ClientServerProject
                         }
                         ((Label)chef.Controls["lbTitle"]).Text = em.PositionName;
                         ((Label)chef.Controls["lbName"]).Text = em.FName + " " + em.LName;
+                        ((Label)chef.Controls["lbID"]).Text = em.EmID;
                         plan.Controls.Add(chef);
                         plan.Controls.Remove(this);
                     }
@@ -96,7 +97,6 @@ namespace ClientServerProject
                             ((Button)bar.Controls["btnOrder"]).Text = "Gift Order";
                             ((Button)bar.Controls["btnS"]).Text = "Gift Cashier Schedule";
                             ((Label)bar.Controls["lbTitle"]).Text = "Gift " + em.PositionName;
-
                         }
                         if (em.PositionName == "Bartender")
                         {
@@ -105,7 +105,7 @@ namespace ClientServerProject
                             ((Label)bar.Controls["lbTitle"]).Text = em.PositionName;
                         }
                         ((Label)bar.Controls["lbName"]).Text = em.FName + " " + em.LName;
-                        
+                        ((Label)bar.Controls["lbID"]).Text = em.EmID;
                         plan.Controls.Add(bar);
                         plan.Controls.Remove(this);
                     }

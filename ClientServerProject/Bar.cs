@@ -144,13 +144,23 @@ namespace ClientServerProject
 
         private void btnBarB_Click(object sender, EventArgs e)
         {
-            Bartender b = new Bartender(plan);
-            plan.Controls.Remove(this);
-            plan.Controls.Add(b);
-            ((Button)b.Controls["btnOrder"]).Text = "Bar Order";
-            ((Label)b.Controls["lbName"]).Text = lbName.Text;
-            ((Label)b.Controls["lbTitle"]).Text = "Bartender";
-            ((Button)b.Controls["btnS"]).Text = "Bartender Schedule";
+            DialogResult dialog = MessageBox.Show("You will empty the checkout list \nAre you sure??", "Warning!!!", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                Bartender b = new Bartender(plan);
+                plan.Controls.Remove(this);
+                plan.Controls.Add(b);
+                ((Button)b.Controls["btnOrder"]).Text = "Bar Order";
+                ((Label)b.Controls["lbName"]).Text = lbName.Text;
+                ((Label)b.Controls["lbTitle"]).Text = "Bartender";
+                ((Button)b.Controls["btnS"]).Text = "Bartender Schedule";
+                ((Label)b.Controls["lbID"]).Text = lbID.Text;
+            }
+            else
+            {
+                return;
+            }
+
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -199,6 +209,19 @@ namespace ClientServerProject
         private void GVJuice_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             gridViewCellMouseClick(GVJuice, e, JuicePop);
+        }
+
+        private void btnGSCheck_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Checkout \nDo you want to continue??", "Message", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+              
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

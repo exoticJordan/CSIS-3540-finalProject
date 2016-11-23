@@ -46,6 +46,7 @@
             this.GVBooks = new System.Windows.Forms.DataGridView();
             this.listViewCheck = new System.Windows.Forms.ListView();
             this.btnDel = new System.Windows.Forms.Button();
+            this.lbID = new System.Windows.Forms.Label();
             this.tabGiftshopMenu.SuspendLayout();
             this.tabClothes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVClothes)).BeginInit();
@@ -97,16 +98,17 @@
             this.btnGSCheck.TabIndex = 28;
             this.btnGSCheck.Text = "Checkout";
             this.btnGSCheck.UseVisualStyleBackColor = true;
+            this.btnGSCheck.Click += new System.EventHandler(this.btnGSCheck_Click);
             // 
             // lbName
             // 
             this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(270, 63);
+            this.lbName.Location = new System.Drawing.Point(270, 91);
             this.lbName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(35, 13);
+            this.lbName.Size = new System.Drawing.Size(33, 13);
             this.lbName.TabIndex = 35;
-            this.lbName.Text = "label2";
+            this.lbName.Text = "name";
             // 
             // label1
             // 
@@ -114,9 +116,9 @@
             this.label1.Location = new System.Drawing.Point(270, 35);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 34;
-            this.label1.Text = "Staff Name:";
+            this.label1.Text = "Staff:";
             // 
             // labBarTitle
             // 
@@ -146,7 +148,7 @@
             this.tabClothes.Controls.Add(this.GVClothes);
             this.tabClothes.Location = new System.Drawing.Point(4, 44);
             this.tabClothes.Name = "tabClothes";
-            this.tabClothes.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabClothes.Padding = new System.Windows.Forms.Padding(3);
             this.tabClothes.Size = new System.Drawing.Size(246, 122);
             this.tabClothes.TabIndex = 0;
             this.tabClothes.Text = "Clothes";
@@ -158,7 +160,7 @@
             this.GVClothes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.GVClothes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GVClothes.Location = new System.Drawing.Point(2, 2);
-            this.GVClothes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GVClothes.Margin = new System.Windows.Forms.Padding(2);
             this.GVClothes.Name = "GVClothes";
             this.GVClothes.RowTemplate.Height = 30;
             this.GVClothes.Size = new System.Drawing.Size(269, 212);
@@ -170,8 +172,8 @@
             this.tabCups.Controls.Add(this.GVCups);
             this.tabCups.Location = new System.Drawing.Point(4, 44);
             this.tabCups.Name = "tabCups";
-            this.tabCups.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabCups.Size = new System.Drawing.Size(246, 148);
+            this.tabCups.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCups.Size = new System.Drawing.Size(246, 122);
             this.tabCups.TabIndex = 1;
             this.tabCups.Text = "Cups";
             this.tabCups.UseVisualStyleBackColor = true;
@@ -182,7 +184,7 @@
             this.GVCups.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.GVCups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GVCups.Location = new System.Drawing.Point(2, 2);
-            this.GVCups.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GVCups.Margin = new System.Windows.Forms.Padding(2);
             this.GVCups.Name = "GVCups";
             this.GVCups.RowTemplate.Height = 30;
             this.GVCups.Size = new System.Drawing.Size(245, 189);
@@ -194,8 +196,8 @@
             this.tabJewelry.Controls.Add(this.GVJewelry);
             this.tabJewelry.Location = new System.Drawing.Point(4, 44);
             this.tabJewelry.Name = "tabJewelry";
-            this.tabJewelry.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabJewelry.Size = new System.Drawing.Size(246, 148);
+            this.tabJewelry.Padding = new System.Windows.Forms.Padding(3);
+            this.tabJewelry.Size = new System.Drawing.Size(246, 122);
             this.tabJewelry.TabIndex = 2;
             this.tabJewelry.Text = "Jewelry";
             this.tabJewelry.UseVisualStyleBackColor = true;
@@ -206,7 +208,7 @@
             this.GVJewelry.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.GVJewelry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GVJewelry.Location = new System.Drawing.Point(2, 2);
-            this.GVJewelry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GVJewelry.Margin = new System.Windows.Forms.Padding(2);
             this.GVJewelry.Name = "GVJewelry";
             this.GVJewelry.RowTemplate.Height = 30;
             this.GVJewelry.Size = new System.Drawing.Size(245, 189);
@@ -218,8 +220,8 @@
             this.tabBooks.Controls.Add(this.GVBooks);
             this.tabBooks.Location = new System.Drawing.Point(4, 44);
             this.tabBooks.Name = "tabBooks";
-            this.tabBooks.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabBooks.Size = new System.Drawing.Size(246, 148);
+            this.tabBooks.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBooks.Size = new System.Drawing.Size(246, 122);
             this.tabBooks.TabIndex = 3;
             this.tabBooks.Text = "Books";
             this.tabBooks.UseVisualStyleBackColor = true;
@@ -230,7 +232,7 @@
             this.GVBooks.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.GVBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GVBooks.Location = new System.Drawing.Point(2, 2);
-            this.GVBooks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GVBooks.Margin = new System.Windows.Forms.Padding(2);
             this.GVBooks.Name = "GVBooks";
             this.GVBooks.RowTemplate.Height = 30;
             this.GVBooks.Size = new System.Drawing.Size(271, 212);
@@ -244,7 +246,7 @@
             this.listViewCheck.FullRowSelect = true;
             this.listViewCheck.GridLines = true;
             this.listViewCheck.Location = new System.Drawing.Point(430, 23);
-            this.listViewCheck.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewCheck.Margin = new System.Windows.Forms.Padding(2);
             this.listViewCheck.Name = "listViewCheck";
             this.listViewCheck.Size = new System.Drawing.Size(325, 400);
             this.listViewCheck.TabIndex = 37;
@@ -261,10 +263,21 @@
             this.btnDel.UseVisualStyleBackColor = true;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
+            // lbID
+            // 
+            this.lbID.AutoSize = true;
+            this.lbID.Location = new System.Drawing.Point(270, 62);
+            this.lbID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbID.Name = "lbID";
+            this.lbID.Size = new System.Drawing.Size(15, 13);
+            this.lbID.TabIndex = 39;
+            this.lbID.Text = "id";
+            // 
             // GiftShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbID);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.listViewCheck);
             this.Controls.Add(this.tabGiftshopMenu);
@@ -310,5 +323,6 @@
         private System.Windows.Forms.DataGridView GVBooks;
         private System.Windows.Forms.ListView listViewCheck;
         private System.Windows.Forms.Button btnDel;
+        private System.Windows.Forms.Label lbID;
     }
 }
