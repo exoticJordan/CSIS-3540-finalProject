@@ -18,7 +18,7 @@ namespace ClientServerProject
         PlanSearch plansearch;
         List<Cruise> cruises;
         int index;
-        public PlanSearchResult(Plan p, PlanSearch ps, List<Cruise> c, MySqlConnection conn, int i = 0)
+        public PlanSearchResult(Plan p, PlanSearch ps, List<Cruise> c, int i = 0)
         {
             InitializeComponent();
             plan = p;
@@ -29,13 +29,13 @@ namespace ClientServerProject
                 btnPrevResult.Enabled = false;
             else if (index == cruises.Count() - 1)
                 btnNextResult.Enabled = false;
-            connection = conn;
         }
 
         private void PlanSearchResult_Load(object sender, EventArgs e)
         {
             lblName.Text = cruises[index].Name;
             lblShip.Text = cruises[index].Ship;
+            lblDuration.Text = cruises[index].Duration.ToString();
             lblPrice.Text = (cruises[index].Price).ToString();
 
         }
@@ -67,7 +67,7 @@ namespace ClientServerProject
         {
             if (index < cruises.Count() - 1)
             {
-                PlanSearchResult psr = new PlanSearchResult(plan, plansearch, cruises, connection, index + 1);
+                PlanSearchResult psr = new PlanSearchResult(plan, plansearch, cruises, index + 1);
                 plan.Controls.Add(psr);
                 plan.Controls.Remove(this);
             }
@@ -78,7 +78,7 @@ namespace ClientServerProject
         {
             if (index > 0)
             {
-                PlanSearchResult psr = new PlanSearchResult(plan, plansearch, cruises, connection, index - 1);
+                PlanSearchResult psr = new PlanSearchResult(plan, plansearch, cruises, index - 1);
                 plan.Controls.Add(psr);
                 plan.Controls.Remove(this);
             }

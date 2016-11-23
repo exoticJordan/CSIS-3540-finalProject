@@ -13,6 +13,7 @@ namespace ClientServerProject
 {
     public partial class PlanRoomNumber : UserControl
     {
+        DBConnect db = new DBConnect();
         MySqlConnection connection;
         MySqlCommand cmd;
         Plan plan;
@@ -78,6 +79,7 @@ namespace ClientServerProject
             query += "AND Room_Deck =  '" + cbDeck.Text + "' ";
             query += "AND Room_Availability =  'Yes'";
 
+            connection = db.connect(connection);
             fillCMD(query, connection);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())

@@ -27,14 +27,7 @@ namespace ClientServerProject
         {
             db = new DBConnect();
             cmd = new MySqlCommand();
-            connect();
-        }
-        private void connect()
-        {
-            connection = new MySqlConnection(db.ToString());
-            connection.Open();
-            if (connection != null)
-            {
+            if (db.connect(connection)!=null) {
                 Text = Title + " [Connected]";
                 openSearch();
             }
@@ -44,7 +37,7 @@ namespace ClientServerProject
         //pass this page and the established connection to the usercontrol
         public void openSearch()
         {
-            PlanSearch ps = new PlanSearch(this, connection);
+            PlanSearch ps = new PlanSearch(this);
             this.Controls.Add(ps);
         }
     }

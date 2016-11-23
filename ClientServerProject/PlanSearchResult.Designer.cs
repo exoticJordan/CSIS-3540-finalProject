@@ -36,10 +36,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblDuration = new System.Windows.Forms.Label();
             this.lblShip = new System.Windows.Forms.Label();
-            this.lblItinary = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -106,7 +104,7 @@
             // 
             this.lblDuration.AutoSize = true;
             this.lblDuration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDuration.Location = new System.Drawing.Point(279, 209);
+            this.lblDuration.Location = new System.Drawing.Point(373, 196);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(15, 15);
             this.lblDuration.TabIndex = 31;
@@ -116,26 +114,16 @@
             // 
             this.lblShip.AutoSize = true;
             this.lblShip.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblShip.Location = new System.Drawing.Point(279, 174);
+            this.lblShip.Location = new System.Drawing.Point(373, 161);
             this.lblShip.Name = "lblShip";
             this.lblShip.Size = new System.Drawing.Size(28, 15);
             this.lblShip.TabIndex = 30;
             this.lblShip.Text = "ship";
             // 
-            // lblItinary
-            // 
-            this.lblItinary.AutoSize = true;
-            this.lblItinary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblItinary.Location = new System.Drawing.Point(279, 143);
-            this.lblItinary.Name = "lblItinary";
-            this.lblItinary.Size = new System.Drawing.Size(71, 15);
-            this.lblItinary.TabIndex = 29;
-            this.lblItinary.Text = "this, this, that";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(188, 210);
+            this.label3.Location = new System.Drawing.Point(282, 197);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 28;
@@ -144,20 +132,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(188, 175);
+            this.label2.Location = new System.Drawing.Point(282, 162);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 13);
             this.label2.TabIndex = 27;
             this.label2.Text = "Ship";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(188, 143);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Itinary";
             // 
             // lblName
             // 
@@ -190,10 +169,8 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblDuration);
             this.Controls.Add(this.lblShip);
-            this.Controls.Add(this.lblItinary);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblName);
             this.Name = "PlanSearchResult";
             this.Size = new System.Drawing.Size(699, 515);
@@ -213,10 +190,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.Label lblShip;
-        private System.Windows.Forms.Label lblItinary;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label label4;
     }

@@ -10,7 +10,7 @@ namespace ClientServerProject
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public List<string> Itinary;
+        //public List<string> Itinary;
         public string Ship { get; set; }
         public int Duration { get; set; }
         public double Price { get; set; }

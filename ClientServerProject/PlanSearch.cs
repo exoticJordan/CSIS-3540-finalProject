@@ -13,30 +13,22 @@ namespace ClientServerProject
 {
     public partial class PlanSearch : UserControl
     {
+        DBConnect dbc = new DBConnect();
         Plan plan;
         MySqlConnection connection;
         MySqlCommand cmd;
         string criteria, order;
         List<Cruise> cruises;
 
-        public PlanSearch(Plan p, MySqlConnection c)
+        public PlanSearch(Plan p)
         {
             InitializeComponent();
             plan = p;
-            connection = c;
         }
 
         private void PlanSearch_Load(object sender, EventArgs e)
         {
             cmd = new MySqlCommand();
-        }
-
-        //the constructor below prevents error when running the program
-        //will be deleted later
-        public PlanSearch(Plan p)
-        {
-            InitializeComponent();
-            plan = p;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -58,11 +50,7 @@ namespace ClientServerProject
 
         public void executeSearch(string criteria, string order)
         {
-            string query = "select Cruise_id as 'ID',";
-            query += "Cruise_Name as 'Name',";
-            query += "Ship_Name as 'Ship',";
-            query += "Cruise_Price as 'Price'";
-            query += " from Cruises c inner join Ships s on c.Ship_id=s.Ship_id";
+            string query = "select Cruise_id,Cruise_Name,Ship_Name,Route_Duration,Cruise_Price from Cruises c inner join Ships s on c.Ship_id=s.Ship_id inner join Routes r on c.Route_id=r.Route_Number";
             if (criteria != "none")
             {
                 query += criteria + order;
@@ -73,6 +61,7 @@ namespace ClientServerProject
                 query += order;
                 System.Console.WriteLine(query);
             }
+            connection = dbc.connect(connection);
             fillCMD(query, connection);
             MySqlDataReader reader = cmd.ExecuteReader();
             cruises = new List<Cruise>();
@@ -84,7 +73,8 @@ namespace ClientServerProject
                         ID = int.Parse(reader.GetString(0)),
                         Name = reader.GetString(1),
                         Ship = reader.GetString(2),
-                        Price = Double.Parse(reader.GetString(3))
+                        Duration = int.Parse(reader.GetString(3)),
+                        Price = Double.Parse(reader.GetString(4))
                     }
                 );
             }
@@ -94,6 +84,7 @@ namespace ClientServerProject
         public void executeQuery(string query)
         {
             MySqlDataAdapter mcmd = new MySqlDataAdapter();
+            connection = dbc.connect(connection);
             fillCMD(query, connection);
 
             mcmd.SelectCommand = cmd;
@@ -126,25 +117,23 @@ namespace ClientServerProject
 
         private void btnDept_Click(object sender, EventArgs e)
         {
-            /*string query = "select * from Routes";
+            string query = "select distinct Port_Name as 'Departure' from Port p inner join Stops s on p.Port_id=s.Port_id where Stop_SequenceNumber = '1'";
             //clear gridview
             dGV1.DataSource = null;
-            executeQuery(query); 
-            */
+            executeQuery(query);
         }
 
         private void btnDest_Click(object sender, EventArgs e)
         {
-            /*string query = "select * from Routes";
+            string query = "select distinct Port_Name as 'Destination' from Port p inner join (select Route_Number,Port_id,Max(Stop_SequenceNumber) from Stops group by Route_Number) as e on p.Port_id=e.Port_id";
             //clear gridview
             dGV1.DataSource = null;
-            executeQuery(query); 
-            */
+            executeQuery(query);
         }
 
         private void btnDate_Click(object sender, EventArgs e)
         {
-            string query = "select Cruise_Start_Date from Cruises";
+            string query = "select distinct Cruise_Start_Date as 'Start' from Cruises";
             //clear gridview
             dGV1.DataSource = null;
             executeQuery(query);
@@ -152,11 +141,11 @@ namespace ClientServerProject
 
         private void btnDuration_Click(object sender, EventArgs e)
         {
-            /*string query = "select duration from Routes";
+            string query = "select distinct Route_Duration as 'Duration' from Routes";
             //clear gridview
             dGV1.DataSource = null;
             executeQuery(query); 
-            */
+            
         }
 
         private void dGV1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -168,17 +157,26 @@ namespace ClientServerProject
                 string longfilter = dGV1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                 string colName = dGV1.Columns[colIndex].Name;
                 string filter = longfilter.Split(' ').First();
-                if (colName == "Cruise_Start_Date")
+                if (colName == "Start")
                 {
-                    criteria = " where " + colName + " >= '" + filter + "'";
+                    criteria = " where Cruise_Start_Date >= '" + filter + "'";
+                }else if(colName == "Duration")
+                {
+                    criteria = " where Route_Duration = '" + filter + "'";
                 }
-                else criteria = " where " + colName + " = '" + filter + "'";
+                else if(colName == "Departure")
+                {
+                    criteria = " where Port_Name = '" + filter + "'";
+                }else if(colName == "Destination")
+                {
+                    criteria = " where Port_Name = '" + filter + "'";
+                }
             }
         }
         //pass a list of cruises
         public void openResult()
         {
-            PlanSearchResult psr = new PlanSearchResult(plan, this, cruises, connection);
+            PlanSearchResult psr = new PlanSearchResult(plan, this, cruises);
             plan.Controls.Add(psr);
             this.Visible = false;
         }

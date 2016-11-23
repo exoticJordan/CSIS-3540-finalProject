@@ -17,6 +17,8 @@ namespace ClientServerProject
         PlanRoomNumber planguestnumber;
         int count = 0;
         List<GuestInfo> guestList = new List<GuestInfo>();
+        List<string> temp = new List<string>();
+        CommandProcessor cp;
         public PlanGuestInformation(Plan p, PlanRoomNumber pgn)
         {
             InitializeComponent();
@@ -30,36 +32,41 @@ namespace ClientServerProject
             /*
              if statement to decide whether to move to next userControl or refresh same
             */
-
+            string query = "INSERT INTO Travellers VALUES(@fname, @lname, @addr, @phone, @email, @dob, @gender)";
+            for (int x = 0; x < guestList.Count; x++)
+            {
+                temp.Add(guestList[x].fName);
+                temp.Add(guestList[x].lName);
+                temp.Add(guestList[x].addr);
+                temp.Add(guestList[x].pNum);
+                temp.Add(guestList[x].email);
+                temp.Add(guestList[x].dob);
+                temp.Add(guestList[x].Gen);
+                cp.insertRec(query, temp);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int gender;
-            string fn;
-            string ln;
-            string num;
-            int bd;
-            int bm;
-            int by;
+            string gender,fn,ln,num,addr,email,dob;
             
  
-                if(radFemale.Checked == true)
-                {
-                    gender = 0;
-                }
-                else
-                {
-                    gender = 1;
-                }
-                fn = tbFname.Text;
-                ln = tbLName.Text;
-                num = tbPhoneNum.Text;
-                bd = Int32.Parse(tbBirthDate.Text);
-                bm = Int32.Parse(tbBirthMonth.Text);
-                by = Int32.Parse(tbBirthYear.Text);
-                guestList.Add(new GuestInfo(fn,ln,num,gender,bd,bm,by));
-                lbGuest.Items.Add(guestList[count].fName + guestList[count].lName);
+            if(radFemale.Checked == true)
+            {
+                gender = "F";
+            }
+            else
+            {
+                gender = "M";
+            }
+            fn = tbFname.Text;
+            ln = tbLName.Text;
+            num = tbPhoneNum.Text;
+            addr = txtAddr.Text;
+            email = txtEmail.Text;
+            dob = tbBirthYear.Text + tbBirthMonth.Text + tbBirthDate.Text;
+            guestList.Add(new GuestInfo(fn,ln,addr,num,email,gender,dob));
+            lbGuest.Items.Add(guestList[count].fName + guestList[count].lName);
             
         }
 
@@ -87,22 +94,21 @@ namespace ClientServerProject
         public string fName { get; private set; }
         public string lName { get; private set; }
         public string pNum { get; private set; }
-        public int Gen { get; private set; }
-        public int bDate { get; private set; }
-        public int bMonth { get; private set; }
-        public int bYear { get; private set; }
-         
-   
+        public string Gen { get; private set; }
+        public string dob { get; private set; }
+        public string email { get; private set; }
+        public string addr { get; private set; }
 
-        public GuestInfo(string FirstName,string LastName, string phoneNum,int Gender, int birthDate,int birthMonth,int birthYear)
+
+        public GuestInfo(string FirstName,string LastName, string address,string phoneNum,string em,string Gender, string dateob)
         {
             fName = FirstName;
             lName = LastName;
+            addr = address;
             pNum = phoneNum;
+            email = em;
             Gen = Gender;
-            bDate = birthDate;
-            bMonth = birthDate;
-            bYear = birthYear;
+            dob = dateob;
 
         }
 

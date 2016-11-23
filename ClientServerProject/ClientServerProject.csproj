@@ -74,6 +74,7 @@
     <Compile Include="Chef.Designer.cs">
       <DependentUpon>Chef.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommandProcessor.cs" />
     <Compile Include="Cruise.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Employee.cs" />
@@ -119,6 +120,12 @@
     <Compile Include="PlanGuestInformation.Designer.cs">
       <DependentUpon>PlanGuestInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanPayment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PlanPayment.Designer.cs">
+      <DependentUpon>PlanPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanRoomNumber.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,12 +143,6 @@
     </Compile>
     <Compile Include="PlanSearchResult.Designer.cs">
       <DependentUpon>PlanSearchResult.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PlanTotal.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PlanTotal.Designer.cs">
-      <DependentUpon>PlanTotal.cs</DependentUpon>
     </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
@@ -182,6 +183,9 @@
     <EmbeddedResource Include="PlanGuestInformation.resx">
       <DependentUpon>PlanGuestInformation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanPayment.resx">
+      <DependentUpon>PlanPayment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanRoomNumber.resx">
       <DependentUpon>PlanRoomNumber.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,9 +194,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlanSearchResult.resx">
       <DependentUpon>PlanSearchResult.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PlanTotal.resx">
-      <DependentUpon>PlanTotal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

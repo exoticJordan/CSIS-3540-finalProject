@@ -27,5 +27,18 @@ namespace ClientServerProject
 
             return connectionString;
         }
+        public MySqlConnection connect(MySqlConnection c)
+        {
+            c = new MySqlConnection(ToString());
+            c.Open();
+            if (c != null)
+            {
+                return c;
+            }
+            else
+            {
+                return c;
+            }
+        }
     }
 }
