@@ -15,7 +15,6 @@ namespace ClientServerProject
         Plan plan;
         public Chef(Plan p)
         {
-
             plan = p;
             InitializeComponent(); 
         }

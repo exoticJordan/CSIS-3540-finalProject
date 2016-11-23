@@ -7,18 +7,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace ClientServerProject
 {
     public partial class Schedule : UserControl
     {
+        MySqlConnection connection;
+        MySqlCommand cmd;
         Plan plan;
+
         public Schedule(Plan p)
         {
             InitializeComponent();
             plan = p;
+            cmd = new MySqlCommand();
+            //    string a = lbID.Text;
+         //   string eid = getID();
+
+            string connectionString;
+            
+            connectionString = "SERVER=ec2-54-226-9-216.compute-1.amazonaws.com;"
+                + " DATABASE=f2016_s1_user20; UID=f2016_s1_user20; PASSWORD=f2016_s1_user20;";
+            connection = new MySqlConnection(connectionString);
+    /*        string query = "SELECT Shift_StartDate, Shift_StartTime, Shift_Duration, Room_Number "
+                              + "FROM Schedule, Facility WHERE Staff_ID = '" + eid + "'"
+                              + " and Schedule.Facility_ID = Facility.Facility_ID";
+            showData(query); */
+            
 
         }
+
+
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -61,6 +81,39 @@ namespace ClientServerProject
             ((Label)chef.Controls["lbName"]).Text = lbName.Text;
             ((Label)bar.Controls["lbID"]).Text = lbID.Text;
             ((Label)chef.Controls["lbID"]).Text = lbID.Text;
+        }
+
+        private void setupSqlCommand(String query)
+        {
+            cmd.Connection = connection;
+            cmd.CommandText = query;
+        }
+
+        private void showData(string query)
+        {
+            if (connection != null)
+            {
+                DataSet ds = new DataSet();
+
+                MySqlDataAdapter mcmd = new MySqlDataAdapter(query, connection);
+                mcmd.Fill(ds, "Schedule");
+                dataGridView.DataSource = ds.Tables["Schedule"];
+            }
+            else
+            {
+                MessageBox.Show("Try to connect");
+            }
+        }
+
+        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string a = lbID.Text;
+            string b = comboBox.Text;         
+            string query = "SELECT Shift_StartDate, Shift_StartTime, Shift_Duration, Room_Number "
+                              + "FROM Schedule, Facility WHERE Staff_ID = '" + a + "' and Ship_ID = '" 
+                              + b + "'" + " and Schedule.Facility_ID = Facility.Facility_ID";
+            lbShip.Text = "Ship " + b;
+            showData(query);
         }
     }
 }

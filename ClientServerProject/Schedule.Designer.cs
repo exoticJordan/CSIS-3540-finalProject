@@ -33,12 +33,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.lbID = new System.Windows.Forms.Label();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.comboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbShip = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(583, 405);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBack.Location = new System.Drawing.Point(560, 375);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(68, 32);
             this.btnBack.TabIndex = 0;
@@ -87,18 +92,65 @@
             this.lbID.TabIndex = 4;
             this.lbID.Text = "id";
             // 
+            // dataGridView
+            // 
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(15, 57);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(454, 350);
+            this.dataGridView.TabIndex = 5;
+            // 
+            // comboBox
+            // 
+            this.comboBox.FormattingEnabled = true;
+            this.comboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.comboBox.Location = new System.Drawing.Point(494, 132);
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(50, 21);
+            this.comboBox.TabIndex = 6;
+            this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(476, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Select Ship ID";
+            // 
+            // lbShip
+            // 
+            this.lbShip.AutoSize = true;
+            this.lbShip.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbShip.Location = new System.Drawing.Point(282, 13);
+            this.lbShip.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbShip.Name = "lbShip";
+            this.lbShip.Size = new System.Drawing.Size(0, 26);
+            this.lbShip.TabIndex = 8;
+            // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbShip);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBox);
+            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.lbID);
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbS);
             this.Controls.Add(this.btnBack);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Schedule";
             this.Size = new System.Drawing.Size(666, 456);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +163,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label lbID;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.ComboBox comboBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbShip;
     }
 }
