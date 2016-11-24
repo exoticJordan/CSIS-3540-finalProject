@@ -12,14 +12,19 @@ namespace ClientServerProject
 {
     public partial class PlanPayment : UserControl
     {
-        public PlanPayment()
+        Plan plan;
+        PlanSearch ps;
+        PlanGuestInformation planguestinfo;
+        CommandProcessor cp = new CommandProcessor();
+        public PlanPayment(Plan p,PlanGuestInformation pgi)
         {
             InitializeComponent();
+            plan = p;
+            planguestinfo = pgi;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Payment successful, thank you for cruising with us");
             /*
             //---1--INSERT TVL_FName, TVL_LName, TVL_Phone_Number, TVL_DOB, TVL_Gender 
             //------into TRAVELLERS table
@@ -30,6 +35,10 @@ namespace ClientServerProject
             //---3--do math, determine whether to
             //------UPDATE Room_Availability to No
              */
+            MessageBox.Show("Payment successful, thank you for cruising with us");
+            PlanSearch ps = new PlanSearch(plan);
+            plan.Controls.Add(ps);
+            plan.Controls.Remove(this);
         }
     }
 }

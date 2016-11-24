@@ -18,6 +18,7 @@ namespace ClientServerProject
         MySqlConnection connection;
         MySqlCommand cmd;
         string criteria, order;
+        List<int> tempId;
         List<Cruise> cruises;
 
         public PlanSearch(Plan p)
@@ -79,6 +80,12 @@ namespace ClientServerProject
                 );
             }
             reader.Close();
+            tempId = new List<int>();
+            for(int x =0;x< cruises.Count(); x++)
+            {
+                tempId.Add(cruises[x].ID);
+            }
+            MessageBox.Show(string.Join(",",tempId));
         }
 
         public void executeQuery(string query)
@@ -176,9 +183,15 @@ namespace ClientServerProject
         //pass a list of cruises
         public void openResult()
         {
-            PlanSearchResult psr = new PlanSearchResult(plan, this, cruises);
-            plan.Controls.Add(psr);
-            this.Visible = false;
+            if (cruises.Count() > 0)
+            {
+                PlanSearchResult psr = new PlanSearchResult(plan, this, cruises);
+                plan.Controls.Add(psr);
+                this.Visible = false;
+            }else
+            {
+                MessageBox.Show("no cruises that match your selection");
+            }
         }
 
         private void btnOnBoard_Click(object sender, EventArgs e)

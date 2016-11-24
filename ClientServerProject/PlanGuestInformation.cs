@@ -44,6 +44,9 @@ namespace ClientServerProject
                 temp.Add(guestList[x].Gen);
                 cp.insertRec(query, temp);
             }
+            PlanPayment pp = new PlanPayment(plan,this);
+            plan.Controls.Add(pp);
+            this.Visible = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
