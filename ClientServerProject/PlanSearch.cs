@@ -17,8 +17,7 @@ namespace ClientServerProject
         Plan plan;
         MySqlConnection connection;
         MySqlCommand cmd;
-        string criteria, order;
-        List<int> tempId;
+        string criteria;
         List<Cruise> cruises;
 
         public PlanSearch(Plan p)
@@ -30,62 +29,122 @@ namespace ClientServerProject
         private void PlanSearch_Load(object sender, EventArgs e)
         {
             cmd = new MySqlCommand();
+            cmd.Parameters.Add("@start", MySqlDbType.Date);
+            cmd.Parameters.Add("@duration", MySqlDbType.Int32);
+            cmd.Parameters.Add("@departure", MySqlDbType.String);
+            cmd.Parameters.Add("@destination", MySqlDbType.String);
+            cmd.Parameters.Add("@p", MySqlDbType.Int32);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //set the search order by
-            if (radioButton1.Checked)
-                order = " order by Cruise_Price";
-            else order = " order by Ship_Name";
-            if (criteria != null)
-            {
-                executeSearch(criteria, order);
-            }
-            else
-            {
-                executeSearch("none", order);
-            }
+            cruises = new List<Cruise>();
+            //if no criteria
+            if (criteria == null)
+                criteria = "select Cruise_id from Cruises";
+            storeID(criteria);
+            storeNamePrice();
+            storeShip();
+            storeDuration();
+            storeItinary();
             openResult();
         }
 
-        public void executeSearch(string criteria, string order)
+        public void storeItinary()
         {
-            string query = "select Cruise_id,Cruise_Name,Ship_Name,Route_Duration,Cruise_Price from Cruises c inner join Ships s on c.Ship_id=s.Ship_id inner join Routes r on c.Route_id=r.Route_Number";
-            if (criteria != "none")
+            string query = "select Port_Name from Port p join (select * from Stops s join Cruises c on s.Route_Number=c.Route_id where c.Cruise_id=@p order by Stop_SequenceNumber) as e on p.Port_id=e.Port_id";
+            connection = dbc.connect(connection);
+            fillCMD(query, connection);
+            for (int x = 0; x < cruises.Count(); x++)
             {
-                query += criteria + order;
-                System.Console.WriteLine(query);
+                cmd.Parameters["@p"].Value = cruises[x].ID;
+                MySqlDataReader reader = cmd.ExecuteReader();
+                cruises[x].Itinary = new List<string>();
+                while (reader.Read())
+                {
+                    cruises[x].Itinary.Add(reader.GetString(0));
+                }
+                reader.Close();
             }
-            else
+            connection.Close();
+        }
+
+        public void storeDuration()
+        {
+            string query = "select Route_Duration from Routes r join Cruises c on r.Route_Number=c.Route_id where Cruise_id=@p";
+            connection = dbc.connect(connection);
+            fillCMD(query, connection);
+            for (int x = 0; x < cruises.Count(); x++)
             {
-                query += order;
-                System.Console.WriteLine(query);
+                cmd.Parameters["@p"].Value = cruises[x].ID;
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cruises[x].Duration = int.Parse(reader.GetString(0));
+                }
+                reader.Close();
             }
+            connection.Close();
+        }
+
+        public void storeShip()
+        {
+            string query = "select Ship_Name from Ships s join Cruises c on s.Ship_id=c.Ship_id where c.Cruise_id=@p";
+            connection = dbc.connect(connection);
+            fillCMD(query, connection);
+            for (int x = 0; x < cruises.Count(); x++)
+            {
+                cmd.Parameters["@p"].Value = cruises[x].ID;
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cruises[x].Ship = reader.GetString(0);
+                }
+                reader.Close();
+            }
+            connection.Close();
+        }
+
+        public void storeNamePrice()
+        {
+            //MessageBox.Show("In storeNamePrice");
+            string query = "select Cruise_Name,Cruise_Price from Cruises where Cruise_id=@p";
+            connection = dbc.connect(connection);
+            fillCMD(query, connection);
+            for (int x = 0; x < cruises.Count(); x++)
+            {
+                cmd.Parameters["@p"].Value = cruises[x].ID;
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cruises[x].Name = reader.GetString(0);
+                    cruises[x].Price = double.Parse(reader.GetString(1));
+                }
+                reader.Close();
+            }
+            /*foreach (var c in cruises)
+            {
+                MessageBox.Show("ID:"+c.ID.ToString()+"Name"+c.Name+"Price"+c.Price.ToString());
+            }*/
+            connection.Close();
+        }
+
+        public void storeID(string query)
+        {
             connection = dbc.connect(connection);
             fillCMD(query, connection);
             MySqlDataReader reader = cmd.ExecuteReader();
-            cruises = new List<Cruise>();
             while (reader.Read())
             {
                 cruises.Add(
                     new Cruise
                     {
-                        ID = int.Parse(reader.GetString(0)),
-                        Name = reader.GetString(1),
-                        Ship = reader.GetString(2),
-                        Duration = int.Parse(reader.GetString(3)),
-                        Price = Double.Parse(reader.GetString(4))
+                        ID = int.Parse(reader.GetString(0))
                     }
                 );
             }
             reader.Close();
-            tempId = new List<int>();
-            for(int x =0;x< cruises.Count(); x++)
-            {
-                tempId.Add(cruises[x].ID);
-            }
-            MessageBox.Show(string.Join(",",tempId));
+            connection.Close();
         }
 
         public void executeQuery(string query)
@@ -124,7 +183,7 @@ namespace ClientServerProject
 
         private void btnDept_Click(object sender, EventArgs e)
         {
-            string query = "select distinct Port_Name as 'Departure' from Port p inner join Stops s on p.Port_id=s.Port_id where Stop_SequenceNumber = '1'";
+            string query = "select Port_Name as 'Departure' from Port p join Stops s on p.Port_id=s.Port_id where Stop_SequenceNumber = '1'";
             //clear gridview
             dGV1.DataSource = null;
             executeQuery(query);
@@ -132,7 +191,7 @@ namespace ClientServerProject
 
         private void btnDest_Click(object sender, EventArgs e)
         {
-            string query = "select distinct Port_Name as 'Destination' from Port p inner join (select Route_Number,Port_id,Max(Stop_SequenceNumber) from Stops group by Route_Number) as e on p.Port_id=e.Port_id";
+            string query = "select Port_Name from Port p join (select * from Stops s join (select Route_Number as rn,Max(Stop_SequenceNumber) as ss from Stops group by rn) as eo where s.Route_Number=eo.rn and s.Stop_SequenceNumber=eo.ss) as et on p.Port_id=et.Port_id";
             //clear gridview
             dGV1.DataSource = null;
             executeQuery(query);
@@ -161,22 +220,26 @@ namespace ClientServerProject
             if (e.RowIndex != -1 && e.ColumnIndex != -1)
             {
                 int colIndex = dGV1.CurrentCell.ColumnIndex;
-                string longfilter = dGV1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                string longfilter = dGV1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Trim();
                 string colName = dGV1.Columns[colIndex].Name;
-                string filter = longfilter.Split(' ').First();
+                string filter = longfilter.Split(' ').First().Trim();
                 if (colName == "Start")
                 {
-                    criteria = " where Cruise_Start_Date >= '" + filter + "'";
+                    criteria = "select Cruise_id from Cruises where Cruise_Start_Date>=@start";
+                    cmd.Parameters["@start"].Value=filter;
                 }else if(colName == "Duration")
                 {
-                    criteria = " where Route_Duration = '" + filter + "'";
+                    criteria = "select Cruise_id from Cruises c join Routes r on c.Route_id=r.Route_Number where r.Route_Duration=@duration";
+                    cmd.Parameters["@duration"].Value = longfilter;
                 }
                 else if(colName == "Departure")
                 {
-                    criteria = " where Port_Name = '" + filter + "'";
-                }else if(colName == "Destination")
+                    criteria = "select Cruise_id from Cruises c join Stops s on c.Route_id=s.Route_number where s.Port_id=(select Port_id from Port where Port_Name=@departure) and s.Stop_SequenceNumber='1'";
+                    cmd.Parameters["@departure"].Value = longfilter;
+                } else if(colName == "Destination")
                 {
-                    criteria = " where Port_Name = '" + filter + "'";
+                    criteria = "select Cruise_id from Cruises c join (select * from Stops s join (select Route_Number as rn,Max(Stop_SequenceNumber) as ss from Stops group by rn) as eo where s.Route_Number=eo.rn and s.Stop_SequenceNumber=eo.ss) as et where c.Route_id=et.rn and et.Port_id=(select Port_id from Port where Port_Name=@destination)";
+                    cmd.Parameters["@destination"].Value = longfilter;
                 }
             }
         }

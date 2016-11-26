@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.btnDept = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDate = new System.Windows.Forms.Button();
@@ -38,42 +35,8 @@
             this.btnOnBoard = new System.Windows.Forms.Button();
             this.dGV1 = new System.Windows.Forms.DataGridView();
             this.btnDest = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(195, 340);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(157, 54);
-            this.groupBox1.TabIndex = 19;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Order By";
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(82, 20);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(46, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Ship";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(22, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(49, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Price";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // btnDept
             // 
@@ -87,7 +50,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(407, 357);
+            this.btnSearch.Location = new System.Drawing.Point(312, 343);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 18;
@@ -117,7 +80,7 @@
             // 
             // btnOnBoard
             // 
-            this.btnOnBoard.Location = new System.Drawing.Point(260, 435);
+            this.btnOnBoard.Location = new System.Drawing.Point(260, 403);
             this.btnOnBoard.Name = "btnOnBoard";
             this.btnOnBoard.Size = new System.Drawing.Size(177, 29);
             this.btnOnBoard.TabIndex = 20;
@@ -155,7 +118,6 @@
             this.Controls.Add(this.btnDest);
             this.Controls.Add(this.dGV1);
             this.Controls.Add(this.btnOnBoard);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDept);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDate);
@@ -163,17 +125,12 @@
             this.Name = "PlanSearch";
             this.Size = new System.Drawing.Size(699, 515);
             this.Load += new System.EventHandler(this.PlanSearch_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button btnDept;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnDate;
