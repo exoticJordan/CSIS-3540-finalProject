@@ -20,10 +20,9 @@ namespace ClientServerProject
         PlanSearchResult plansearchresult;
         int cruiseid;
         double roomprice;
-        public PlanRoomNumber(Plan p, PlanSearchResult psr, int i, double d, MySqlConnection c)
+        public PlanRoomNumber(Plan p, PlanSearchResult psr, int i, double d)
         {
             InitializeComponent();
-            connection = c;
             plan = p;
             plansearchresult = psr;
             cruiseid = i;

@@ -14,7 +14,6 @@ namespace ClientServerProject
     public partial class PlanSearchResult : UserControl
     {
         Plan plan;
-        MySqlConnection connection;
         PlanSearch plansearch;
         List<Cruise> cruises;
         int index;
@@ -34,9 +33,10 @@ namespace ClientServerProject
         private void PlanSearchResult_Load(object sender, EventArgs e)
         {
             lblName.Text = cruises[index].Name;
+            lblItinary.Text = string.Join(", ", cruises[index].Itinary.ToArray());
             lblShip.Text = cruises[index].Ship;
             lblDuration.Text = cruises[index].Duration.ToString();
-            lblPrice.Text = (cruises[index].Price).ToString();
+            lblPrice.Text = cruises[index].Price.ToString();
 
         }
 
@@ -53,7 +53,7 @@ namespace ClientServerProject
 
         public void openBook()
         {
-            PlanRoomNumber prn = new PlanRoomNumber(plan, this, cruises[index].ID, cruises[index].Price, connection);
+            PlanRoomNumber prn = new PlanRoomNumber(plan, this, cruises[index].ID, cruises[index].Price);
             plan.Controls.Add(prn);
             this.Visible = false;
         }
