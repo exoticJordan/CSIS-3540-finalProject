@@ -251,7 +251,7 @@
             this.listViewCheck.Size = new System.Drawing.Size(325, 400);
             this.listViewCheck.TabIndex = 37;
             this.listViewCheck.UseCompatibleStateImageBehavior = false;
-            this.listViewCheck.View = System.Windows.Forms.View.List;
+            this.listViewCheck.View = System.Windows.Forms.View.Details;
             // 
             // btnDel
             // 

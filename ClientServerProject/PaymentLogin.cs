@@ -30,8 +30,7 @@ namespace ClientServerProject
 		    const string db = "f2016_s1_user20";
 		    const string id = "f2016_s1_user20";
 		    const string pass = "f2016_s1_user20";
-			//const string port = "";
-
+			
 			const string connectionString = "SERVER=" + server + ";DATABASE=" + db + ";UID=" + id + ";PASSWORD=" + pass + ";";
 			_connection = new MySqlConnection(connectionString);
 
@@ -90,6 +89,7 @@ namespace ClientServerProject
 					    if (!int.TryParse(txtUserPassword.Text, out temp1))
 					    {
 						    var validPass = txtUserPassword.Text;
+                            
 						    var temp2 = DbValidate(validRoomNum, validPass);
 						    var pairValid = bool.Parse(temp2[0]);
 						    if (!pairValid)
@@ -123,20 +123,23 @@ namespace ClientServerProject
 	    {
 		    string[] retVal = {bool.FalseString, "", ""};
 
+            var fname = roomPass.Substring(3, roomPass.Length);
+
 		    var query1 =
 				"SELECT DISTINCT B.Room_Number AS RNUM " +
 				"FROM Rooms AS R " +
 				"INNER JOIN Booking AS B ON R.Room_Number = B.Room_Number " +
 				"INNER JOIN Travellers AS T ON B.Traveller_ID = T.TVL_ID " +
-				"WHERE B.Room_Number = 514 AND T.TVL_FName = 'John'";
+				"WHERE B.Room_Number = "+ roomNum +" AND T.TVL_FName = '"+ fname +"'";
 		    var query2 =
 			    "";
+            string verifiedRoomNum;
 		    _command.Connection = _connection;
 		    _command.CommandText = query1;
 		    var reader = _command.ExecuteReader();
 		    while (reader.Read())
 		    {
-			    
+                verifiedRoomNum = reader["RNUM"].ToString();
 		    }
 			return retVal;
 	    }
