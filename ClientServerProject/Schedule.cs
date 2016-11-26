@@ -107,11 +107,22 @@ namespace ClientServerProject
 
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string a = lbID.Text;
+           /* string a = lbID.Text;
             string b = comboBox.Text;         
-            string query = "SELECT Shift_StartDate, Shift_StartTime, Shift_Duration, Room_Number "
-                              + "FROM Schedule, Facility WHERE Staff_ID = '" + a + "' and Ship_ID = '" 
-                              + b + "'" + " and Schedule.Facility_ID = Facility.Facility_ID";
+            string query = "SELECT Shift_StartDate, Shift_StartTime, Shift_Duration, Room_Number,Schedule.Ship_ID "
+                              + "FROM Schedule, Facility WHERE Staff_ID = '" + a + "' and Schedule.Ship_ID = Facility.Ship_ID"
+                              + " and Schedule.Facility_ID = Facility.Facility_ID";
+            lbShip.Text = "Ship " + b;
+            showData(query); */
+        }
+
+        private void btnShowSche_Click(object sender, EventArgs e)
+        {
+            string a = lbID.Text;
+            string b = comboBox.Text;
+            string query = "SELECT Shift_StartDate, Shift_StartTime, Shift_Duration, Room_Number,Schedule.Ship_ID "
+                              + "FROM Schedule, Facility WHERE Staff_ID = '" + a + "' and Schedule.Ship_ID = Facility.Ship_ID"
+                              + " and Schedule.Facility_ID = Facility.Facility_ID";
             lbShip.Text = "Ship " + b;
             showData(query);
         }

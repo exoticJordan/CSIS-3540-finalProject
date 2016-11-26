@@ -20,6 +20,8 @@ namespace ClientServerProject
         PlanSearchResult plansearchresult;
         int cruiseid;
         double roomprice;
+        string roomnum;
+        int guestnum;
         public PlanRoomNumber(Plan p, PlanSearchResult psr, int i, double d)
         {
             InitializeComponent();
@@ -31,12 +33,21 @@ namespace ClientServerProject
 
         private void btnRoomNumCont_Click(object sender, EventArgs e)
         {
-            openGuestNumber();
+            if (cbRoomNum.SelectedIndex != -1)
+            {
+                roomnum = cbRoomNum.SelectedItem.ToString();
+                if (cbGuest.SelectedIndex != -1)
+                {
+                    guestnum = int.Parse(cbGuest.SelectedItem.ToString());
+                    openGuestNumber();
+                }
+                else MessageBox.Show("Please choose the number of guests");
+            }else MessageBox.Show("Please choose a room number");
         }
 
         public void openGuestNumber()
         {
-            PlanGuestInformation pgn = new PlanGuestInformation(plan, this);
+            PlanGuestInformation pgn = new PlanGuestInformation(plan, this,roomnum,guestnum);
             plan.Controls.Add(pgn);
             this.Visible = false;
         }
@@ -76,7 +87,7 @@ namespace ClientServerProject
             query += "AND Room_Type =  '" + cbRoomType.Text.Split(' ').First() + "' ";
             query += "AND Room_Location =  '" + cbPosition.Text + "' ";
             query += "AND Room_Deck =  '" + cbDeck.Text + "' ";
-            query += "AND Room_Availability =  'Yes'";
+            query += "AND isOccupied =  '0'";
 
             connection = db.connect(connection);
             fillCMD(query, connection);
