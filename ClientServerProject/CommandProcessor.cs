@@ -13,33 +13,51 @@ namespace ClientServerProject
         MySqlConnection connection;
         MySqlCommand cmd = new MySqlCommand();
 
+        public CommandProcessor()
+        {
+            cmd.Parameters.Add("@fname", MySqlDbType.String);
+            cmd.Parameters.Add("@lname", MySqlDbType.String);
+            cmd.Parameters.Add("@addr", MySqlDbType.String);
+            cmd.Parameters.Add("@phone", MySqlDbType.String);
+            cmd.Parameters.Add("@email", MySqlDbType.String);
+            cmd.Parameters.Add("@dob", MySqlDbType.String);
+            cmd.Parameters.Add("@gender", MySqlDbType.String);
+
+            cmd.Parameters.Add("@cruise", MySqlDbType.String);
+            cmd.Parameters.Add("@tvlr", MySqlDbType.String);
+            cmd.Parameters.Add("@room", MySqlDbType.String);
+        }
+
         public void insertRec(string query,List<string> values)
         {
-            dbc.connect(connection);
+            connection = dbc.connect(connection);
             fillCMD(query, connection);
             if (values.Count == 7)
             {
-                cmd.Parameters.AddWithValue("@fname", values[0]);
-                cmd.Parameters.AddWithValue("@lname", values[1]);
-                cmd.Parameters.AddWithValue("@addr", values[2]);
-                cmd.Parameters.AddWithValue("@phone", values[3]);
-                cmd.Parameters.AddWithValue("@email", values[4]);
-                cmd.Parameters.AddWithValue("@dob", values[5]);
-                cmd.Parameters.AddWithValue("@gender", values[6]);
+                cmd.Parameters["@fname"].Value = values[0];
+                cmd.Parameters["@lname"].Value = values[1];
+                cmd.Parameters["@addr"].Value = values[2];
+                cmd.Parameters["@phone"].Value = values[3];
+                cmd.Parameters["@email"].Value = values[4];
+                cmd.Parameters["@dob"].Value = values[5];
+                cmd.Parameters["@gender"].Value = values[6];
             }else if(values.Count == 3)
             {
-                cmd.Parameters.AddWithValue("@cruise", values[0]);
-                cmd.Parameters.AddWithValue("@tvlr", values[1]);
-                cmd.Parameters.AddWithValue("@room", values[2]);
+                cmd.Parameters["@cruise"].Value = values[0];
+                cmd.Parameters["@tvlr"].Value = values[1];
+                cmd.Parameters["@room"].Value = values[2];
             }
             cmd.ExecuteNonQuery();
+            connection.Close();
         }
+
         public void updateRec(string query, MySqlConnection c)
         {
             connection = c;
             fillCMD(query, connection);
             cmd.ExecuteNonQuery();
         }
+
         public void fillCMD(string s, MySqlConnection c)
         {
             cmd.CommandText = s;

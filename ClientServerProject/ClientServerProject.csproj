@@ -78,6 +78,7 @@
     <Compile Include="Cruise.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Guest.cs" />
     <Compile Include="OnBoard.cs">
       <SubType>UserControl</SubType>
     </Compile>

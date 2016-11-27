@@ -47,7 +47,7 @@ namespace ClientServerProject
 
         public void openGuestNumber()
         {
-            PlanGuestInformation pgn = new PlanGuestInformation(plan, this,roomnum,guestnum);
+            PlanGuestInformation pgn = new PlanGuestInformation(plan, this,cruiseid,roomnum,guestnum);
             plan.Controls.Add(pgn);
             this.Visible = false;
         }

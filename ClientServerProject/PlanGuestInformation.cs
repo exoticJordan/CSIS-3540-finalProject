@@ -15,78 +15,136 @@ namespace ClientServerProject
     {
         Plan plan;
         PlanRoomNumber planguestnumber;
-        int count = 0;
-        List<GuestInfo> guestList = new List<GuestInfo>();
-        List<string> temp = new List<string>();
-        CommandProcessor cp;
+        Guest g;
+        CommandProcessor cp = new CommandProcessor();
+        int cruiseid;
         string roomnum;
         int guestnum;
-        string by, bm, bd;
-        int guestinfonumber;
-        public PlanGuestInformation(Plan p, PlanRoomNumber pgn,string rn,int gn)
+        List<Guest> guests = new List<Guest>();
+        List<string> temp = new List<string>();
+        int guestinfonumber = -1;
+        //int count = 0;
+        //string by, bm, bd;
+        public PlanGuestInformation(Plan p, PlanRoomNumber pgn,int ci,string rn,int gn)
         {
             InitializeComponent();
             plan = p;
             planguestnumber = pgn;
+            cruiseid = ci;
             roomnum = rn;
             guestnum = gn;
         }
 
         private void btnGuestCont_Click(object sender, EventArgs e)
         {
-            /*
-             if statement to decide whether to move to next userControl or refresh same
-            */
-            if (guestList.Count() == guestnum)
+            if (guests.Count() == guestnum)
             {
-                string query = "INSERT INTO Travellers VALUES(@fname, @lname, @addr, @phone, @email, @dob, @gender)";
-                for (int x = 0; x < guestList.Count; x++)
+                //---DO NOT DELETE---
+                //string query = "INSERT INTO Travellers VALUES(null, @fname, @lname, @addr, @phone, @email, @dob, @gender)";
+                for (int x = 0; x < guests.Count(); x++)
                 {
-                    temp.Add(guestList[x].fName);
-                    temp.Add(guestList[x].lName);
-                    temp.Add(guestList[x].addr);
-                    temp.Add(guestList[x].pNum);
-                    temp.Add(guestList[x].email);
-                    temp.Add(guestList[x].dob);
-                    temp.Add(guestList[x].Gen);
-                    cp.insertRec(query, temp);
+                    MessageBox.Show(guests[x].toDOB());
+                    temp.Add(guests[x].fName);
+                    temp.Add(guests[x].lName);
+                    temp.Add(guests[x].addr);
+                    temp.Add(guests[x].pNum);
+                    temp.Add(guests[x].email);
+                    temp.Add(guests[x].toDOB());
+                    temp.Add(guests[x].gender.ToString());
+                    //---DO NOT DELETE---
+                    //cp.insertRec(query, temp);
                 }
-                PlanPayment pp = new PlanPayment(plan, this);
+                PlanPayment pp = new PlanPayment(plan, this,cruiseid,roomnum,temp);
                 plan.Controls.Add(pp);
                 this.Visible = false;
             }
-            else if (guestList.Count() < guestnum) MessageBox.Show("Have you registered all the guests?");
+            else if (guests.Count() < guestnum)
+                MessageBox.Show("Have you registered all the guests?");            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string gender, fn, ln, num, addr, email,dob;
- 
-            if(radFemale.Checked == true)
-                gender = "F";
-            else gender = "M";
-            fn = tbFname.Text;
-            ln = tbLName.Text;
-            num = tbPhoneNum.Text;
-            addr = txtAddr.Text;
-            email = txtEmail.Text;
-            string[] s = datePicker.Value.ToString().Split('/');
-            bm = s[0];
-            bd = s[1];
+            string fn, ln, ad, pn, em;
+            int by, bm, bd;
+            char gd=' ';
+            //set guest gender
+            if (radFemale.Checked == true)
+                gd = 'F';
+            else gd = 'M';
+            //set guest info
+            fn = txtFname.Text;
+            ln = txtLname.Text;
+            ad = txtAddr.Text;
+            pn = txtPhone.Text;
+            em = txtEmail.Text;
+            //set guest dob
+            string[] s = dtPicker.Value.ToString().Split('-');
+            int.TryParse(s[0], out by);
+            int.TryParse(s[1], out bm);
             s = s[2].Split(' ');
-            by = s[0];
-            dob = by.ToString() + bm.ToString() + bd.ToString();
-            if (fn != "" && ln != "" && num != "" && addr != "" && email != "" && dob != "" && gender != "")
+            int.TryParse(s[0], out bd);
+            if (fn != "" && ln != "" && ad != "" && pn != "" && em != "" && by != 0 && bm != 0 && bd != 0 && gd != ' ')
             {
-                if (guestList.Count() < guestnum)
+                if (guestinfonumber == -1)
                 {
-                    guestList.Add(new GuestInfo(fn, ln, addr, num, email, gender, dob));
-                    lbGuest.DataSource = null;
-                    lbGuest.DataSource = guestList;
+                    if (guests.Count() < guestnum)
+                    {
+                        guests.Add(new Guest(fn, ln, ad, pn, em, by, bm, bd, gd));
+                    }
+                    else MessageBox.Show("Max number of guests added");
                 }
-                else MessageBox.Show("Max number of guests added");
+                else
+                {
+                    replaceTime(fn, ln, ad, pn, em, by, bm, bd, gd);
+                }
             }
             else MessageBox.Show("All fields must be filled");
+            lbGuest.DataSource = null;
+            lbGuest.DataSource = guests;
+            cleanTime();
+            guestinfonumber = -1;
+        }
+
+        public void replaceTime(string f,string l,string a,string p,string e,int y,int m,int d,char g)
+        {
+            guests[guestinfonumber].fName = f;
+            guests[guestinfonumber].lName = l;
+            guests[guestinfonumber].addr = a;
+            guests[guestinfonumber].pNum = p;
+            guests[guestinfonumber].email = e;
+            guests[guestinfonumber].bYear = y;
+            guests[guestinfonumber].bMonth = m;
+            guests[guestinfonumber].bDate = d;
+            guests[guestinfonumber].gender = g;
+        }
+
+        public void cleanTime()
+        {
+            txtFname.Text = "";
+            txtLname.Text = "";
+            txtAddr.Text = "";
+            txtPhone.Text = "";
+            txtEmail.Text = "";
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            int yr, mt, dt;
+            int selectedIndex = lbGuest.SelectedIndex;
+            if (selectedIndex == -1) return;
+            txtFname.Text = guests[selectedIndex].fName;
+            txtLname.Text = guests[selectedIndex].lName;
+            txtAddr.Text = guests[selectedIndex].addr;
+            txtPhone.Text = guests[selectedIndex].pNum;
+            txtEmail.Text = guests[selectedIndex].email;
+            if (guests[selectedIndex].gender == 'M')
+                radMale.Checked = true;
+            else radFemale.Checked = true;
+            yr = guests[selectedIndex].bYear;
+            mt = guests[selectedIndex].bMonth;
+            dt = guests[selectedIndex].bDate;
+            dtPicker.Value = new DateTime(yr,mt,dt);
+            guestinfonumber = selectedIndex;
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -95,14 +153,14 @@ namespace ClientServerProject
 
             if (selectedIndex != -1)
             {
-                guestList.RemoveAt(selectedIndex);
+                guests.RemoveAt(selectedIndex);
             }
             else
             {
                 MessageBox.Show("Select something");
             }
             lbGuest.DataSource = null;
-            lbGuest.DataSource = guestList;
+            lbGuest.DataSource = guests;            
         }
 
         private void PlanGuestInformation_Load(object sender, EventArgs e)
@@ -122,63 +180,9 @@ namespace ClientServerProject
         {
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void txtFN_TextChanged(object sender, EventArgs e)
         {
-            if (lbGuest.SelectedIndex == -1)
-                return;
-            int selectedIndex = lbGuest.SelectedIndex;
-                
-            tbFname.Text = guestList[selectedIndex].fName;
-            tbLName.Text = guestList[selectedIndex].lName;
-            int y, m, d;
-            y = int.Parse(guestList[selectedIndex].dob.Substring(0, 4));
-            m = int.Parse(guestList[selectedIndex].dob.Substring(4, 2));
-            d = int.Parse(guestList[selectedIndex].dob.Substring(6, 2));
-            datePicker.Value = new DateTime(y,m,d);
-            tbPhoneNum.Text = guestList[selectedIndex].pNum;
-            txtAddr.Text = guestList[selectedIndex].addr;
-            txtEmail.Text = guestList[selectedIndex].email;
-            if (guestList[selectedIndex].Gen == "M")
-                radMale.Checked = true;
-            else radFemale.Checked = true;
-            guestinfonumber = selectedIndex;
-        }
 
-        private void btnChange_Click(object sender, EventArgs e)
-        {
-            string gender, fn, ln, num, addr, email, dob;
-            if (radFemale.Checked == true)
-                gender = "F";
-            else gender = "M";
-            fn = tbFname.Text;
-            ln = tbLName.Text;
-            num = tbPhoneNum.Text;
-            addr = txtAddr.Text;
-            email = txtEmail.Text;
-            string[] s = datePicker.Value.ToString().Split('/');
-            bm = s[0];
-            bd = s[1];
-            s = s[2].Split(' ');
-            by = s[0];
-            dob = by.ToString() + bm.ToString() + bd.ToString();
-            if (fn != "" && ln != "" && num != "" && addr != "" && email != "" && dob != "" && gender != "")
-            {
-                if (guestList.Count() < guestnum)
-                {
-                    //fn, ln, addr, num, email, gender, dob));
-                    guestList[guestinfonumber].fName = fn;
-                    guestList[guestinfonumber].lName = ln;
-                    guestList[guestinfonumber].addr = addr;
-                    guestList[guestinfonumber].pNum = num;
-                    guestList[guestinfonumber].email = email;
-                    guestList[guestinfonumber].Gen = gender;
-                    guestList[guestinfonumber].dob = dob;
-                    lbGuest.Refresh();
-                    lbGuest.Update();
-                }
-                else MessageBox.Show("Max number of guests added");
-            }
-            else MessageBox.Show("All fields must be filled");
         }
 
         private void tbBirthYear_TextChanged(object sender, EventArgs e)
@@ -191,31 +195,4 @@ namespace ClientServerProject
 
         }
     }
-    class GuestInfo
-    {
-        public string fName { get; set; }
-        public string lName { get; set; }
-        public string pNum { get; set; }
-        public string Gen { get; set; }
-        public string dob { get; set; }
-        public string email { get; set; }
-        public string addr { get; set; }
-
-
-        public GuestInfo(string FirstName,string LastName, string address,string phoneNum,string em,string Gender, string dateob)
-        {
-            fName = FirstName;
-            lName = LastName;
-            addr = address;
-            pNum = phoneNum;
-            email = em;
-            Gen = Gender;
-            dob = dateob;
-
-        }
-
-
-    }
-
-
 }

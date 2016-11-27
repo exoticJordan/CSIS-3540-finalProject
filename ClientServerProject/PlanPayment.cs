@@ -15,16 +15,23 @@ namespace ClientServerProject
         Plan plan;
         PlanSearch ps;
         PlanGuestInformation planguestinfo;
+        int cruiseid;
+        string roomnum;
+        List<string> guestinfo;
         CommandProcessor cp = new CommandProcessor();
-        public PlanPayment(Plan p,PlanGuestInformation pgi)
+        public PlanPayment(Plan p,PlanGuestInformation pgi,int ci,string rn,List<string>gi)
         {
             InitializeComponent();
             plan = p;
             planguestinfo = pgi;
+            cruiseid = ci;
+            roomnum = rn;
+            guestinfo = gi;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string query = "INSERT INTO Booking VALUES(@cruise,@tvlr,@room)";
             /*
             //---1--INSERT TVL_FName, TVL_LName, TVL_Phone_Number, TVL_DOB, TVL_Gender 
             //------into TRAVELLERS table
