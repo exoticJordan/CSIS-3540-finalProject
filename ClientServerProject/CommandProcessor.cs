@@ -26,6 +26,63 @@ namespace ClientServerProject
             cmd.Parameters.Add("@cruise", MySqlDbType.String);
             cmd.Parameters.Add("@tvlr", MySqlDbType.String);
             cmd.Parameters.Add("@room", MySqlDbType.String);
+
+            cmd.Parameters.Add("@ship", MySqlDbType.String);
+        }
+
+        public string getCId(string query,List<string> values)
+        {
+            string cid = null;
+            connection = dbc.connect(connection);
+            fillCMD(query, connection);
+            cmd.Parameters["@fname"].Value = values[0];
+            cmd.Parameters["@lname"].Value = values[1];
+            cmd.Parameters["@addr"].Value = values[2];
+            cmd.Parameters["@phone"].Value = values[3];
+            cmd.Parameters["@email"].Value = values[4];
+            cmd.Parameters["@dob"].Value = values[5];
+            cmd.Parameters["@gender"].Value = values[6];
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                cid = reader.GetString(0);
+            }
+            reader.Close();
+            connection.Close();
+            return cid;
+        }
+
+        public string getSId(string query,int ci)
+        {
+            string sid=null;
+            connection = dbc.connect(connection);
+            fillCMD(query, connection);
+            cmd.Parameters["@cruise"].Value = ci.ToString();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                sid = reader.GetString(0);
+            }
+            reader.Close();
+            connection.Close();
+            return sid;
+        }
+
+        public int getPplInRoom(string query,string ci,string rn)
+        {
+            int pplInRoom=0;
+            connection = dbc.connect(connection);
+            fillCMD(query, connection);
+            cmd.Parameters["@cruise"].Value = ci;
+            cmd.Parameters["@room"].Value = rn;
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                pplInRoom=int.Parse(reader.GetString(0));
+            }
+            reader.Close();
+            connection.Close();
+            return pplInRoom;
         }
 
         public void insertRec(string query,List<string> values)
@@ -51,10 +108,12 @@ namespace ClientServerProject
             connection.Close();
         }
 
-        public void updateRec(string query, MySqlConnection c)
+        public void updateRec(string query, string rn,string si)
         {
-            connection = c;
+            connection = dbc.connect(connection);
             fillCMD(query, connection);
+            cmd.Parameters["@room"].Value = rn;
+            cmd.Parameters["@ship"].Value = si;
             cmd.ExecuteNonQuery();
         }
 

@@ -21,7 +21,6 @@ namespace ClientServerProject
         string roomnum;
         int guestnum;
         List<Guest> guests = new List<Guest>();
-        List<string> temp = new List<string>();
         int guestinfonumber = -1;
         //int count = 0;
         //string by, bm, bd;
@@ -39,22 +38,7 @@ namespace ClientServerProject
         {
             if (guests.Count() == guestnum)
             {
-                //---DO NOT DELETE---
-                //string query = "INSERT INTO Travellers VALUES(null, @fname, @lname, @addr, @phone, @email, @dob, @gender)";
-                for (int x = 0; x < guests.Count(); x++)
-                {
-                    MessageBox.Show(guests[x].toDOB());
-                    temp.Add(guests[x].fName);
-                    temp.Add(guests[x].lName);
-                    temp.Add(guests[x].addr);
-                    temp.Add(guests[x].pNum);
-                    temp.Add(guests[x].email);
-                    temp.Add(guests[x].toDOB());
-                    temp.Add(guests[x].gender.ToString());
-                    //---DO NOT DELETE---
-                    //cp.insertRec(query, temp);
-                }
-                PlanPayment pp = new PlanPayment(plan, this,cruiseid,roomnum,temp);
+                PlanPayment pp = new PlanPayment(plan, this,cruiseid,roomnum,guests);
                 plan.Controls.Add(pp);
                 this.Visible = false;
             }

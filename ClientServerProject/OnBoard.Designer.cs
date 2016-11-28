@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnEmLog = new System.Windows.Forms.Button();
             this.btnOBBack = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbTime = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnEmLog
             // 
-            this.btnEmLog.Location = new System.Drawing.Point(530, 280);
-            this.btnEmLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEmLog.Location = new System.Drawing.Point(172, 198);
             this.btnEmLog.Name = "btnEmLog";
-            this.btnEmLog.Size = new System.Drawing.Size(171, 32);
+            this.btnEmLog.Size = new System.Drawing.Size(114, 21);
             this.btnEmLog.TabIndex = 0;
             this.btnEmLog.Text = "EmployeeLogin";
             this.btnEmLog.UseVisualStyleBackColor = true;
@@ -47,44 +47,39 @@
             // 
             // btnOBBack
             // 
-            this.btnOBBack.Location = new System.Drawing.Point(573, 320);
-            this.btnOBBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOBBack.Location = new System.Drawing.Point(190, 225);
             this.btnOBBack.Name = "btnOBBack";
-            this.btnOBBack.Size = new System.Drawing.Size(112, 32);
+            this.btnOBBack.Size = new System.Drawing.Size(75, 21);
             this.btnOBBack.TabIndex = 1;
             this.btnOBBack.Text = "Back";
             this.btnOBBack.UseVisualStyleBackColor = true;
             this.btnOBBack.Click += new System.EventHandler(this.btnOBBack_Click);
             // 
-            // label1
+            // lbTime
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 18);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Weather";
+            this.lbTime.AutoSize = true;
+            this.lbTime.Font = new System.Drawing.Font("Showcard Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTime.Location = new System.Drawing.Point(98, 84);
+            this.lbTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTime.Name = "lbTime";
+            this.lbTime.Size = new System.Drawing.Size(0, 30);
+            this.lbTime.TabIndex = 3;
             // 
-            // label2
+            // timer1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(92, 98);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 18);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Date";
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // OnBoard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbTime);
             this.Controls.Add(this.btnOBBack);
             this.Controls.Add(this.btnEmLog);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OnBoard";
-            this.Size = new System.Drawing.Size(705, 415);
+            this.Size = new System.Drawing.Size(470, 277);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,7 +89,7 @@
 
         private System.Windows.Forms.Button btnEmLog;
         private System.Windows.Forms.Button btnOBBack;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbTime;
+        private System.Windows.Forms.Timer timer1;
     }
 }

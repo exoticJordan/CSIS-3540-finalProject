@@ -139,22 +139,22 @@ namespace ClientServerProject
 
         public void loadGuests()
         {
-            string query = "SELECT COUNT(CASE WHEN Room_Number = '";
-            query += cbRoomNum.Text;
-            query += "' THEN 1 ELSE NULL END ) FROM(SELECT Room_Number FROM Booking WHERE Cruise_ID = '";
+            string query = "select Count(Traveller_Id) from Booking where Cruise_ID='";
             query += cruiseid;
-            query += "') AS a";
+            query += "' and Room_Number='";
+            query += cbRoomNum.Text;
+            query += "'";
 
             fillCMD(query, connection);
             MySqlDataReader reader = cmd.ExecuteReader();
-
+            //booked is how many ppl r in the room
             int booked = 0;
             while (reader.Read())
             {
                 booked = int.Parse(reader.GetString(0));
             }
             reader.Close();
-
+            //available is how many spot room have left
             int available = 4 - booked;
             for (int x = 1; x <= available; x++)
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClientServerProject
 {
-    class Guest
+    public class Guest
     {
         public string fName { get; set; }
         public string lName { get; set; }
