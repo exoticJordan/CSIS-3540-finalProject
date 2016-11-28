@@ -19,8 +19,6 @@ namespace ClientServerProject
             plan = p;
         }
 
-
-
         private void btnEmLog_Click(object sender, EventArgs e)
         {
             EmployeeLogin emlog= new EmployeeLogin(plan);
@@ -34,6 +32,17 @@ namespace ClientServerProject
             plan.Controls.Remove(this);
             plan.Controls.Add(ps);
           
+        }
+
+        private void Onboard_Load(object sender, EventArgs e)
+        {
+            timer1.Interval = 500;
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lbTime.Text = DateTime.Now.ToString();
         }
     }
 }
