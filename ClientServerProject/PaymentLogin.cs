@@ -121,6 +121,7 @@ namespace ClientServerProject
 
 	    private string[] DbValidate(int roomNum, string roomPass)
 	    {
+			//value sets: {True/False, Guest First Name, Ship ID}
 		    string[] retVal = {bool.FalseString, "", ""};
 
             var fname = roomPass.Substring(3, roomPass.Length);
@@ -132,7 +133,15 @@ namespace ClientServerProject
 				"INNER JOIN Travellers AS T ON B.Traveller_ID = T.TVL_ID " +
 				"WHERE B.Room_Number = "+ roomNum +" AND T.TVL_FName = '"+ fname +"'";
 		    var query2 =
-			    "";
+				"SELECT DISTINCT P.Room_Num AS Room, P.Purchase_Date AS `Date`, " +
+				"P.Purchase_Time AS `TIME`, P.TotalCost AS `COST(USD)`, " +
+				"F.Facility_Name AS Location, S.Ship_Name AS Ship, C.Cruise_Name AS Cruise " +
+				"FROM Purchases AS P " +
+				"INNER JOIN Rooms AS R ON R.Room_Number = P.Room_Num " +
+				"INNER JOIN Facility AS F ON F.Facility_ID = P.Facility_ID " +
+				"INNER JOIN Cruises AS C ON C.Cruise_id = P.Cruise_ID " +
+				"INNER JOIN Ships AS S ON S.Ship_id = P.Ship_ID " +
+				"WHERE P.Room_Num = 514 AND P.Ship_ID = 1 AND P.Cruise_ID = 2";
             string verifiedRoomNum;
 		    _command.Connection = _connection;
 		    _command.CommandText = query1;
@@ -140,6 +149,11 @@ namespace ClientServerProject
 		    while (reader.Read())
 		    {
                 verifiedRoomNum = reader["RNUM"].ToString();
+			    if (int.Parse(verifiedRoomNum) == roomNum)
+			    {
+				    reader.Close();
+				    retVal = new[] {bool.TrueString,};
+			    }
 		    }
 			return retVal;
 	    }
