@@ -17,13 +17,14 @@ namespace ClientServerProject
         PlanGuestInformation planguestinfo;
         int cruiseid;
         string roomnum;
+        double price;
         List<Guest> guestinfo;
         List<string> temp = new List<string>();
         List<string> custId = new List<string>();
         CommandProcessor cp = new CommandProcessor();
         int pplInRoom;
         string shipid;
-        public PlanPayment(Plan p,PlanGuestInformation pgi,int ci,string rn,List<Guest>gi)
+        public PlanPayment(Plan p,PlanGuestInformation pgi,int ci,string rn,List<Guest>gi,double pr)
         {
             InitializeComponent();
             plan = p;
@@ -31,6 +32,7 @@ namespace ClientServerProject
             cruiseid = ci;
             roomnum = rn;
             guestinfo = gi;
+            price = pr;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -78,6 +80,11 @@ namespace ClientServerProject
             PlanSearch ps = new PlanSearch(plan);
             plan.Controls.Add(ps);
             plan.Controls.Remove(this);
+        }
+
+        private void PlanPayment_Load(object sender, EventArgs e)
+        {
+            label1.Text = "Total: CAD$" + price;
         }
     }
 }

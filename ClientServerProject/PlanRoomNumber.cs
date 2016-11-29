@@ -20,6 +20,7 @@ namespace ClientServerProject
         PlanSearchResult plansearchresult;
         int cruiseid;
         double roomprice;
+        double price;
         string roomnum;
         int guestnum;
         public PlanRoomNumber(Plan p, PlanSearchResult psr, int i, double d)
@@ -39,6 +40,22 @@ namespace ClientServerProject
                 if (cbGuest.SelectedIndex != -1)
                 {
                     guestnum = int.Parse(cbGuest.SelectedItem.ToString());
+                    int i = cbRoomType.SelectedIndex;
+                    switch (i)
+                    {
+                        case 0:
+                            price = roomprice;
+                            price = price * guestnum;
+                            break;
+                        case 1:
+                            price = roomprice + 200;
+                            price = price * guestnum;
+                            break;
+                        case 2:
+                            price = roomprice + 400;
+                            price = price * guestnum;
+                            break;
+                    }
                     openGuestNumber();
                 }
                 else MessageBox.Show("Please choose the number of guests");
@@ -47,7 +64,7 @@ namespace ClientServerProject
 
         public void openGuestNumber()
         {
-            PlanGuestInformation pgn = new PlanGuestInformation(plan, this,cruiseid,roomnum,guestnum);
+            PlanGuestInformation pgn = new PlanGuestInformation(plan, this,cruiseid,roomnum,guestnum,price);
             plan.Controls.Add(pgn);
             this.Visible = false;
         }

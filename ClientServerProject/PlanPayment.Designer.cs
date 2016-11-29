@@ -190,6 +190,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "PlanPayment";
             this.Size = new System.Drawing.Size(699, 515);
+            this.Load += new System.EventHandler(this.PlanPayment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
