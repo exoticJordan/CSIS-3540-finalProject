@@ -26,11 +26,12 @@ namespace ClientServerProject
         public Bar(Plan p)
         {
             InitializeComponent();
-            plan = p;
-            cmd = new MySqlCommand();
+            lbWarning.Text = "";
+            plan = p;            
             string connectionString;
             connectionString = "SERVER=ec2-54-226-9-216.compute-1.amazonaws.com;"
                 + " DATABASE=f2016_s1_user20; UID=f2016_s1_user20; PASSWORD=f2016_s1_user20;";
+            cmd = new MySqlCommand();
             connection = new MySqlConnection(connectionString);
             connection.Open();
             if (connection != null)
@@ -213,15 +214,70 @@ namespace ClientServerProject
 
         private void btnGSCheck_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Checkout \nDo you want to continue??", "Message", MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.Yes)
+            if (string.IsNullOrWhiteSpace(txtRoom.Text) || cbShip.SelectedItem == null || cbCruise.SelectedItem == null || listView1.Items.Count == 0)
             {
-              
+
+                if (String.Compare(txtRoom.Text.TrimStart(), "630") > 0 || String.Compare(txtRoom.Text.TrimStart(), "101") < 0)
+                {
+                    lbWarning.Text = "Please choose a valid room!!";
+                }
+                else
+                lbWarning.Text = "Ship_id, Cuise_id, Room and Order cannot be empty!!";
             }
+
             else
             {
-                return;
-            }
+                lbWarning.Text = "";
+                DialogResult dialog = MessageBox.Show("Checkout \nDo you want to continue??", "CheckOut", MessageBoxButtons.YesNo);
+                if (dialog == DialogResult.Yes)
+                {
+                    string query = "SELECT max(Purchase_Number) as number FROM Purchases";
+                    
+                    if (connection != null)
+                    {
+                        connection.Open();
+                        setupSqlCommand(query);
+                        MySqlDataReader dataReader = cmd.ExecuteReader();
+                        double PN = 0;
+                        while (dataReader.Read())
+                        {
+                            PN = Double.Parse(dataReader["number"].ToString()) + 1;
+                        }                    
+                        dataReader.Close();
+                        string shipid = cbShip.Text;
+                        string cruiseid = cbCruise.Text;
+                        string roomnum = txtRoom.Text.TrimStart();
+                        string facility = "2";
+                        string purchaseNum = PN.ToString();
+
+                        query = "INSERT INTO `Purchases`(`Room_Num`, `Purchase_Date`, `Purchase_Time`, `Facility_ID`, `Purchase_Number`, `TotalCost`, `Ship_ID`,`Cruise_ID`)"
+                                      +   " VALUES ('"+ roomnum +"','" + DateTime.Now.ToString("yyyy-MM-dd")
+                                      + "','" + DateTime.Now.ToString("HH:mm:ss", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "','"
+                                      + facility + "','"
+                                      + purchaseNum + "','"
+                                      + result.Text.Substring(result.Text.LastIndexOf("$") + 1) + "','"
+                                      + shipid + "','"
+                                      + cruiseid + "')";
+                        int v = 0;
+                        setupSqlCommand(query);
+                        v = cmd.ExecuteNonQuery();   
+                        connection.Close();
+                        Bartender b = new Bartender(plan);
+                        plan.Controls.Remove(this);
+                        plan.Controls.Add(b);
+                        ((Button)b.Controls["btnOrder"]).Text = "Bar Order";
+                        ((Label)b.Controls["lbName"]).Text = lbName.Text;
+                        ((Label)b.Controls["lbTitle"]).Text = "Bartender";
+                        ((Button)b.Controls["btnS"]).Text = "Bartender Schedule";
+                        ((Label)b.Controls["lbID"]).Text = lbID.Text; 
+                    }
+                    else { connection.Close(); MessageBox.Show("Try to reconnect database server"); }              
+                }
+                else
+                {
+                        return;
+                }
+           } 
         }
     }
 }
