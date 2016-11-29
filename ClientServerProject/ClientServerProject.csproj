@@ -85,6 +85,12 @@
     <Compile Include="OnBoard.Designer.cs">
       <DependentUpon>OnBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="PaymentInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PaymentInfo.Designer.cs">
+      <DependentUpon>PaymentInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="PaymentLogin.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OnBoard.resx">
       <DependentUpon>OnBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentInfo.resx">
+      <DependentUpon>PaymentInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PaymentLogin.resx">
       <DependentUpon>PaymentLogin.cs</DependentUpon>
