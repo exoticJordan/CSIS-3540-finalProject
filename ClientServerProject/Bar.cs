@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -14,175 +9,175 @@ namespace ClientServerProject
 
     public partial class Bar : UserControl
     {
-
-        MySqlConnection connection;
-        MySqlCommand cmd;
-        private List<Product> Wine;
-        private List<Product> Beer;
-        private List<Product> Cocktails;
-        private List<Product> JuicePop;
-        private double totalSum = 0;
-        Plan plan;
+	    private MySqlConnection _connection;
+        private MySqlCommand _cmd;
+        private List<Product> _wine;
+        private List<Product> _beer;
+        private List<Product> _cocktails;
+        private List<Product> _juicePop;
+        private double _totalSum;
+	    private Plan _plan;
         public Bar(Plan p)
         {
             InitializeComponent();
             lbWarning.Text = "";
-            plan = p;            
-            string connectionString;
-            connectionString = "SERVER=ec2-54-226-9-216.compute-1.amazonaws.com;"
-                + " DATABASE=f2016_s1_user20; UID=f2016_s1_user20; PASSWORD=f2016_s1_user20;";
-            cmd = new MySqlCommand();
-            connection = new MySqlConnection(connectionString);
-            connection.Open();
-            if (connection != null)
+            _plan = p;
+	        const string connectionString = "SERVER=ec2-54-226-9-216.compute-1.amazonaws.com;"
+	                                        + " DATABASE=f2016_s1_user20; UID=f2016_s1_user20; PASSWORD=f2016_s1_user20;";
+            _cmd = new MySqlCommand();
+            _connection = new MySqlConnection(connectionString);
+            _connection.Open();
+            if (_connection != null)
             {
-                showProduct("Wine");
-                showProduct("Beer");
-                showProduct("Cocktails");
-                showProduct("JuicePop");
+                ShowProduct("Wine");
+                ShowProduct("Beer");
+                ShowProduct("Cocktails");
+                ShowProduct("JuicePop");
             }
-            else { connection.Close(); MessageBox.Show("Try to reconnect database server"); }
-            connection.Close();
+            else { _connection.Close(); MessageBox.Show(@"Try to reconnect database server"); }
+            _connection.Close();
         }
 
 
 
-        private void setupSqlCommand(String query)
+        private void SetupSqlCommand(string query)
         {
-            cmd.Connection = connection;
-            cmd.CommandText = query;
+            _cmd.Connection = _connection;
+            _cmd.CommandText = query;
         }
 
-        private void gridViewCellMouseClick(DataGridView view, DataGridViewCellMouseEventArgs e, List<Product> list)
+        private void GridViewCellMouseClick(DataGridView view, DataGridViewCellMouseEventArgs e, List<Product> list)
         {
-            int row = e.RowIndex;
-            double singlePrice;
-            string name;
-            name = view.Rows[row].Cells[0].Value.ToString();
-            foreach (Product pd in list)
+            var row = e.RowIndex;
+	        var name = view.Rows[row].Cells[0].Value.ToString();
+            foreach (var pd in list)
             {
                 if (pd.ProductName == name)
                 {
                     listView1.Items.Add(pd.ProductName + "      " + pd.ProductPrice);
-                    Double.TryParse(pd.ProductPrice.Substring(1), out singlePrice);
-                    totalSum += singlePrice;
-                    result.Text = "$" + totalSum.ToString();
+	                double singlePrice;
+	                double.TryParse(pd.ProductPrice.Substring(1), out singlePrice);
+                    _totalSum += singlePrice;
+                    result.Text = @"$" + _totalSum;
                 }
             }
         }
 
-        private void showProduct(String tabName)
+        private void ShowProduct(string tabName)
         {
             Product pr;
             if (tabName == "Wine")
             {
-                Wine = new List<Product>();
-                string query = "SELECT Prod_Name,Prod_Price FROM Products WHERE Prod_Type='Wine' ORDER BY Prod_Price*1 DESC";
-                setupSqlCommand(query);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
+                _wine = new List<Product>();
+                const string query = "SELECT Prod_Name,Prod_Price FROM Products WHERE Prod_Type='Wine' ORDER BY Prod_Price*1 DESC";
+                SetupSqlCommand(query);
+                var dataReader = _cmd.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    pr = new Product();
-                    pr.ProductName = dataReader["Prod_Name"].ToString();
-                    pr.ProductPrice = "$" + dataReader["Prod_Price"].ToString();
-                    Wine.Add(pr);
+	                pr = new Product
+	                {
+		                ProductName = dataReader["Prod_Name"].ToString(),
+		                ProductPrice = "$" + dataReader["Prod_Price"]
+	                };
+	                _wine.Add(pr);
                 }
-                GVWine.DataSource = Wine;
+                GVWine.DataSource = _wine;
                 dataReader.Close();
             }
 
             if (tabName == "Beer")
             {
-                Beer = new List<Product>();
-                string query = "SELECT Prod_Name,Prod_Price FROM Products WHERE Prod_Type='Beer' ORDER BY Prod_Price*1 DESC";
-                setupSqlCommand(query);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
+                _beer = new List<Product>();
+                const string query = "SELECT Prod_Name,Prod_Price FROM Products WHERE Prod_Type='Beer' ORDER BY Prod_Price*1 DESC";
+                SetupSqlCommand(query);
+                var dataReader = _cmd.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    pr = new Product();
-                    pr.ProductName = dataReader["Prod_Name"].ToString();
-                    pr.ProductPrice = "$" + dataReader["Prod_Price"].ToString();
-                    Beer.Add(pr);
+	                pr = new Product
+	                {
+		                ProductName = dataReader["Prod_Name"].ToString(),
+		                ProductPrice = "$" + dataReader["Prod_Price"]
+	                };
+	                _beer.Add(pr);
                 }
-                GVBeer.DataSource = Beer;
+                GVBeer.DataSource = _beer;
                 dataReader.Close();
             }
 
             if (tabName == "Cocktails")
             {
-                Cocktails = new List<Product>();
-                string query = "SELECT Prod_Name,Prod_Price FROM Products WHERE Prod_Type='Cocktail' ORDER BY Prod_Price*1 DESC";
-                setupSqlCommand(query);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
+                _cocktails = new List<Product>();
+                const string query = "SELECT Prod_Name,Prod_Price FROM Products WHERE Prod_Type='Cocktail' ORDER BY Prod_Price*1 DESC";
+                SetupSqlCommand(query);
+                var dataReader = _cmd.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    pr = new Product();
-                    pr.ProductName = dataReader["Prod_Name"].ToString();
-                    pr.ProductPrice = "$" + dataReader["Prod_Price"].ToString();
-                    Cocktails.Add(pr);
+	                pr = new Product
+	                {
+		                ProductName = dataReader["Prod_Name"].ToString(),
+		                ProductPrice = "$" + dataReader["Prod_Price"]
+	                };
+	                _cocktails.Add(pr);
                 }
-                GVCocktail.DataSource = Cocktails;
+                GVCocktail.DataSource = _cocktails;
                 dataReader.Close();
             }
 
             if (tabName == "JuicePop")
             {
-                JuicePop = new List<Product>();
-                string query = "SELECT Prod_Name,Prod_Price FROM Products WHERE Prod_Type='Pop' ORDER BY Prod_Price*1 DESC";
-                setupSqlCommand(query);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
+                _juicePop = new List<Product>();
+                const string query = "SELECT Prod_Name,Prod_Price FROM Products WHERE Prod_Type='Pop' ORDER BY Prod_Price*1 DESC";
+                SetupSqlCommand(query);
+                var dataReader = _cmd.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    pr = new Product();
-                    pr.ProductName = dataReader["Prod_Name"].ToString();
-                    pr.ProductPrice = "$" + dataReader["Prod_Price"].ToString();
-                    JuicePop.Add(pr);
+	                pr = new Product
+	                {
+		                ProductName = dataReader["Prod_Name"].ToString(),
+		                ProductPrice = "$" + dataReader["Prod_Price"]
+	                };
+	                _juicePop.Add(pr);
                 }
-                GVJuice.DataSource = JuicePop;
+                GVJuice.DataSource = _juicePop;
                 dataReader.Close();
             }
         }
 
         private void btnBarB_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("You will empty the checkout list \nAre you sure??", "Warning!!!", MessageBoxButtons.YesNo);
+            var dialog = MessageBox.Show(@"You will empty the checkout list \nAre you sure??", @"Warning!!!", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
-                Bartender b = new Bartender(plan);
-                plan.Controls.Remove(this);
-                plan.Controls.Add(b);
-                ((Button)b.Controls["btnOrder"]).Text = "Bar Order";
+                var b = new Bartender(_plan);
+                _plan.Controls.Remove(this);
+                _plan.Controls.Add(b);
+                ((Button)b.Controls["btnOrder"]).Text = @"Bar Order";
                 ((Label)b.Controls["lbName"]).Text = lbName.Text;
-                ((Label)b.Controls["lbTitle"]).Text = "Bartender";
-                ((Button)b.Controls["btnS"]).Text = "Bartender Schedule";
+                ((Label)b.Controls["lbTitle"]).Text = @"Bartender";
+                ((Button)b.Controls["btnS"]).Text = @"Bartender Schedule";
                 ((Label)b.Controls["lbID"]).Text = lbID.Text;
             }
-            else
-            {
-                return;
-            }
-
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < listView1.Items.Count; i++)
+            for (var i = 0; i < listView1.Items.Count; i++)
             {
                 if (listView1.Items[i].Selected)
                 {
-                    string txt = listView1.Items[i].Text;
+                    var txt = listView1.Items[i].Text;
                     listView1.Items[i].Remove();
-                    double delPrice = 0;
-                    Double.TryParse(txt.Substring(txt.LastIndexOf("$") + 1), out delPrice);
+                    double delPrice;
+                    double.TryParse(txt.Substring(txt.LastIndexOf("$", StringComparison.Ordinal) + 1), out delPrice);
                     if (listView1.Items.Count == 0)
                     {
-                        totalSum = 0;
-                        result.Text = "$" + totalSum.ToString();
+                        _totalSum = 0;
+                        result.Text = @"$" + _totalSum;
                     }
                     else
                     {
-                        totalSum = totalSum - delPrice;
-                        result.Text = "$" + Math.Round(totalSum, 2).ToString();
+                        _totalSum = _totalSum - delPrice;
+                        result.Text = @"$" + Math.Round(_totalSum, 2);
                     }
                 }
             }
@@ -194,22 +189,22 @@ namespace ClientServerProject
 
         private void GVWine_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            gridViewCellMouseClick(GVWine, e, Wine);
+            GridViewCellMouseClick(GVWine, e, _wine);
         }
 
         private void GVBeer_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-            gridViewCellMouseClick(GVBeer, e, Beer);
+            GridViewCellMouseClick(GVBeer, e, _beer);
         }
 
         private void GVCocktail_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            gridViewCellMouseClick(GVCocktail, e, Cocktails);
+            GridViewCellMouseClick(GVCocktail, e, _cocktails);
         }
 
         private void GVJuice_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            gridViewCellMouseClick(GVJuice, e, JuicePop);
+            GridViewCellMouseClick(GVJuice, e, _juicePop);
         }
 
         private void btnGSCheck_Click(object sender, EventArgs e)
@@ -217,67 +212,66 @@ namespace ClientServerProject
             if (string.IsNullOrWhiteSpace(txtRoom.Text) || cbShip.SelectedItem == null || cbCruise.SelectedItem == null || listView1.Items.Count == 0)
             {
 
-                if (String.Compare(txtRoom.Text.TrimStart(), "630") > 0 || String.Compare(txtRoom.Text.TrimStart(), "101") < 0)
+                if (string.CompareOrdinal(txtRoom.Text.TrimStart(), "630") > 0 || string.CompareOrdinal(txtRoom.Text.TrimStart(), "101") < 0)
                 {
-                    lbWarning.Text = "Please choose a valid room!!";
+                    lbWarning.Text = @"Please choose a valid room!!";
                 }
                 else
-                lbWarning.Text = "Ship_id, Cuise_id, Room and Order cannot be empty!!";
+                lbWarning.Text = @"Ship_id, Cuise_id, Room and Order cannot be empty!!";
             }
 
             else
             {
                 lbWarning.Text = "";
-                DialogResult dialog = MessageBox.Show("Checkout \nDo you want to continue??", "CheckOut", MessageBoxButtons.YesNo);
+                var dialog = MessageBox.Show(@"Checkout" + Environment.NewLine+@"Do you want to continue??", @"CheckOut", MessageBoxButtons.YesNo);
                 if (dialog == DialogResult.Yes)
                 {
-                    string query = "SELECT max(Purchase_Number) as number FROM Purchases";
+                    var query = "SELECT max(Purchase_Number) as number FROM Purchases";
                     
-                    if (connection != null)
+                    if (_connection != null)
                     {
-                        connection.Open();
-                        setupSqlCommand(query);
-                        MySqlDataReader dataReader = cmd.ExecuteReader();
-                        double PN = 0;
+                        _connection.Open();
+                        SetupSqlCommand(query);
+                        var dataReader = _cmd.ExecuteReader();
+                        double pn = 0;
                         while (dataReader.Read())
                         {
-                            PN = Double.Parse(dataReader["number"].ToString()) + 1;
+                            pn = double.Parse(dataReader["number"].ToString()) + 1;
                         }                    
                         dataReader.Close();
-                        string shipid = cbShip.Text;
-                        string cruiseid = cbCruise.Text;
-                        string roomnum = txtRoom.Text.TrimStart();
-                        string facility = "2";
-                        string purchaseNum = PN.ToString();
+                        var shipid = cbShip.Text;
+                        var cruiseid = cbCruise.Text;
+                        var roomnum = txtRoom.Text.TrimStart();
+                        const string facility = "2";
+                        var purchaseNum = pn.ToString(CultureInfo.CurrentCulture);
 
                         query = "INSERT INTO `Purchases`(`Room_Num`, `Purchase_Date`, `Purchase_Time`, `Facility_ID`, `Purchase_Number`, `TotalCost`, `Ship_ID`,`Cruise_ID`)"
                                       +   " VALUES ('"+ roomnum +"','" + DateTime.Now.ToString("yyyy-MM-dd")
-                                      + "','" + DateTime.Now.ToString("HH:mm:ss", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "','"
+                                      + "','" + DateTime.Now.ToString("HH:mm:ss", DateTimeFormatInfo.InvariantInfo) + "','"
                                       + facility + "','"
                                       + purchaseNum + "','"
-                                      + result.Text.Substring(result.Text.LastIndexOf("$") + 1) + "','"
+                                      + result.Text.Substring(result.Text.LastIndexOf("$", StringComparison.Ordinal) + 1) + "','"
                                       + shipid + "','"
                                       + cruiseid + "')";
-                        int v = 0;
-                        setupSqlCommand(query);
-                        v = cmd.ExecuteNonQuery();   
-                        connection.Close();
-                        Bartender b = new Bartender(plan);
-                        plan.Controls.Remove(this);
-                        plan.Controls.Add(b);
-                        ((Button)b.Controls["btnOrder"]).Text = "Bar Order";
+	                    SetupSqlCommand(query);
+                        _cmd.ExecuteNonQuery();   
+                        _connection.Close();
+                        var b = new Bartender(_plan);
+                        _plan.Controls.Remove(this);
+                        _plan.Controls.Add(b);
+                        ((Button)b.Controls["btnOrder"]).Text = @"Bar Order";
                         ((Label)b.Controls["lbName"]).Text = lbName.Text;
-                        ((Label)b.Controls["lbTitle"]).Text = "Bartender";
-                        ((Button)b.Controls["btnS"]).Text = "Bartender Schedule";
+                        ((Label)b.Controls["lbTitle"]).Text = @"Bartender";
+                        ((Button)b.Controls["btnS"]).Text = @"Bartender Schedule";
                         ((Label)b.Controls["lbID"]).Text = lbID.Text; 
                     }
-                    else { connection.Close(); MessageBox.Show("Try to reconnect database server"); }              
+                    else
+                    {
+	                    _connection?.Close();
+	                    MessageBox.Show(@"Try to reconnect database server");
+                    }              
                 }
-                else
-                {
-                        return;
-                }
-           } 
+            } 
         }
     }
 }

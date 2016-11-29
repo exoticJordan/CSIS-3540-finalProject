@@ -91,15 +91,15 @@ namespace ClientServerProject
 
         public void replaceTime(string f,string l,string a,string p,string e,int y,int m,int d,char g)
         {
-            guests[guestinfonumber].fName = f;
-            guests[guestinfonumber].lName = l;
-            guests[guestinfonumber].addr = a;
-            guests[guestinfonumber].pNum = p;
-            guests[guestinfonumber].email = e;
-            guests[guestinfonumber].bYear = y;
-            guests[guestinfonumber].bMonth = m;
-            guests[guestinfonumber].bDate = d;
-            guests[guestinfonumber].gender = g;
+            guests[guestinfonumber].FName = f;
+            guests[guestinfonumber].LName = l;
+            guests[guestinfonumber].Addr = a;
+            guests[guestinfonumber].PNum = p;
+            guests[guestinfonumber].Email = e;
+            guests[guestinfonumber].BYear = y;
+            guests[guestinfonumber].BMonth = m;
+            guests[guestinfonumber].BDate = d;
+            guests[guestinfonumber].Gender = g;
         }
 
         public void cleanTime()
@@ -116,17 +116,17 @@ namespace ClientServerProject
             int yr, mt, dt;
             int selectedIndex = lbGuest.SelectedIndex;
             if (selectedIndex == -1) return;
-            txtFname.Text = guests[selectedIndex].fName;
-            txtLname.Text = guests[selectedIndex].lName;
-            txtAddr.Text = guests[selectedIndex].addr;
-            txtPhone.Text = guests[selectedIndex].pNum;
-            txtEmail.Text = guests[selectedIndex].email;
-            if (guests[selectedIndex].gender == 'M')
+            txtFname.Text = guests[selectedIndex].FName;
+            txtLname.Text = guests[selectedIndex].LName;
+            txtAddr.Text = guests[selectedIndex].Addr;
+            txtPhone.Text = guests[selectedIndex].PNum;
+            txtEmail.Text = guests[selectedIndex].Email;
+            if (guests[selectedIndex].Gender == 'M')
                 radMale.Checked = true;
             else radFemale.Checked = true;
-            yr = guests[selectedIndex].bYear;
-            mt = guests[selectedIndex].bMonth;
-            dt = guests[selectedIndex].bDate;
+            yr = guests[selectedIndex].BYear;
+            mt = guests[selectedIndex].BMonth;
+            dt = guests[selectedIndex].BDate;
             dtPicker.Value = new DateTime(yr,mt,dt);
             guestinfonumber = selectedIndex;
         }

@@ -16,12 +16,16 @@ namespace ClientServerProject
     {
 	    private MySqlConnection _connection;
 	    private MySqlCommand _command;
+	    private Plan _plan;
 
         public PaymentLogin()
         {
             InitializeComponent();
 			DbConnect();
 			_command = new MySqlCommand();
+			_plan = new Plan();
+	        //labHint1.Visible = false;
+	        labHint2.Visible = false;
         }
 
 	    private void DbConnect()
@@ -46,35 +50,36 @@ namespace ClientServerProject
 	    {
 		    if (!string.IsNullOrWhiteSpace(txtRoomNum.Text))
 		    {
-			    int temp;
-			    if (!int.TryParse(txtRoomNum.Text, out temp))
+			    int roomNum;
+			    if (!int.TryParse(txtRoomNum.Text, out roomNum))
 			    {
 				    erpPayLog.SetError(txtRoomNum, @"Entered Text is not A Number");
-				    if (temp < 101 || temp > 630)
+
+				    if (roomNum < 101 || roomNum > 630)
 				    {
 					    erpPayLog.SetError(txtRoomNum, @"Room Number does not Exist! \n Please Check your Records and Try Again.");
 				    }
-				    if (temp > 130 && temp < 201)
+				    if (roomNum > 130 && roomNum < 201)
 				    {
 					    erpPayLog.SetError(txtRoomNum, @"Room Number does not Exist! \n Please Check your Records and Try Again.");
 				    }
-				    if (temp > 230 && temp < 301)
+				    if (roomNum > 230 && roomNum < 301)
 				    {
 					    erpPayLog.SetError(txtRoomNum, @"Room Number does not Exist! \n Please Check your Records and Try Again.");
 				    }
-				    if (temp > 330 && temp < 401)
+				    if (roomNum > 330 && roomNum < 401)
 				    {
 					    erpPayLog.SetError(txtRoomNum, @"Room Number does not Exist! \n Please Check your Records and Try Again.");
 				    }
-				    if (temp > 430 && temp < 501)
+				    if (roomNum > 430 && roomNum < 501)
 				    {
 					    erpPayLog.SetError(txtRoomNum, @"Room Number does not Exist! \n Please Check your Records and Try Again.");
 				    }
-				    if (temp > 530 && temp < 601)
+				    if (roomNum > 530 && roomNum < 601)
 				    {
 					    erpPayLog.SetError(txtRoomNum, @"Room Number does not Exist! \n Please Check your Records and Try Again.");
 				    }
-				    if (temp == 110 || temp == 220 || temp == 330 || temp == 410)
+				    if (roomNum == 110 || roomNum == 220 || roomNum == 330 || roomNum == 410)
 				    {
 					    erpPayLog.SetError(txtRoomNum, @"That is a facility number, are you sure you live there?");
 				    }
@@ -90,8 +95,8 @@ namespace ClientServerProject
 					    {
 						    var validPass = txtUserPassword.Text;
                             
-						    var temp2 = DbValidate(validRoomNum, validPass);
-						    var pairValid = bool.Parse(temp2[0]);
+						    var vals = DbValidate(validRoomNum, validPass);
+						    var pairValid = Convert.ToBoolean(vals[0]);
 						    if (!pairValid)
 						    {
 							    erpPayLog.SetError(btnUserLog, @"Login Information is incorrect! Please try again.");
@@ -99,7 +104,7 @@ namespace ClientServerProject
 						    else
 						    {
 							    erpPayLog.SetError(btnUserLog, @"");
-							    GotoPayment(int.Parse(temp2[1]), temp2[2]);
+							    GotoPayment(vals[1],vals[2],vals[3]);
 						    }
 					    }
 					    else
@@ -119,19 +124,23 @@ namespace ClientServerProject
 		    }
 	    }
 
-	    private string[] DbValidate(int roomNum, string roomPass)
+	    private int[] DbValidate(int roomNum, string roomPass)
 	    {
-			//value sets: {True/False, Guest First Name, Ship ID}
-		    string[] retVal = {bool.FalseString, "", ""};
+			//value sets: {True/False, RoomNum, ShipId, CruiseId}
+		    int[] retVal = {0,0,0,0};
 
-            var fname = roomPass.Substring(3, roomPass.Length);
-
-		    var query1 =
-				"SELECT DISTINCT B.Room_Number AS RNUM " +
-				"FROM Rooms AS R " +
-				"INNER JOIN Booking AS B ON R.Room_Number = B.Room_Number " +
-				"INNER JOIN Travellers AS T ON B.Traveller_ID = T.TVL_ID " +
-				"WHERE B.Room_Number = "+ roomNum +" AND T.TVL_FName = '"+ fname +"'";
+            //var old = roomPass.Substring(3, roomPass.Length);
+		    var sectionsStrings = roomPass.Split('-');
+		    var sectionInts = sectionsStrings.Select(int.Parse).ToArray();
+			//0: Room Number, 1: Ship Number, 2: Cruise Number
+			
+			var query1 =
+				"SELECT DISTINCT P.Room_Num AS RNUM, P.Ship_ID AS SID, P.Cruise_ID AS CID " +
+				"FROM Purchases AS P " +
+				"INNER JOIN Rooms AS R ON R.Room_Number = P.Room_Num " +
+				"INNER JOIN Ships AS S ON S.Ship_id = P.Ship_ID " +
+				"INNER JOIN Cruises AS C ON C.Cruise_id = P.Cruise_ID " +
+				"WHERE P.Room_Num = 514 AND P.Ship_ID = 1 AND P.Cruise_ID = 2";
 		    var query2 =
 				"SELECT DISTINCT P.Room_Num AS Room, P.Purchase_Date AS `Date`, " +
 				"P.Purchase_Time AS `TIME`, P.TotalCost AS `COST(USD)`, " +
@@ -142,25 +151,36 @@ namespace ClientServerProject
 				"INNER JOIN Cruises AS C ON C.Cruise_id = P.Cruise_ID " +
 				"INNER JOIN Ships AS S ON S.Ship_id = P.Ship_ID " +
 				"WHERE P.Room_Num = 514 AND P.Ship_ID = 1 AND P.Cruise_ID = 2";
-            string verifiedRoomNum;
 		    _command.Connection = _connection;
 		    _command.CommandText = query1;
 		    var reader = _command.ExecuteReader();
 		    while (reader.Read())
 		    {
-                verifiedRoomNum = reader["RNUM"].ToString();
-			    if (int.Parse(verifiedRoomNum) == roomNum)
+			    var verifiedRoomNum = int.Parse(reader["RNUM"].ToString());
+			    var verifiedShipId = int.Parse(reader["SID"].ToString());
+			    var verifiedCruiseId = int.Parse(reader["CID"].ToString());
+				if (verifiedRoomNum == roomNum && verifiedShipId == sectionInts[1] && verifiedCruiseId == sectionInts[2])
 			    {
 				    reader.Close();
-				    retVal = new[] {bool.TrueString,};
+				    retVal = new[] {1,verifiedRoomNum,verifiedShipId,verifiedCruiseId};
+					break;
 			    }
 		    }
 			return retVal;
 	    }
 
-	    private void GotoPayment(int roomNum, string guestName)
+	    private void GotoPayment(int roomNum, int shipNum, int cruiseNum)
 	    {
-		    
+		    var payment = new Payment(_connection,_command,_plan,roomNum,shipNum,cruiseNum);
+			_plan.Controls.Add(payment);
+			_plan.Controls.Remove(this);
 	    }
+
+		private void btnUserBack_Click(object sender, EventArgs e)
+		{
+			var onboard = new OnBoard(_plan);
+			_plan.Controls.Add(onboard);
+			_plan.Controls.Remove(this);
+		}
 	}
 }

@@ -1,54 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClientServerProject
+﻿namespace ClientServerProject
 {
     public class Guest
     {
-        public string fName { get; set; }
-        public string lName { get; set; }
-        public string addr { get; set; }
-        public string pNum { get; set; }
-        public string email { get; set; }
-        public int bYear { get; set; }
-        public int bMonth { get; set; }
-        public int bDate { get; set; }
-        public char gender { get; set; }
-        public string toDOB()
+        public string FName { get; set; }
+        public string LName { get; set; }
+        public string Addr { get; set; }
+        public string PNum { get; set; }
+        public string Email { get; set; }
+        public int BYear { get; set; }
+        public int BMonth { get; set; }
+        public int BDate { get; set; }
+        public char Gender { get; set; }
+        public string ToDob()
         {
             string y, m, d, dob;
-            y = this.bYear.ToString();
-            if (this.bMonth < 10)
+            y = BYear.ToString();
+            if (BMonth < 10)
             {
-                m = "0" + (this.bMonth.ToString());
+                m = "0" + (BMonth);
             }
-            else m = this.bMonth.ToString();
-            if (this.bDate < 10)
+            else m = BMonth.ToString();
+            if (BDate < 10)
             {
-                d = "0" + (this.bDate.ToString());
+                d = "0" + (BDate);
             }
-            else d = this.bDate.ToString();
+            else d = BDate.ToString();
             dob = y + m + d;
             return dob;
         }
         public override string ToString()
         {
-            return fName + " " + lName;
+            return FName + " " + LName;
         }
         public Guest(string fn, string ln, string ad, string pn, string em, int by,int bm,int bd,char gd)
         {
-            fName = fn;
-            lName = ln;
-            addr = ad;
-            pNum = pn;
-            email = em;
-            bYear = by;
-            bMonth = bm;
-            bDate = bd;
-            gender = gd;
+            FName = fn;
+            LName = ln;
+            Addr = ad;
+            PNum = pn;
+            Email = em;
+            BYear = by;
+            BMonth = bm;
+            BDate = bd;
+            Gender = gd;
         }
     }
 }
