@@ -12,6 +12,7 @@ namespace ClientServerProject
 {
     public partial class PlanPayment : UserControl
     {
+<<<<<<< HEAD
         private readonly Plan _plan;
 	    private PlanSearch _ps;
 	    private PlanGuestInformation _planguestinfo;
@@ -31,6 +32,29 @@ namespace ClientServerProject
             _cruiseid = ci;
             _roomnum = rn;
             _guestinfo = gi;
+=======
+        Plan plan;
+        PlanSearch ps;
+        PlanGuestInformation planguestinfo;
+        int cruiseid;
+        string roomnum;
+        double price;
+        List<Guest> guestinfo;
+        List<string> temp = new List<string>();
+        List<string> custId = new List<string>();
+        CommandProcessor cp = new CommandProcessor();
+        int pplInRoom;
+        string shipid;
+        public PlanPayment(Plan p,PlanGuestInformation pgi,int ci,string rn,List<Guest>gi,double pr)
+        {
+            InitializeComponent();
+            plan = p;
+            planguestinfo = pgi;
+            cruiseid = ci;
+            roomnum = rn;
+            guestinfo = gi;
+            price = pr;
+>>>>>>> 18bdceee65652174aac3442a33ce24b4915d58cd
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -78,6 +102,11 @@ namespace ClientServerProject
             var ps = new PlanSearch(_plan);
             _plan.Controls.Add(ps);
             _plan.Controls.Remove(this);
+        }
+
+        private void PlanPayment_Load(object sender, EventArgs e)
+        {
+            label1.Text = "Total: CAD$" + price;
         }
     }
 }

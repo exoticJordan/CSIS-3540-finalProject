@@ -20,11 +20,12 @@ namespace ClientServerProject
         int cruiseid;
         string roomnum;
         int guestnum;
+        double price;
         List<Guest> guests = new List<Guest>();
         int guestinfonumber = -1;
         //int count = 0;
         //string by, bm, bd;
-        public PlanGuestInformation(Plan p, PlanRoomNumber pgn,int ci,string rn,int gn)
+        public PlanGuestInformation(Plan p, PlanRoomNumber pgn,int ci,string rn,int gn,double pr)
         {
             InitializeComponent();
             plan = p;
@@ -32,13 +33,14 @@ namespace ClientServerProject
             cruiseid = ci;
             roomnum = rn;
             guestnum = gn;
+            price = pr;
         }
 
         private void btnGuestCont_Click(object sender, EventArgs e)
         {
             if (guests.Count() == guestnum)
             {
-                PlanPayment pp = new PlanPayment(plan, this,cruiseid,roomnum,guests);
+                PlanPayment pp = new PlanPayment(plan, this,cruiseid,roomnum,guests,price);
                 plan.Controls.Add(pp);
                 this.Visible = false;
             }
