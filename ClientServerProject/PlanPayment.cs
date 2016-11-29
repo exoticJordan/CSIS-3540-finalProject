@@ -12,7 +12,7 @@ namespace ClientServerProject
 {
     public partial class PlanPayment : UserControl
     {
-<<<<<<< HEAD
+
         private readonly Plan _plan;
 	    private PlanSearch _ps;
 	    private PlanGuestInformation _planguestinfo;
@@ -24,7 +24,21 @@ namespace ClientServerProject
 	    private CommandProcessor _cp = new CommandProcessor();
 	    private int pplInRoom;
 	    private string shipid;
-        public PlanPayment(Plan p,PlanGuestInformation pgi,int ci,string rn,List<Guest>gi)
+	    private double _price;
+
+	    public PlanPayment(Plan p, PlanGuestInformation pgi, int ci, string rn, List<Guest> gi)
+	    {
+		    InitializeComponent();
+		    _plan = p;
+		    _planguestinfo = pgi;
+		    _cruiseid = ci;
+		    _roomnum = rn;
+		    _guestinfo = gi;
+
+		    
+	    }
+
+	    public PlanPayment(Plan p,PlanGuestInformation pgi,int ci,string rn,List<Guest>gi,double pr)
         {
             InitializeComponent();
             _plan = p;
@@ -32,29 +46,8 @@ namespace ClientServerProject
             _cruiseid = ci;
             _roomnum = rn;
             _guestinfo = gi;
-=======
-        Plan plan;
-        PlanSearch ps;
-        PlanGuestInformation planguestinfo;
-        int cruiseid;
-        string roomnum;
-        double price;
-        List<Guest> guestinfo;
-        List<string> temp = new List<string>();
-        List<string> custId = new List<string>();
-        CommandProcessor cp = new CommandProcessor();
-        int pplInRoom;
-        string shipid;
-        public PlanPayment(Plan p,PlanGuestInformation pgi,int ci,string rn,List<Guest>gi,double pr)
-        {
-            InitializeComponent();
-            plan = p;
-            planguestinfo = pgi;
-            cruiseid = ci;
-            roomnum = rn;
-            guestinfo = gi;
-            price = pr;
->>>>>>> 18bdceee65652174aac3442a33ce24b4915d58cd
+            _price = pr;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -106,7 +99,7 @@ namespace ClientServerProject
 
         private void PlanPayment_Load(object sender, EventArgs e)
         {
-            label1.Text = "Total: CAD$" + price;
+            label1.Text = "Total: CAD$" + _price;
         }
     }
 }
