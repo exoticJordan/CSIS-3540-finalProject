@@ -231,7 +231,7 @@
             this.dtPicker.Name = "dtPicker";
             this.dtPicker.Size = new System.Drawing.Size(108, 20);
             this.dtPicker.TabIndex = 48;
-            this.dtPicker.Value = new System.DateTime(2016, 11, 3, 0, 0, 0, 0);
+            this.dtPicker.Value = new System.DateTime(2016, 11, 14, 0, 0, 0, 0);
             this.dtPicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // PlanGuestInformation

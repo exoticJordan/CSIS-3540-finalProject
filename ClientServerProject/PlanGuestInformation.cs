@@ -64,11 +64,12 @@ namespace ClientServerProject
             pn = txtPhone.Text;
             em = txtEmail.Text;
             //set guest dob
-            string[] s = dtPicker.Value.ToString().Split('-');
-            int.TryParse(s[0], out by);
-            int.TryParse(s[1], out bm);
+            MessageBox.Show(dtPicker.Value.ToString());
+            string[] s = dtPicker.Value.ToString().Split('/');
+            int.TryParse(s[0], out bm);
+            int.TryParse(s[1], out bd);
             s = s[2].Split(' ');
-            int.TryParse(s[0], out bd);
+            int.TryParse(s[0], out by);
             if (fn != "" && ln != "" && ad != "" && pn != "" && em != "" && by != 0 && bm != 0 && bd != 0 && gd != ' ')
             {
                 if (guestinfonumber == -1)
