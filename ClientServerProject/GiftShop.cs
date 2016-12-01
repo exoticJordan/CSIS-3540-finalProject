@@ -256,10 +256,10 @@ namespace ClientServerProject
                         Bartender b = new Bartender(plan);
                         plan.Controls.Remove(this);
                         plan.Controls.Add(b);
-                        ((Button)b.Controls["btnOrder"]).Text = "Bar Order";
+                        ((Button)b.Controls["btnOrder"]).Text = "Gift Order";
                         ((Label)b.Controls["lbName"]).Text = lbName.Text;
-                        ((Label)b.Controls["lbTitle"]).Text = "Bartender";
-                        ((Button)b.Controls["btnS"]).Text = "Bartender Schedule";
+                        ((Label)b.Controls["lbTitle"]).Text = "Giftshop Cashier";
+                        ((Button)b.Controls["btnS"]).Text = "Gift Cashier Schedule";
                         ((Label)b.Controls["lbID"]).Text = lbID.Text;
                     }
                     else { connection.Close(); MessageBox.Show("Try to reconnect database server"); }

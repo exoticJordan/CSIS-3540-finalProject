@@ -145,7 +145,7 @@ namespace ClientServerProject
 
         private void btnBarB_Click(object sender, EventArgs e)
         {
-            var dialog = MessageBox.Show(@"You will empty the checkout list \nAre you sure??", @"Warning!!!", MessageBoxButtons.YesNo);
+            var dialog = MessageBox.Show("You will empty the checkout list \nAre you sure??", @"Warning!!!", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
                 var b = new Bartender(_plan);
